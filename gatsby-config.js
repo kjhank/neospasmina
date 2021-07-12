@@ -1,3 +1,7 @@
+require('dotenv').config({
+  GRAPHQL_URL: `.env.${process.env.GRAPHQL_URL}`,
+});
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -8,15 +12,21 @@ module.exports = {
       },
       resolve: 'gatsby-source-filesystem',
     },
+    {
+      options: {
+        url: process.env.GRAPHQL_URL,
+      },
+      resolve: 'gatsby-source-wordpress',
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
       options: {
         rule: {
-          omitKeys: [
-            'width',
-            'height',
-          ],
+          // omitKeys: [
+          //   'width',
+          //   'height',
+          // ],
         },
       },
       resolve: 'gatsby-plugin-react-svg',
