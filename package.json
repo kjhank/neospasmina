@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Krzysztof Hankiewicz @kjhank <kjhank@gmail.com>",
   "dependencies": {
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.13.1",
     "gatsby": "^3.8.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
