@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-styled-components",
+  "name": "neospasmina",
   "private": true,
   "description": "basic Gatsby starter with Styled Components & linters",
   "version": "0.1.0",
@@ -15,7 +15,8 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^3.9.0",
     "gatsby-plugin-styled-components": "^4.9.0",
-    "gatsby-source-filesystem": "^2.7.0",
+    "gatsby-source-filesystem": "^3.9.0",
+    "gatsby-source-rest-api": "^0.2.3",
     "gatsby-transformer-sharp": "^3.9.0",
     "polished": "^4.1.3",
     "prop-types": "^15.7.2",
