@@ -32,7 +32,7 @@ const StyledLink = styled(Link)`
 const htmlAttributes = { lang: 'pl' };
 
 const IndexPage = () => {
-  if (isBrowser()) {
+  if (isBrowser) {
     smoothscroll.polyfill();
   }
 

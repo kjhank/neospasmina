@@ -1,3 +1,7 @@
+require('dotenv').config({
+  REST_URL: `.env.${process.env.GRAPHQL_URL}`,
+});
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -11,15 +15,13 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
-      options: {
-        rule: {
-          omitKeys: [
-            'width',
-            'height',
-          ],
-        },
-      },
       resolve: 'gatsby-plugin-react-svg',
+    },
+    {
+      options: {
+        endpoints: [process.env.REST_URL],
+      },
+      resolve: 'gatsby-source-rest-api',
     },
     {
       options: {
@@ -28,6 +30,7 @@ module.exports = {
           '@components': 'src/components',
           '@pages': 'src/pages',
           '@src': 'src',
+          '@templates': 'src/templates',
           '@theme': 'src/theme',
           '@utils': 'src/utils',
         },
