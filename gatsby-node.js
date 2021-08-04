@@ -53,6 +53,7 @@ exports.createPages = async ({
 
     const pagePath = `${page.slug}`;
     const { title: { rendered: renderedTitle } } = page;
+    const isHome = page.slug === 'strona-glowna';
 
     const context = {
       ...page,
@@ -63,10 +64,10 @@ exports.createPages = async ({
     const pageData = {
       component: pageTemplate,
       context,
-      path: pagePath,
+      path: isHome ? '/' : pagePath,
     };
 
-    console.log(pagePath);
+    console.log(pageData.path);
 
     createPage(pageData);
   });

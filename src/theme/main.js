@@ -8,19 +8,20 @@ const theme = {
     brand: '#234669',
   },
   fonts: {
-    // font declarations go here
+    sizes: {
+      small: '16px',
+    },
   },
+  getTransitions: properties => properties.map(property => `${property} ${theme.transitions.duration}`).join(', '),
   transitions: {
     duration: '0.4s',
   },
 };
 
-const Theme = ({ children }) => (
+export const Theme = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
 Theme.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default Theme;

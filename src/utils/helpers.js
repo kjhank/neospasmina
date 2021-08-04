@@ -9,13 +9,14 @@ const renderMetadata = data => data.map(({
   type, content,
 }) => {
   if (type === 'title') {
-    return <title>{content}</title>;
+    return <title key={content}>{content}</title>;
   }
 
   if (type === 'canonical-url') {
     return (
       <link
         href={content}
+        key={content}
         rel="canonical"
       />
     );
@@ -24,6 +25,7 @@ const renderMetadata = data => data.map(({
   return (
     <meta
       content={content}
+      key={content}
       name={type}
     />
   );

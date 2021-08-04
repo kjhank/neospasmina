@@ -1,26 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
-import { rgba } from 'polished';
+import PropTypes from 'prop-types';
 
 import { Container } from '@components';
+import { Equalizer } from '@icons';
+import {
+  PlayButton, StyledHeader,
+} from './FixedHeader.styled';
+import { MainMenu } from '.';
 
-const StyledHeader = styled.header`
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-  height: 115px;
-  box-shadow: 0 0.5em 1em ${rgba('#333', 0.25)};
-  background-color: #fff;
-`;
+import { mainMenu } from './FixedHeader.static';
 
-const FixedHeader = () => (
+export const FixedHeader = ({
+  isMusicPlaying,
+  setMusicPlaying,
+}) => (
   <StyledHeader>
     <Container>
+      <MainMenu items={mainMenu} />
       This is a fixed header.
+      <PlayButton
+        isTranslucent={!isMusicPlaying}
+        onClick={() => setMusicPlaying(previous => !previous)}
+      >
+        <Equalizer />
+      </PlayButton>
     </Container>
   </StyledHeader>
 );
 
-export default FixedHeader;
+FixedHeader.propTypes = {
+  isMusicPlaying: PropTypes.bool.isRequired,
+  setMusicPlaying: PropTypes.func.isRequired,
+};
