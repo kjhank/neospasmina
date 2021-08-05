@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@components';
 import { Equalizer } from '@icons';
 import {
-  PlayButton, StyledHeader,
+  StyledContainer as Container, PlayButton, StyledHeader,
 } from './FixedHeader.styled';
 import { MainMenu } from '.';
 

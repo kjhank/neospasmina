@@ -1,7 +1,7 @@
 import React from 'react';
 import { mediaQueries } from '@utils/rwd';
 
-const isBrowser = () => (typeof window !== 'undefined');
+const isBrowser = () => typeof window !== 'undefined';
 
 const isMobile = () => isBrowser && window.matchMedia(mediaQueries.xs).matches;
 

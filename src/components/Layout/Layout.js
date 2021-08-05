@@ -4,15 +4,20 @@ import smoothscroll from 'smoothscroll-polyfill';
 import { Helmet } from 'react-helmet';
 import ReactPlayer from 'react-player';
 
+import '../../../static/fonts/fonts.css';
 import {
   GlobalStyle,
   isBrowser,
 } from '@utils';
 import { Theme } from '@theme/main';
 
-import { FixedHeader } from '@components';
+import {
+  FixedHeader, GlobalFooter,
+} from '@components';
 
-const Layout = ({ children }) => {
+const Layout = ({
+  children, pageContext,
+}) => {
   const [
     isMusicPlaying,
     setMusicPlaying,
@@ -31,7 +36,7 @@ const Layout = ({ children }) => {
     },
   ];
 
-  if (isBrowser) {
+  if (isBrowser()) {
     smoothscroll.polyfill();
   }
 
@@ -49,12 +54,26 @@ const Layout = ({ children }) => {
         url={playerSources}
       />
       {children}
+      <GlobalFooter
+        company={pageContext.company}
+        legal={pageContext.legal.legal}
+        links={pageContext.footerLinks}
+        sil={pageContext.legal.sil}
+      />
     </Theme>
   );
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  pageContext: PropTypes.shape({
+    company: PropTypes.shape({}),
+    footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
+    legal: PropTypes.shape({
+      legal: PropTypes.string,
+      sil: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default Layout;

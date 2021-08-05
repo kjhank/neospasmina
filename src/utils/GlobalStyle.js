@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :root {
+    --color: #3e3e3e;
+  }
+
   *,
   *::before,
   *::after {
@@ -121,8 +125,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100vh;
     scroll-behavior: smooth;
+    color: var(--main-color, #3e3e3e);
     text-rendering: optimizeSpeed;
-    font-family: 'Tahoma', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     line-height: 1.2;
   }
 
@@ -166,6 +171,12 @@ const GlobalStyle = createGlobalStyle`
   textarea,
   select {
     font: inherit;
+  }
+
+  button {
+    border: none;
+    padding: 0;
+    background: transparent;
   }
 
   sup {

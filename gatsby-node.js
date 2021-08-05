@@ -11,7 +11,9 @@ require('dotenv').config({
 
 const fetch = require('node-fetch');
 const path = require('path');
-const { PAGES } = require('./src/utils/static/endpoints.json');
+const {
+  ACF_COMPANY, ACF_LEGAL, ARTICLES_EQUILIBRIUM, ARTICLES_RELAX, ARTICLES_SLEEP, PAGES, PRODUCTS,
+} = require('./src/utils/static/endpoints.json');
 
 const pageTemplate = path.resolve('./src/templates/generic-page.js');
 
@@ -20,6 +22,70 @@ exports.createPages = async ({
 }) => {
   const pagesResponse = await fetch(`${process.env.REST_URL}/${PAGES}`);
   const pages = await pagesResponse.json();
+
+  const legalResponse = await fetch(`${process.env.REST_URL}/${ACF_LEGAL}`);
+  const legalData = await legalResponse.json();
+
+  const companyResponse = await fetch(`${process.env.REST_URL}/${ACF_COMPANY}`);
+  const companyData = await companyResponse.json();
+
+  const productsResponse = await fetch(`${process.env.REST_URL}/${PRODUCTS}`);
+  const productsData = await productsResponse.json();
+
+  const equilibriumResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
+  const equilibriumData = await equilibriumResponse.json();
+
+  const relaxResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_RELAX}`);
+  const relaxData = await relaxResponse.json();
+
+  const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}`);
+  const sleepData = await sleepResponse.json();
+
+  console.log(equilibriumData);
+  console.log(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
+
+  const footerLinks = [
+    {
+      heading: 'Produkty',
+      items: productsData.map(product => ({
+        slug: `/produkty/${product.slug}`,
+        title: product.title.rendered,
+      })),
+    },
+    {
+      heading: 'Spokój i równowaga',
+      items: equilibriumData.map(article => ({
+        slug: `/spokoj-i-rownowaga/${article.slug}`,
+        title: article.title.rendered,
+      })),
+    },
+    {
+      heading: 'Zdrowy sen',
+      items: sleepData.map(article => ({
+        slug: `/zdrowy-sen/${article.slug}`,
+        title: article.title.rendered,
+      })),
+    },
+    {
+      heading: 'Strefa relaksu',
+      items: relaxData.map(article => ({
+        slug: `/strefa-relaksu/${article.slug}`,
+        title: article.title.rendered,
+      })),
+    },
+    {
+      heading: 'Ważne telefony',
+      items: [
+        {
+          slug: '/wazne-telefony',
+          title: 'Dla osób w kryzysie',
+        },
+      ],
+    },
+  ];
+
+  const { acf: legal } = legalData;
+  const { acf: company } = companyData;
 
   pages.forEach(page => {
     const { acf } = page;
@@ -57,6 +123,9 @@ exports.createPages = async ({
 
     const context = {
       ...page,
+      company,
+      footerLinks,
+      legal,
       metadata,
       renderedTitle,
     };
@@ -67,8 +136,20 @@ exports.createPages = async ({
       path: isHome ? '/' : pagePath,
     };
 
-    console.log(pageData.path);
-
     createPage(pageData);
+  });
+};
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        path: require.resolve('path-browserify'),
+      },
+      fallback: {
+        fs: false,
+        os: require.resolve('os-browserify/browser'),
+      },
+    },
   });
 };

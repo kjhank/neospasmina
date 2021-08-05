@@ -10,7 +10,7 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const Layout = require('./src/components/Layout/Layout').default;
 
-exports.wrapPageElement = ({
+exports.wrapPageElement = async ({
   element, props,
 }) => <Layout {...props}>{element}</Layout>;
 

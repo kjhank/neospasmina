@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'gatsby';
+import { Container } from '@components';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -122,4 +123,10 @@ export const StyledLink = styled(Link)`
     width: auto;
     height: ${({ theme }) => theme.fonts.sizes.small};
   }
+`;
+
+export const StyledContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
