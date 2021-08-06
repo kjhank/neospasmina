@@ -8,11 +8,8 @@ export const StyledHeader = styled.header`
   right: 0;
   left: 0;
   z-index: 5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 5.208333vw;
-  background-color: transparent;
+  background-color: #fff;
 `;
 
 const bar1 = keyframes`
@@ -111,6 +108,7 @@ export const PlayButton = styled.button.attrs({
 export const Navigation = styled.nav`
   display: flex;
   align-items: center;
+  font-weight: bold;
   font-size: ${({ theme }) => theme.fonts.sizes.small};
 `;
 
@@ -129,4 +127,8 @@ export const StyledContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > h1 {
+    width: 12.916667vw;
+  }
 `;

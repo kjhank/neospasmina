@@ -41,9 +41,6 @@ exports.createPages = async ({
   const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}`);
   const sleepData = await sleepResponse.json();
 
-  console.log(equilibriumData);
-  console.log(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
-
   const footerLinks = [
     {
       heading: 'Produkty',
@@ -123,7 +120,10 @@ exports.createPages = async ({
 
     const context = {
       ...page,
-      company,
+      company: {
+        ...company,
+        links: company.links.map(item => item.links),
+      },
       footerLinks,
       legal,
       metadata,

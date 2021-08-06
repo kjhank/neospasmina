@@ -1,21 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
+import {
+  css, ThemeProvider,
+} from 'styled-components';
 
 const theme = {
   colors: {
-    // color declarations go here
     brand: '#234669',
     light: '#969696',
     manufacturer: {
       dark: '#034694',
       light: '#94BDE5',
     },
+    medGray: '#767676',
+    sectionGradient: {
+      from: '#f0f5d6',
+      to: '#d3e099',
+    },
     text: '#3e3e3e',
   },
   fonts: {
     sizes: {
       /* eslint-disable sort-keys */
+      tiny: '10px',
+      xxsmall: '12px',
+      xsmall: '14px',
       small: '16px',
       medium: '18px',
       large: '20px',
@@ -30,6 +39,9 @@ const theme = {
       main: 'Fira Sans',
     },
   },
+  getGradient: () => css`
+    background-image: radial-gradient(${theme.colors.sectionGradient.from}, ${theme.colors.sectionGradient.to});
+  `,
   getTransitions: properties => properties.map(property => `${property} ${theme.transitions.duration}`).join(', '),
   transitions: {
     duration: '0.4s',

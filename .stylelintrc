@@ -1,6 +1,6 @@
 {
   "extends": [
-    "stylelint-config-standard",
+    "stylelint-config-recommended",
     "stylelint-config-styled-components"
   ],
   "processors": ["stylelint-processor-styled-components"],
@@ -9,6 +9,7 @@
   ],
   "rules": {
     "declaration-empty-line-before": "never",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
     "at-rule-no-unknown": [true, {
       ignoreAtRules: ["function", "if", "mixin", "include", "each"]
     }],

@@ -5,7 +5,9 @@ import {
   StyledLink as Link, Navigation,
 } from './FixedHeader.styled';
 
-export const MainMenu = ({ items }) => (
+export const MainMenu = ({
+  children, items,
+}) => (
   <Navigation>
     {items.map(({
       content, to,
@@ -17,10 +19,16 @@ export const MainMenu = ({ items }) => (
         {content}
       </Link>
     ))}
+    {children}
   </Navigation>
 );
 
 MainMenu.propTypes = {
+  children: PropTypes.node,
   items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+MainMenu.defaultProps = {
+  children: null,
 };
 

@@ -5,7 +5,9 @@ import { Equalizer } from '@icons';
 import {
   StyledContainer as Container, PlayButton, StyledHeader,
 } from './FixedHeader.styled';
-import { MainMenu } from '.';
+import {
+  Logo, MainMenu,
+} from '.';
 
 import { mainMenu } from './FixedHeader.static';
 
@@ -15,14 +17,17 @@ export const FixedHeader = ({
 }) => (
   <StyledHeader>
     <Container>
-      <MainMenu items={mainMenu} />
-      This is a fixed header.
-      <PlayButton
-        isTranslucent={!isMusicPlaying}
-        onClick={() => setMusicPlaying(previous => !previous)}
-      >
-        <Equalizer />
-      </PlayButton>
+      <h1>
+        <Logo title="logo neospasmina" />
+      </h1>
+      <MainMenu items={mainMenu}>
+        <PlayButton
+          isTranslucent={!isMusicPlaying}
+          onClick={() => setMusicPlaying(previous => !previous)}
+        >
+          <Equalizer />
+        </PlayButton>
+      </MainMenu>
     </Container>
   </StyledHeader>
 );

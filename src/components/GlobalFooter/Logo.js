@@ -14,7 +14,7 @@ export const Logo = props => (
     x="0px"
     y="0px"
     viewBox="0 0 476.67 89.07"
-    // style="enable-background:new 0 0 476.67 89.07;"
+    title="logo Polpharma"
     {...props}
   >
     <g>

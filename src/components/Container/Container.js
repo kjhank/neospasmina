@@ -4,12 +4,14 @@ import { mediaQueries } from '@utils';
 
 export const Container = styled.div`
   position: relative;
-  max-width: 1138px;
+  display: ${({ justify }) => (justify ? 'flex' : 'block')};
+  justify-content: ${({ justify }) => justify};
+  max-width: 1140px;
   height: 100%;
   margin: 0 auto;
 
   @media ${mediaQueries.xxl} {
-    max-width: 59vw;
+    max-width: 59.375vw;
   }
 
   @media ${mediaQueries.xs} {

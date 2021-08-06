@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Container } from '@components';
 import {
   CompanyData,
+  CompanyLinks,
+  CompanyWrapper,
   Disclaimer,
   Footer,
   Legal,
@@ -18,22 +20,25 @@ import {
 import { Logo } from './Logo';
 
 export const GlobalFooter = ({
-  // company,
-  legal, links, sil,
+  company, legal, links, sil,
 }) => (
   <Footer>
-    <Wrapper>
+    <Wrapper hasGradient>
       <Container>
-        <LinksSection>
+        <LinksSection columns={links.length}>
           {links.map(linksGroup => (
-            <LinksGroup>
+            <LinksGroup key={JSON.stringify(linksGroup.heading)}>
               <LinksHeading>{linksGroup.heading}</LinksHeading>
               <LinksList>
                 {linksGroup.items.map(link => (
-                  <SingleItem>
-                    <Link to={link.slug}>
-                      {link.title}
-                    </Link>
+                  <SingleItem
+                    isUppercase={linksGroup.heading === 'Produkty'}
+                    key={link.title}
+                  >
+                    <Link
+                      dangerouslySetInnerHTML={{ __html: link.title }}
+                      to={link.slug}
+                    />
                   </SingleItem>
                 ))}
               </LinksList>
@@ -42,8 +47,23 @@ export const GlobalFooter = ({
         </LinksSection>
       </Container>
       <CompanyData>
-        <Container>
-          <Logo />
+        <Container justify="space-between">
+          <CompanyWrapper>
+            <h2>
+              <Logo />
+            </h2>
+            {company.legal}
+          </CompanyWrapper>
+          <CompanyLinks>
+            {company.links.map(link => (
+              <Link
+                key={link.url}
+                to={link.url}
+              >
+                {link.text}
+              </Link>
+            ))}
+          </CompanyLinks>
         </Container>
       </CompanyData>
     </Wrapper>
@@ -57,7 +77,10 @@ export const GlobalFooter = ({
 );
 
 GlobalFooter.propTypes = {
-  company: PropTypes.shape({}).isRequired,
+  company: PropTypes.shape({
+    legal: PropTypes.string,
+    links: PropTypes.arrayOf(PropTypes.shape({})),
+  }).isRequired,
   legal: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   sil: PropTypes.string.isRequired,
