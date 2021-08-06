@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@components';
+import {
+  Container, ExternalLink,
+} from '@components';
 import {
   CompanyData,
   CompanyLinks,
@@ -56,12 +58,12 @@ export const GlobalFooter = ({
           </CompanyWrapper>
           <CompanyLinks>
             {company.links.map(link => (
-              <Link
-                key={link.url}
-                to={link.url}
+              <ExternalLink
+                key={link.text}
+                url={link.url}
               >
                 {link.text}
-              </Link>
+              </ExternalLink>
             ))}
           </CompanyLinks>
         </Container>

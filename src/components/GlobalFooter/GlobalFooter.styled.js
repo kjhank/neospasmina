@@ -57,12 +57,20 @@ export const CompanyLinks = styled.nav`
   font-size: ${({ theme }) => theme.fonts.sizes.tiny};
 
   > a {
-    padding: 0 0.33em;
+    padding-left: 0.33em;
 
     + a {
       &::before {
         content: '|';
         padding-right: 0.33em;
+      }
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      &::before {
+        text-decoration: none;
       }
     }
   }
