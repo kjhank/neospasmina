@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
   left: 0;
   z-index: 5;
   height: 5.208333vw;
-  background-color: #fff;
+  background-color: transparent;
 `;
 
 const bar1 = keyframes`

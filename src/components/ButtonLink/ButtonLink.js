@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { StyledLink as Link } from './ButtonLink.styled';
 
 export const ButtonLink = ({
-  text, to,
+  children, to,
 }) => (
   <Link to={to}>
-    {text}
+    {children}
   </Link>
 );
 
 ButtonLink.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
 };
 

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-export const Footer = styled.footer``;
+export const Footer = styled.footer`
+  position: relative;
+  z-index: 1;
+`;
 
 export const LinksSection = styled.nav`
   display: grid;
@@ -25,7 +28,13 @@ export const SingleItem = styled.li`
   text-transform: ${({ isUppercase }) => (isUppercase ? 'uppercase' : null)};
 `;
 
-export const StyledLink = styled(Link)``;
+export const StyledLink = styled(Link)`
+  transition: ${({ theme }) => theme.getTransitions(['color'])};
+
+  &:hover {
+    color: #000;
+  }
+`;
 
 export const Wrapper = styled.div`
   padding: 1.875vw 0;
@@ -58,6 +67,7 @@ export const CompanyLinks = styled.nav`
 
   > a {
     padding-left: 0.33em;
+    transition: ${({ theme }) => theme.getTransitions(['color'])};
 
     + a {
       &::before {
@@ -67,10 +77,10 @@ export const CompanyLinks = styled.nav`
     }
 
     &:hover {
-      text-decoration: underline;
+      color: #000;
 
       &::before {
-        text-decoration: none;
+        color: ${({ theme }) => theme.colors.text};
       }
     }
   }
