@@ -40,7 +40,7 @@ export const Carousel = ({ items }) => {
             />
             <source
               srcSet={item.image.url}
-              type={`image/${item.image.subtype}`}
+              type={item.image.mime_type}
             />
             <img
               alt={item.image.alt}

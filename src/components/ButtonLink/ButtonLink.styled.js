@@ -6,7 +6,7 @@ export const StyledLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.604167vw;
-  border: 1px solid ${({ theme }) => theme.colors.text};
+  border: 2px solid ${({ theme }) => theme.colors.text};
   border-radius: 50px;
   padding: 13px 24px;
   font-size: ${({ theme }) => theme.fonts.sizes.small};

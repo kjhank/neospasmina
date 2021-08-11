@@ -10,4 +10,7 @@ export const Image = styled.picture``;
 
 export const StyledLink = styled(ButtonLink)``;
 
-export const LinksWrapper = styled.nav``;
+export const LinksWrapper = styled.nav`
+  font-weight: bold;
+  text-transform: uppercase;
+`;

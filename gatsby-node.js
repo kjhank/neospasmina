@@ -57,10 +57,12 @@ exports.createPages = async ({
 
     if (data.slug === 'strona-glowna') {
       return {
+        articles: acf.articles,
         carousel: acf.carousel.map(item => ({
           ...item,
           url: `/${getCategorySlug(item.post.post_type)}/${item.post.post_name}`,
         })),
+        links: acf['hero-links'],
       };
     }
 
