@@ -55,10 +55,10 @@ const Layout = ({
       />
       {children}
       <GlobalFooter
-        company={pageContext.company}
-        legal={pageContext.legal.legal}
-        links={pageContext.footerLinks}
-        sil={pageContext.legal.sil}
+        company={pageContext?.company}
+        legal={pageContext?.legal?.legal}
+        links={pageContext?.footerLinks}
+        sil={pageContext?.legal?.sil}
       />
     </Theme>
   );

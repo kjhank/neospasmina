@@ -27,8 +27,8 @@ export const GlobalFooter = ({
   <Footer>
     <Wrapper hasGradient>
       <Container>
-        <LinksSection columns={links.length}>
-          {links.map(linksGroup => (
+        <LinksSection columns={links?.length}>
+          {links?.map(linksGroup => (
             <LinksGroup key={JSON.stringify(linksGroup.heading)}>
               <LinksHeading>{linksGroup.heading}</LinksHeading>
               <LinksList>
@@ -54,10 +54,10 @@ export const GlobalFooter = ({
             <h2>
               <Logo />
             </h2>
-            {company.legal}
+            {company?.legal}
           </CompanyWrapper>
           <CompanyLinks>
-            {company.links.map(link => (
+            {company?.links.map(link => (
               <ExternalLink
                 key={link.text}
                 url={link.url}

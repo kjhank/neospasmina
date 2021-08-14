@@ -15,7 +15,8 @@ const {
   ACF_COMPANY, ACF_LEGAL, ARTICLES_EQUILIBRIUM, ARTICLES_RELAX, ARTICLES_SLEEP, PAGES, PRODUCTS,
 } = require('./src/utils/static/endpoints.json');
 
-const pageTemplate = path.resolve('./src/templates/generic-page.js');
+const pageTemplate = path.resolve('./src/templates/GenericPage.js');
+const homeTemplate = path.resolve('./src/templates/HomePage.js');
 
 exports.createPages = async ({
   actions: { createPage },
@@ -40,6 +41,50 @@ exports.createPages = async ({
 
   const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}`);
   const sleepData = await sleepResponse.json();
+
+  const getCategorySlug = postType => {
+    const slugs = {
+      equilibrium: 'spokoj-i-rownowaga',
+      relax: 'strefa-relaksu',
+      sleep: 'dobry-sen',
+    };
+
+    return slugs[postType];
+  };
+
+  const getContext = data => {
+    const { acf } = data;
+
+    if (data.slug === 'strona-glowna') {
+      return {
+        articles: acf.articles,
+        carousel: acf.carousel.map(item => ({
+          ...item,
+          url: `/${getCategorySlug(item.post.post_type)}/${item.post.post_name}`,
+        })),
+        links: acf['hero-links'],
+        products: acf.products,
+      };
+    }
+
+    return null;
+  };
+
+  const getPath = ({ slug }) => {
+    if (slug === 'strona-glowna') {
+      return '/';
+    }
+
+    return `/${slug}`;
+  };
+
+  const getTemplate = ({ slug }) => {
+    if (slug === 'strona-glowna') {
+      return homeTemplate;
+    }
+
+    return pageTemplate;
+  };
 
   const footerLinks = [
     {
@@ -114,9 +159,7 @@ exports.createPages = async ({
       },
     ];
 
-    const pagePath = `${page.slug}`;
     const { title: { rendered: renderedTitle } } = page;
-    const isHome = page.slug === 'strona-glowna';
 
     const context = {
       ...page,
@@ -131,9 +174,12 @@ exports.createPages = async ({
     };
 
     const pageData = {
-      component: pageTemplate,
-      context,
-      path: isHome ? '/' : pagePath,
+      component: getTemplate(page),
+      context: {
+        ...context,
+        ...getContext(page),
+      },
+      path: getPath(page),
     };
 
     createPage(pageData);
