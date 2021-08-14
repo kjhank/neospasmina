@@ -32,21 +32,7 @@ export const Carousel = ({ items }) => {
           <Heading>
             {item.post.post_title}
           </Heading>
-          <HeroImage>
-            <source
-              srcSet={`${item.image.url.split('.').slice(0, -1)
-                .join('.')}.webp`}
-              type="image/webp"
-            />
-            <source
-              srcSet={item.image.url}
-              type={item.image.mime_type}
-            />
-            <img
-              alt={item.image.alt}
-              src={item.image.url}
-            />
-          </HeroImage>
+          <HeroImage image={item.image} />
           <ButtonLink
             to={item.url}
           >

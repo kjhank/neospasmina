@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Image } from '@components';
 
 export const Wrapper = styled.ul`
   position: relative;
@@ -18,7 +19,7 @@ export const SingleItem = styled.li`
   transition: ${({ theme }) => theme.getTransitions(['opacity'])};
 `;
 
-export const HeroImage = styled.picture`
+export const HeroImage = styled(Image)`
   position: absolute;
   top: 0;
   left: 50%;

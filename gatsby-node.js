@@ -63,6 +63,7 @@ exports.createPages = async ({
           url: `/${getCategorySlug(item.post.post_type)}/${item.post.post_name}`,
         })),
         links: acf['hero-links'],
+        products: acf.products,
       };
     }
 

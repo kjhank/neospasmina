@@ -35,6 +35,7 @@ export const HeroLinksSection = ({ data }) => (
           image, post,
         }) => (
           <MosaicLink
+            key={post.post_name}
             to={post.post_name}
           >
             <MosaicImage>

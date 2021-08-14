@@ -1,15 +1,32 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { Image } from '@components';
 
 export const Section = styled.section`
   position: relative;
   z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 13.020833vw;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    height: 100%;
+    ${({
+    hasGradient, theme,
+  }) => hasGradient && theme.getGradient()};
+  transform: translateX(-50%);
+  pointer-events: none;
+  }
 `;
 
 export const ArticlesList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.145833vw;
+  margin-bottom: 5vw;
 `;
 
 export const SingleArticle = styled.li`
@@ -36,7 +53,7 @@ export const Excerpt = styled.p`
   font-size: ${({ theme }) => theme.fonts.sizes.small};
 `;
 
-export const ArticleImage = styled.picture`
+export const ArticleImage = styled(Image)`
   margin-bottom: 2.8125vw;
 `;
 
@@ -44,6 +61,7 @@ export const LinksMosaic = styled.nav`
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 5vw;
 
   &::before {
     content: '';
@@ -116,3 +134,34 @@ export const MosaicLink = styled(Link)`
 `;
 
 export const MosaicImage = styled.picture``;
+
+export const LinedHeading = styled.h3`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fonts.sizes.xxlarge};
+
+  &::before,
+  &::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: ${({ theme }) => theme.colors.text};
+  }
+
+  &::before {
+    margin-right: 1em;
+  }
+
+  &::after {
+    margin-left: 1em;
+  }
+`;
+
+export const Subheading = styled.p`
+  margin-bottom: 3.125vw;
+  font-weight: 300;
+  font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+  text-align: center;
+`;

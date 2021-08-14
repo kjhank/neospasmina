@@ -6,33 +6,31 @@ import {
 } from '@components';
 import { Arrow } from '@icons';
 import {
-  ArticleImage, ArticlesList, Excerpt, Section, SingleArticle, SingleArticleTitle, Title,
+  ArticleImage,
+  ArticlesList,
+  Excerpt,
+  LinedHeading,
+  Section,
+  SingleArticle,
+  SingleArticleTitle,
+  Subheading,
 } from './HomePage.styled';
 
 export const ArticlesSection = ({ data }) => (
-  <Section>
+  <Section hasGradient>
     <Container>
-      <Title>{data.title}</Title>
+      <LinedHeading>
+        {data.title}
+      </LinedHeading>
+      <Subheading>
+        {data.subtitle}
+      </Subheading>
       <ArticlesList>
         {data.articles.map(({
           article, image,
         }) => (
           <SingleArticle key={article.post_title}>
-            <ArticleImage>
-              <source
-                srcSet={`${image.url.split('.').slice(0, -1)
-                  .join('.')}.webp`}
-                type="image/webp"
-              />
-              <source
-                srcSet={image.url}
-                type={image.mime_type}
-              />
-              <img
-                alt={image.alt}
-                src={image.url}
-              />
-            </ArticleImage>
+            <ArticleImage image={image} />
             <SingleArticleTitle>
               {article.post_title}
             </SingleArticleTitle>
@@ -54,6 +52,7 @@ export const ArticlesSection = ({ data }) => (
 ArticlesSection.propTypes = {
   data: PropTypes.shape({
     articles: PropTypes.arrayOf(PropTypes.shape({})),
+    subtitle: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
 };

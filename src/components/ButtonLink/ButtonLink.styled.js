@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export const StyledLink = styled(Link)`
+  position: ${({ isCentered }) => (isCentered ? 'relative' : 'static')};
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: ${({ isCentered }) => (isCentered ? 'center' : 'space-between')};
   align-items: center;
   margin-top: 2.604167vw;
   border: 2px solid ${({ theme }) => theme.colors.text};
@@ -14,18 +15,22 @@ export const StyledLink = styled(Link)`
   transition: ${({ theme }) => theme.getTransitions(['background-color'])};
 
   > svg {
+    position: ${({ isCentered }) => (isCentered ? 'absolute' : 'static')};
+    top: ${({ isCentered }) => (isCentered ? '50%' : 'auto')};
+    right: ${({ isCentered }) => (isCentered ? '24px' : 'auto')};
     width: 1.25vw;
     height: auto;
     margin-left: 1.145833vw;
     fill: currentColor;
     transition: ${({ theme }) => theme.getTransitions(['transform'])};
+    transform: ${({ isCentered }) => (isCentered ? 'translate(0, -50%)' : 'none')};
   }
 
   &:hover {
     background-color: #fff;
 
     > svg {
-      transform: translateX(33%);
+      transform: ${({ isCentered }) => (isCentered ? 'translate(33%, -50%)' : 'translateX(33%)')};
     }
   }
 `;

@@ -19,7 +19,7 @@ const HomePage = ({ pageContext }) => (
       <Container>
         <Carousel items={pageContext.carousel} />
       </Container>
-      <ProductsSection />
+      <ProductsSection data={pageContext.products} />
       <ArticlesSection
         data={pageContext.articles}
       />
@@ -36,6 +36,7 @@ HomePage.propTypes = {
     carousel: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     metadata: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     renderedTitle: PropTypes.string,
   }).isRequired,
 };
