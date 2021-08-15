@@ -17,12 +17,13 @@ const {
 
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
+const productTemplate = path.resolve('./src/templates/ProductPage.js');
 
 exports.createPages = async ({
   actions: { createPage },
 }) => {
   const pagesResponse = await fetch(`${process.env.REST_URL}/${PAGES}`);
-  const pages = await pagesResponse.json();
+  let pages = await pagesResponse.json();
 
   const legalResponse = await fetch(`${process.env.REST_URL}/${ACF_LEGAL}`);
   const legalData = await legalResponse.json();
@@ -32,6 +33,11 @@ exports.createPages = async ({
 
   const productsResponse = await fetch(`${process.env.REST_URL}/${PRODUCTS}`);
   const productsData = await productsResponse.json();
+
+  pages = [
+    ...pages,
+    ...productsData,
+  ];
 
   const equilibriumResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
   const equilibriumData = await equilibriumResponse.json();
@@ -55,9 +61,22 @@ exports.createPages = async ({
   const getContext = data => {
     const { acf } = data;
 
+    const global = {
+      content: data.content.rendered,
+      cover: acf?.cover,
+      lead: acf?.lead,
+      title: acf?.title,
+    };
+
     if (data.slug === 'strona-glowna') {
       return {
-        articles: acf.articles,
+        articles: {
+          ...acf.articles,
+          articles: acf.articles.articles.map(article => ({
+            ...article,
+            url: `/${getCategorySlug(article.article.post_type)}/${article.article.post_name}`,
+          })),
+        },
         carousel: acf.carousel.map(item => ({
           ...item,
           url: `/${getCategorySlug(item.post.post_type)}/${item.post.post_name}`,
@@ -67,20 +86,48 @@ exports.createPages = async ({
       };
     }
 
-    return null;
+    if (data.type === 'products') {
+      return {
+        ...global,
+        color: acf['header-cta'].color,
+        cta: acf['header-cta'],
+        product: {
+          ...acf.product,
+          links: acf.product.links.map(link => ({
+            ...link,
+            url: `/${getCategorySlug(link.post.post_type)}/${link.post.post_name}`,
+          })),
+        },
+        summary: acf.summary,
+      };
+    }
+
+    return global;
   };
 
-  const getPath = ({ slug }) => {
+  const getPath = ({
+    slug, type,
+  }) => {
     if (slug === 'strona-glowna') {
       return '/';
+    }
+
+    if (type === 'products') {
+      return `/produkty/${slug}`;
     }
 
     return `/${slug}`;
   };
 
-  const getTemplate = ({ slug }) => {
+  const getTemplate = ({
+    slug, type,
+  }) => {
     if (slug === 'strona-glowna') {
       return homeTemplate;
+    }
+
+    if (type === 'products') {
+      return productTemplate;
     }
 
     return pageTemplate;

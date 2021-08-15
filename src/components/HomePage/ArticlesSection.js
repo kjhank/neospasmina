@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import {
   ButtonLink, Container,
 } from '@components';
+import { LinedHeading } from '@components/styled';
 import { Arrow } from '@icons';
 import {
   ArticleImage,
   ArticlesList,
   Excerpt,
-  LinedHeading,
   Section,
   SingleArticle,
   SingleArticleTitle,
@@ -27,7 +27,7 @@ export const ArticlesSection = ({ data }) => (
       </Subheading>
       <ArticlesList>
         {data.articles.map(({
-          article, image,
+          article, image, url,
         }) => (
           <SingleArticle key={article.post_title}>
             <ArticleImage image={image} />
@@ -38,7 +38,7 @@ export const ArticlesSection = ({ data }) => (
               {article.post_excerpt}
               {' [...]'}
             </Excerpt>
-            <ButtonLink to={article.post_name}>
+            <ButtonLink to={url}>
               Dowiedz się więcej
               <Arrow />
             </ButtonLink>

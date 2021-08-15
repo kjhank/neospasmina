@@ -17,9 +17,7 @@ export const FixedHeader = ({
 }) => (
   <StyledHeader>
     <Container>
-      <h1>
-        <Logo title="logo neospasmina" />
-      </h1>
+      <Logo title="logo neospasmina" />
       <MainMenu items={mainMenu}>
         <PlayButton
           isTranslucent={!isMusicPlaying}

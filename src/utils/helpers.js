@@ -5,7 +5,7 @@ const isBrowser = () => typeof window !== 'undefined';
 
 const isMobile = () => isBrowser && window.matchMedia(mediaQueries.xs).matches;
 
-const renderMetadata = data => data.map(({
+const renderMetadata = data => data?.map(({
   type, content,
 }) => {
   if (type === 'title') {

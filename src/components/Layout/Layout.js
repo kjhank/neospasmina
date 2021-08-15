@@ -8,6 +8,7 @@ import '../../../static/fonts/fonts.css';
 import {
   GlobalStyle,
   isBrowser,
+  renderMetadata,
 } from '@utils';
 import { Theme } from '@theme/main';
 
@@ -42,7 +43,9 @@ const Layout = ({
 
   return (
     <Theme>
-      <Helmet htmlAttributes={htmlAttributes} />
+      <Helmet htmlAttributes={htmlAttributes}>
+        {renderMetadata(pageContext.metadata)}
+      </Helmet>
       <GlobalStyle />
       <FixedHeader
         isMusicPlaying={isMusicPlaying}
@@ -73,6 +76,7 @@ Layout.propTypes = {
       legal: PropTypes.string,
       sil: PropTypes.string,
     }),
+    metadata: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
 };
 

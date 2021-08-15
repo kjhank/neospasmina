@@ -1,23 +1,34 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import { renderMetadata } from '@utils';
+import { Container } from '@components';
+
+import {
+  Content, Cover, Header, Lead, Title,
+} from '@components/GenericPage/GenericPage.styled';
 
 const GenericPage = ({ pageContext }) => (
-  <>
-    <Helmet>
-      {renderMetadata(pageContext.metadata)}
-    </Helmet>
-    <div>{pageContext.renderedTitle}</div>
-  </>
+  <main>
+    <Header>
+      <Cover image={pageContext.cover} />
+      <Container>
+        <Title>{pageContext.renderedTitle}</Title>
+        <Lead>{pageContext.lead}</Lead>
+      </Container>
+    </Header>
+    <Content>
+      <Container dangerouslySetInnerHTML={{ __html: pageContext.content }} />
+    </Content>
+  </main>
 );
 
 export default GenericPage;
 
 GenericPage.propTypes = {
   pageContext: PropTypes.shape({
-    metadata: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    content: PropTypes.string,
+    cover: PropTypes.shape({}),
+    lead: PropTypes.string,
     renderedTitle: PropTypes.string,
   }).isRequired,
 };
