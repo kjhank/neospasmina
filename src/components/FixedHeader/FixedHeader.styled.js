@@ -9,7 +9,8 @@ export const StyledHeader = styled.header`
   left: 0;
   z-index: 5;
   height: 5.208333vw;
-  background-color: transparent;
+  background-color: ${({ isPageScrolled }) => (isPageScrolled ? '#fff' : 'transparent')};
+  transition: ${({ theme }) => theme.getTransitions(['background-color'])};
 `;
 
 const bar1 = keyframes`

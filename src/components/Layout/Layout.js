@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, {
+  cloneElement, createRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 import { Helmet } from 'react-helmet';
@@ -20,9 +22,16 @@ const Layout = ({
   children, pageContext,
 }) => {
   const [
+    isPageScrolled,
+    setPageScrolled,
+  ] = useState(false);
+
+  const [
     isMusicPlaying,
     setMusicPlaying,
   ] = useState(false);
+
+  const contentRef = createRef();
 
   const noProductsSlugs = [
     'produkty',
@@ -53,15 +62,18 @@ const Layout = ({
       </Helmet>
       <GlobalStyle />
       <FixedHeader
+        contentRef={contentRef}
         isMusicPlaying={isMusicPlaying}
+        isPageScrolled={isPageScrolled}
         setMusicPlaying={setMusicPlaying}
+        setPageScrolled={setPageScrolled}
       />
       <ReactPlayer
         playing={isMusicPlaying}
         style={playerStyle}
         url={playerSources}
       />
-      {children}
+      {cloneElement(children, { contentRef })}
       {!noProductsSlugs.includes(pageContext.slug) && (
         <ProductsTeaser
           products={pageContext.featuredProducts.filter(({ slug }) => slug !== pageContext.slug)}
