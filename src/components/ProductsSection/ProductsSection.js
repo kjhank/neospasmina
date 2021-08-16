@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Container } from '@components';
 import { Arrow } from '@icons';
-import { LinedHeading } from '@components/HomePage/HomePage.styled';
+import { LinedHeading } from '@components/styled';
 import {
   StyledLink as ButtonLink, ProductsImage as Image, LinksWrapper, Section,
 } from './ProductsSection.styled';

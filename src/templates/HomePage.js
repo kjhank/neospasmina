@@ -32,11 +32,11 @@ export default HomePage;
 
 HomePage.propTypes = {
   pageContext: PropTypes.shape({
-    articles: PropTypes.shape({}).isRequired,
-    carousel: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    metadata: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    articles: PropTypes.shape({}),
+    carousel: PropTypes.arrayOf(PropTypes.shape({})),
+    links: PropTypes.arrayOf(PropTypes.shape({})),
+    metadata: PropTypes.arrayOf(PropTypes.shape({})),
+    products: PropTypes.shape({}),
     renderedTitle: PropTypes.string,
   }).isRequired,
 };

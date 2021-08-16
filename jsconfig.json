@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2016",
+    "jsx": "preserve",
+    "strictFunctionTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets": ["./src/assets/*"],
+      "@components": ["./src/components/*"],
+      "@pages": ["./src/pages/*"],
+      "@src": ["./src/*"],
+      "@static": ["/*"],
+      "@theme": ["./src/theme/*"],
+      "@utils": ["./src/utils/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*"
+  ]
+}

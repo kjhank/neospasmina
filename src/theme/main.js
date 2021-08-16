@@ -5,6 +5,12 @@ import {
 } from 'styled-components';
 
 const theme = {
+  borderRadii: {
+    default: '8px',
+    double: '16px',
+    full: '999px',
+    triple: '24px',
+  },
   colors: {
     brand: '#234669',
     light: '#969696',
@@ -17,6 +23,7 @@ const theme = {
       from: '#f0f5d6',
       to: '#d3e099',
     },
+    shadow: '#231f20',
     text: '#3e3e3e',
   },
   fonts: {
@@ -28,6 +35,7 @@ const theme = {
       small: '16px',
       medium: '18px',
       large: '20px',
+      larger: '26px',
       xlarge: '30px',
       xxlarge: '36px',
       huge: '42px',
@@ -38,9 +46,17 @@ const theme = {
       alt: 'Myriad Pro',
       main: 'Fira Sans',
     },
+    weights: {
+      /* eslint-disable sort-keys */
+      light: 300,
+      normal: 400,
+      semibold: 500,
+      bold: 600,
+      /* eslint-enable sort-keys */
+    },
   },
-  getGradient: () => css`
-    background-image: radial-gradient(${theme.colors.sectionGradient.from}, ${theme.colors.sectionGradient.to});
+  getGradient: (from, to) => css`
+    background-image: radial-gradient(${from || theme.colors.sectionGradient.from}, ${to || theme.colors.sectionGradient.to});
   `,
   getTransitions: properties => properties.map(property => `${property} ${theme.transitions.duration}`).join(', '),
   transitions: {

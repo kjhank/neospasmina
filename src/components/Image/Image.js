@@ -6,18 +6,19 @@ export const Image = ({
 }) => (
   <picture {...props}>
     <source
-      srcSet={`${image?.url.split('.').slice(0, -1)
+      srcSet={`${image?.url?.split('.').slice(0, -1)
         .join('.')}.webp`}
       type="image/webp"
     />
     <source
-      srcSet={image.url}
-      type={`image/${image.subtype}`}
+      srcSet={image?.url}
+      type={`image/${image?.subtype}`}
     />
+    {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
     <img
-      alt={image.alt}
+      alt={image?.alt}
       loading={isLazy ? 'lazy' : 'eager'}
-      src={image.url}
+      src={image?.url}
     />
   </picture>
 

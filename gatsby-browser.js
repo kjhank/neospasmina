@@ -16,11 +16,7 @@ const Layout = require('./src/components/Layout/Layout').default;
 
 exports.wrapPageElement = ({
   element, props,
-}) => {
-  console.log(props);
-
-  return (<Layout {...props}>{element}</Layout>);
-};
+}) => (<Layout {...props}>{element}</Layout>);
 
 exports.wrapPageElement.propTypes = {
   element: PropTypes.node.isRequired,

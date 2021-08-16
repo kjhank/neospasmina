@@ -128,7 +128,7 @@ export const StyledContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
 
-  > h1 {
+  > svg {
     width: 12.916667vw;
   }
 `;

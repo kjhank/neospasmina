@@ -8,7 +8,7 @@ export const ButtonLink = ({
   children, hasArrow, isCentered, to,
 }) => (
   <Link
-    isCentered={isCentered}
+    $isCentered={isCentered}
     to={to}
   >
     {children}

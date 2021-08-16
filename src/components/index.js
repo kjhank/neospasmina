@@ -6,3 +6,5 @@ export { ExternalLink } from './ExternalLink/ExternalLink';
 export { FixedHeader } from './FixedHeader/FixedHeader';
 export { GlobalFooter } from './GlobalFooter/GlobalFooter';
 export { ProductsSection } from './ProductsSection/ProductsSection';
+export { Typography } from './Typography/Typography';
+export { ProductsTeaser } from './ProductsTeaser/ProductsTeaser';

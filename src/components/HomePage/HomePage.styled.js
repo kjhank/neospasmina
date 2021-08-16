@@ -36,6 +36,7 @@ export const SingleArticle = styled.li`
 
   > a {
     margin-top: auto;
+    font-weight: 600;
     font-size: ${({ theme }) => theme.fonts.sizes.xxsmall};
   }
 `;
@@ -134,30 +135,6 @@ export const MosaicLink = styled(Link)`
 `;
 
 export const MosaicImage = styled.picture``;
-
-export const LinedHeading = styled.h3`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.fonts.sizes.xxlarge};
-
-  &::before,
-  &::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background-color: ${({ theme }) => theme.colors.text};
-  }
-
-  &::before {
-    margin-right: 1em;
-  }
-
-  &::after {
-    margin-left: 1em;
-  }
-`;
 
 export const Subheading = styled.p`
   margin-bottom: 3.125vw;
