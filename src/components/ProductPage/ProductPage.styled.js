@@ -2,15 +2,86 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { rgba } from 'polished';
 
-import { Image } from '@components';
+import {
+  ExternalLink, Image,
+} from '@components';
 
 import {
   Header as GenericHeader, Lead as GenericLead,
 } from '@components/GenericPage/GenericPage.styled';
 
-export const Header = styled(GenericHeader)``;
+export const Header = styled(GenericHeader)`
+  height: 34.6875vw;
 
-export const Lead = styled(GenericLead)``;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+export const HeaderTextWrapper = styled.div`
+  width: 57%;
+
+  > h1 {
+    padding-right: unset;
+  }
+`;
+
+export const Lead = styled(GenericLead)`
+  position: static;
+  margin-top: 12.5vw;
+  margin-bottom: 6vw;
+  padding-right: 10%;
+  color: ${({ color }) => color};
+  font-style: italic;
+  font-weight: ${({ theme }) => theme.fonts.semibold};
+  font-size: ${({ theme }) => theme.fonts.sizes.larger};
+  text-align: left;
+`;
+
+export const CTA = styled.aside``;
+
+export const CTAButtonsWrapper = styled.nav`
+  display: flex;
+  justify-content: center;
+`;
+
+export const CTAImage = styled(Image)`
+  display: block;
+  margin-bottom: -4vw;
+`;
+
+export const CTAButtonLink = styled(ExternalLink)`
+  border: ${({ color }) => `2px solid ${color}`};
+  border-radius: ${({ theme }) => theme.borderRadii.triple};
+  padding: 0.572917vw 1.770833vw;
+  background-color: ${({
+    color, variant,
+  }) => (variant.includes('filled') ? color : 'transparent')};
+  color: ${({
+    color, variant,
+  }) => (variant.includes('filled') ? '#fff' : color)};
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fonts.sizes.xsmall};
+  text-transform: uppercase;
+  transition: ${({ theme }) => theme.getTransitions([
+    'color',
+    'background-color',
+  ])};
+
+  & + & {
+    margin-left: 1vw;
+  }
+
+  &:hover {
+    background-color: ${({
+    color, variant,
+  }) => (variant.includes('filled') ? '#fff' : color)};
+    color: ${({
+    color, variant,
+  }) => (variant.includes('filled') ? color : '#fff')};
+  }
+`;
 
 export const Content = styled.article``;
 
@@ -38,7 +109,9 @@ export const LinksMosaic = styled.ul`
     z-index: -1;
     width: 100vw;
     height: 90%;
-    ${({ theme }) => theme.getGradient('#cdc5eb', '#43358c')};
+    ${({
+    gradient, theme,
+  }) => (gradient === 'purple' ? theme.getGradient('#cdc5eb', '#43358c') : theme.getGradient())};
     background-position: center;
     background-size: 150%;
     transform: translate(-50%, 0);

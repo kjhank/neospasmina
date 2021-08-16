@@ -22,10 +22,13 @@ import {
 import { Logo } from './Logo';
 
 export const GlobalFooter = ({
-  company, legal, links, sil,
+  company, hasExtraPadding, legal, links, sil,
 }) => (
   <Footer>
-    <Wrapper hasGradient>
+    <Wrapper
+      hasExtraPadding={hasExtraPadding}
+      hasGradient
+    >
       <Container>
         <LinksSection columns={links?.length}>
           {links?.map(linksGroup => (
@@ -83,8 +86,12 @@ GlobalFooter.propTypes = {
     legal: PropTypes.string,
     links: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
+  hasExtraPadding: PropTypes.bool,
   legal: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   sil: PropTypes.string.isRequired,
 };
 
+GlobalFooter.defaultProps = {
+  hasExtraPadding: false,
+};

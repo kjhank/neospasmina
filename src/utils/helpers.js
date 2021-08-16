@@ -9,7 +9,7 @@ const renderMetadata = data => data?.map(({
   type, content,
 }) => {
   if (type === 'title') {
-    return <title key={content}>{content}</title>;
+    return <title key={content}>{content ? `${content} - Neospasmina` : 'Neospasmina'}</title>;
   }
 
   if (type === 'canonical-url') {

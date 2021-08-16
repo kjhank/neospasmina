@@ -89,11 +89,11 @@ exports.createPages = async ({
     if (data.type === 'products') {
       return {
         ...global,
-        color: acf['header-cta'].color,
+        color: acf['header-cta']?.color,
         cta: acf['header-cta'],
         product: {
           ...acf.product,
-          links: acf.product.links.map(link => ({
+          links: acf.product?.links.map(link => ({
             ...link,
             url: `/${getCategorySlug(link.post.post_type)}/${link.post.post_name}`,
           })),
@@ -214,6 +214,7 @@ exports.createPages = async ({
         ...company,
         links: company.links.map(item => item.links),
       },
+      featuredProducts: productsData,
       footerLinks,
       legal,
       metadata,
