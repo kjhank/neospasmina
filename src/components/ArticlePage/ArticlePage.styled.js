@@ -1,11 +1,21 @@
 import styled, { css } from 'styled-components';
 
 import { Image } from '@components';
-import { Lead as GenericLead } from '@components/GenericPage/GenericPage.styled';
+import {
+  Header as GenericHeader, Lead as GenericLead,
+} from '@components/GenericPage/GenericPage.styled';
 
 export const Content = styled.article``;
 
-export const Lead = styled(GenericLead)``;
+export const Header = styled(GenericHeader)`
+  margin-bottom: 2vw;
+`;
+
+export const Lead = styled(GenericLead)`
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+  text-align: left;
+`;
 
 export const SectionHeading = styled.h2``;
 
@@ -25,11 +35,11 @@ export const Section = styled.section`
   justify-content: ${({ variant }) => (variant === 'textLeft' || variant === 'textRight' ? 'space-between' : 'flex-start')};
   font-size: ${({
     theme, variant,
-  }) => (variant === 'footnotes' ? theme.fonts.sizes.xsmall : theme.fonts.sizes.small)};
+  }) => (variant === 'footnotes' ? theme.fonts.sizes.xxsmall : theme.fonts.sizes.small)};
   text-align: justify;
 
   & + & {
-    margin-top: 1em;
+    margin-top: 21em;
   }
 
   h2 {

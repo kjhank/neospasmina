@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { Container } from '@components';
 
 import {
-  Cover, Header, Lead, Title,
+  Cover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
-import { Content } from '@components/ArticlePage/ArticlePage.styled';
+import {
+  Content, Header, Lead,
+} from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 
 const ArticlePage = ({
