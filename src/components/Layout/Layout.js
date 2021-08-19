@@ -51,7 +51,7 @@ const Layout = ({
     },
   ];
 
-  if (isBrowser()) {
+  if (isBrowser) {
     smoothscroll.polyfill();
   }
 
@@ -76,7 +76,7 @@ const Layout = ({
       {cloneElement(children, { contentRef })}
       {!noProductsSlugs.includes(pageContext.slug) && (
         <ProductsTeaser
-          products={pageContext.featuredProducts.filter(({ slug }) => slug !== pageContext.slug)}
+          products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext.slug)}
         />
       )}
       <GlobalFooter

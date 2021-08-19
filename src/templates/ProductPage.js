@@ -196,7 +196,7 @@ export default ProductPage;
 ProductPage.propTypes = {
   contentRef: PropTypes.shape({
     current: PropTypes.node,
-  }).isRequired,
+  }),
   pageContext: PropTypes.shape({
     acf: PropTypes.shape({
       heading: PropTypes.string,

@@ -15,8 +15,10 @@ const {
   ACF_COMPANY, ACF_LEGAL, ARTICLES_EQUILIBRIUM, ARTICLES_RELAX, ARTICLES_SLEEP, PAGES, PRODUCTS,
 } = require('./src/utils/static/endpoints.json');
 
-const pageTemplate = path.resolve('./src/templates/GenericPage.js');
+const articleTemplate = path.resolve('./src/templates/ArticlePage.js');
+const availabilityTemplate = path.resolve('./src/templates/AvailabilityPage.js');
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
+const pageTemplate = path.resolve('./src/templates/GenericPage.js');
 const productTemplate = path.resolve('./src/templates/ProductPage.js');
 
 exports.createPages = async ({
@@ -34,11 +36,6 @@ exports.createPages = async ({
   const productsResponse = await fetch(`${process.env.REST_URL}/${PRODUCTS}`);
   const productsData = await productsResponse.json();
 
-  pages = [
-    ...pages,
-    ...productsData,
-  ];
-
   const equilibriumResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
   const equilibriumData = await equilibriumResponse.json();
 
@@ -48,27 +45,26 @@ exports.createPages = async ({
   const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}`);
   const sleepData = await sleepResponse.json();
 
-  const getCategorySlug = postType => {
-    const slugs = {
-      equilibrium: 'spokoj-i-rownowaga',
-      relax: 'strefa-relaksu',
-      sleep: 'dobry-sen',
-    };
-
-    return slugs[postType];
+  const slugs = {
+    equilibrium: 'spokoj-i-rownowaga',
+    relax: 'strefa-relaksu',
+    sleep: 'zdrowy-sen',
   };
 
+  const getCategorySlug = postType => slugs[postType];
+
   const getContext = data => {
-    const { acf } = data;
+    const { acf, slug, type } = data;
 
     const global = {
       content: data.content.rendered,
       cover: acf?.cover,
+      heading: acf?.heading,
       lead: acf?.lead,
       title: acf?.title,
     };
 
-    if (data.slug === 'strona-glowna') {
+    if (slug === 'strona-glowna') {
       return {
         articles: {
           ...acf.articles,
@@ -86,7 +82,7 @@ exports.createPages = async ({
       };
     }
 
-    if (data.type === 'products') {
+    if (type === 'products') {
       return {
         ...global,
         color: acf['header-cta']?.color,
@@ -102,6 +98,22 @@ exports.createPages = async ({
       };
     }
 
+    if (slug === 'gdzie-kupic') {
+      return {
+        ...global,
+        availability: acf.availability,
+        pharmacies: acf.pharmacies,
+      }
+    }
+
+    if (Object.keys(slugs).includes(type)) {
+      return {
+        ...global,
+        sections: acf['article-body'],
+      };
+    }
+
+
     return global;
   };
 
@@ -116,6 +128,10 @@ exports.createPages = async ({
       return `/produkty/${slug}`;
     }
 
+    if (Object.keys(slugs).includes(type)) {
+      return `/${getCategorySlug(type)}/${slug}`
+    }
+
     return `/${slug}`;
   };
 
@@ -128,6 +144,14 @@ exports.createPages = async ({
 
     if (type === 'products') {
       return productTemplate;
+    }
+
+    if (Object.keys(slugs).includes(type)) {
+      return articleTemplate;
+    }
+
+    if (slug === 'gdzie-kupic') {
+      return availabilityTemplate;
     }
 
     return pageTemplate;
@@ -175,6 +199,16 @@ exports.createPages = async ({
 
   const { acf: legal } = legalData;
   const { acf: company } = companyData;
+
+  pages = [
+    ...equilibriumData,
+    ...pages,
+    ...productsData,
+    ...relaxData,
+    ...sleepData,
+  ];
+
+  console.log(pages.sleepData);
 
   pages.forEach(page => {
     const { acf } = page;

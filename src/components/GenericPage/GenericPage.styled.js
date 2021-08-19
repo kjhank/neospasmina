@@ -7,7 +7,7 @@ export const Title = styled.h1`
   color: ${({ color }) => color};
   font-weight: 600;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
-  text-transform: uppercase;
+  text-transform: ${({ isLowercase }) => (isLowercase ? 'none' : 'uppercase')};
 `;
 
 export const Header = styled.header`

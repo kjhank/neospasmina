@@ -12,8 +12,10 @@ const theme = {
     triple: '24px',
   },
   colors: {
+    border: '#bfbfbf',
     brand: '#234669',
     light: '#969696',
+    link: '#236e37',
     manufacturer: {
       dark: '#034694',
       light: '#94BDE5',

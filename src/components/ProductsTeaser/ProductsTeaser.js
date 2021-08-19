@@ -15,8 +15,17 @@ export const ProductsTeaser = ({
 }) => (
   <Wrapper>
     <Container>
+      <Typography
+        as="h2"
+        hasBottomMargin
+        size="xxlarge"
+        variant="uppercase"
+        weight="semibold"
+      >
+        Poznaj nasze produkty
+      </Typography>
       <ProductsList>
-        {products.map(product => (
+        {products?.map(product => (
           <SingleProduct key={product.slug}>
             <Image image={product.acf.summary.image} />
             <Typography

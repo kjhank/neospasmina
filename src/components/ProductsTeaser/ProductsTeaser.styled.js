@@ -6,7 +6,7 @@ import { Link as GatsbyLink } from 'gatsby';
 export const Wrapper = styled.section`
   position: relative;
   z-index: 2;
-  margin-bottom: -15vw;
+  margin: 5vw 0 -15vw;
   padding-bottom: 1.5vw;
 
   > div {

@@ -23,32 +23,33 @@ export const FixedHeader = ({
   const headerRef = createRef();
 
   useEffect(() => {
-    const scrollObserver = new IntersectionObserver(([
-      {
-        intersectionRatio,
-      },
-    ]) => {
-      if (intersectionRatio < 0.9) {
-        setPageScrolled(true);
-      } else {
-        setPageScrolled(false);
-      }
-    }, {
-      // rootMargin: '200px',
-      threshold: [
-        0.1,
-        0.2,
-        0.3,
-        0.4,
-        0.5,
-        0.6,
-        0.7,
-        0.8,
-        0.9,
-      ],
-    });
+    if (contentRef?.current) {
+      const scrollObserver = new IntersectionObserver(([
+        {
+          intersectionRatio,
+        },
+      ]) => {
+        if (intersectionRatio < 0.8) {
+          setPageScrolled(true);
+        } else {
+          setPageScrolled(false);
+        }
+      }, {
+        threshold: [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+        ],
+      });
 
-    scrollObserver.observe(contentRef.current);
+      scrollObserver.observe(contentRef.current);
+    }
   }, []);
 
   return (
