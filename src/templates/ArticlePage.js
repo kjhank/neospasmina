@@ -28,7 +28,7 @@ const ArticlePage = ({
     </Header>
     <Content>
       <Container>
-        {renderArticle(pageContext.sections)}
+        {pageContext.sections && renderArticle(pageContext.sections)}
       </Container>
     </Content>
   </main>

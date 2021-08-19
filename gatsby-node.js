@@ -108,7 +108,6 @@ exports.createPages = async ({
     }
 
     if (slug === 'psycholog-radzi') {
-      // console.log(acf);
       return {
         ...global,
         articles: acf.articles,
@@ -220,8 +219,6 @@ exports.createPages = async ({
     ...relaxData,
     ...sleepData,
   ];
-
-  console.log(pages.sleepData);
 
   pages.forEach(page => {
     const { acf } = page;
