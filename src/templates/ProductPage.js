@@ -31,9 +31,11 @@ import {
 
 import { Arrow } from '@icons';
 
-const ProductPage = ({ pageContext }) => (
+const ProductPage = ({
+  contentRef, pageContext,
+}) => (
   <main>
-    <Header>
+    <Header ref={contentRef}>
       <Cover
         image={pageContext?.cover}
         isLazy={false}
@@ -192,6 +194,9 @@ const ProductPage = ({ pageContext }) => (
 export default ProductPage;
 
 ProductPage.propTypes = {
+  contentRef: PropTypes.shape({
+    current: PropTypes.node,
+  }),
   pageContext: PropTypes.shape({
     acf: PropTypes.shape({
       heading: PropTypes.string,

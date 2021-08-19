@@ -6,6 +6,7 @@ import {
 import {
   isBrowser,
   isMobile,
+  renderArticle,
   renderMetadata,
 } from './helpers';
 
@@ -15,5 +16,6 @@ export {
   isMobile,
   mediaQueries,
   mfQueries,
+  renderArticle,
   renderMetadata,
 };

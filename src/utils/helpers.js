@@ -1,11 +1,22 @@
 import React from 'react';
+
 import { mediaQueries } from '@utils/rwd';
 
-const isBrowser = () => typeof window !== 'undefined';
+import {
+  ArticleImage,
+  Footnotes,
+  Lead,
+  SectionHeading,
+  Section,
+} from '@components/ArticlePage/ArticlePage.styled';
 
-const isMobile = () => isBrowser && window.matchMedia(mediaQueries.xs).matches;
+import { Typography } from '@components';
 
-const renderMetadata = data => data?.map(({
+export const isBrowser = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+export const isMobile = () => isBrowser && window.matchMedia(mediaQueries.xs).matches;
+
+export const renderMetadata = data => data?.map(({
   type, content,
 }) => {
   if (type === 'title') {
@@ -31,8 +42,47 @@ const renderMetadata = data => data?.map(({
   );
 });
 
-export {
-  isBrowser,
-  isMobile,
-  renderMetadata,
-};
+export const renderArticle = sections => sections.map(({ section }) => {
+  console.log(section);
+
+  const {
+    image,
+    text,
+    'text-image': textImage,
+    type,
+  } = section;
+
+  const [variant] = type.split(':')
+
+  if (type.includes('textLeft') || type.includes('textRight')) {
+
+    return (
+      <Section variant={variant}>
+        <Typography
+          dangerouslySetInnerHTML={{__html: textImage.text}}
+        />
+        <ArticleImage image={textImage.image} />
+      </Section>
+    );
+  }
+
+  if (variant === 'fullText') {
+    return (
+      <Section
+        dangerouslySetInnerHTML={{ __html: text }}
+        variant={variant}
+      />
+    );
+  }
+
+  if (variant === 'footnotes') {
+    return (
+      <Section
+        dangerouslySetInnerHTML={{ __html: text }}
+        variant={variant}
+      />
+    );
+  }
+
+  return null;
+})
