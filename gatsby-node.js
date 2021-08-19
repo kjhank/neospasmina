@@ -16,6 +16,7 @@ const {
 } = require('./src/utils/static/endpoints.json');
 
 const articleTemplate = path.resolve('./src/templates/ArticlePage.js');
+const articlesTemplate = path.resolve('./src/templates/ArticlesPage.js');
 const availabilityTemplate = path.resolve('./src/templates/AvailabilityPage.js');
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
@@ -47,8 +48,8 @@ exports.createPages = async ({
 
   const slugs = {
     equilibrium: 'spokoj-i-rownowaga',
-    relax: 'strefa-relaksu',
-    sleep: 'zdrowy-sen',
+    relaxx: 'strefa-relaksu',
+    sleeep: 'zdrowy-sen',
   };
 
   const getCategorySlug = postType => slugs[postType];
@@ -106,6 +107,14 @@ exports.createPages = async ({
       }
     }
 
+    if (slug === 'psycholog-radzi') {
+      // console.log(acf);
+      return {
+        ...global,
+        articles: acf.articles,
+      };
+    }
+
     if (Object.keys(slugs).includes(type)) {
       return {
         ...global,
@@ -152,6 +161,10 @@ exports.createPages = async ({
 
     if (slug === 'gdzie-kupic') {
       return availabilityTemplate;
+    }
+
+    if (slug === 'psycholog-radzi') {
+      return articlesTemplate;
     }
 
     return pageTemplate;

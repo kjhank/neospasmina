@@ -43,8 +43,6 @@ export const renderMetadata = data => data?.map(({
 });
 
 export const renderArticle = sections => sections.map(({ section }) => {
-  console.log(section);
-
   const {
     image,
     text,
@@ -53,11 +51,14 @@ export const renderArticle = sections => sections.map(({ section }) => {
   } = section;
 
   const [variant] = type.split(':')
+  const key = JSON.stringify(section).slice(0, 92);
 
   if (type.includes('textLeft') || type.includes('textRight')) {
-
     return (
-      <Section variant={variant}>
+      <Section
+        key={key}
+        variant={variant}
+      >
         <Typography
           dangerouslySetInnerHTML={{__html: textImage.text}}
         />
@@ -70,6 +71,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
     return (
       <Section
         dangerouslySetInnerHTML={{ __html: text }}
+        key={key}
         variant={variant}
       />
     );
@@ -79,6 +81,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
     return (
       <Section
         dangerouslySetInnerHTML={{ __html: text }}
+        key={key}
         variant={variant}
       />
     );

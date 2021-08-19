@@ -39,7 +39,7 @@ export const Section = styled.section`
   text-align: justify;
 
   & + & {
-    margin-top: 21em;
+    margin-top: 2em;
   }
 
   h2 {
