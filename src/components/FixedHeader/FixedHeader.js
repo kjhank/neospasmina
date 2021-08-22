@@ -71,7 +71,7 @@ export const FixedHeader = ({
 FixedHeader.propTypes = {
   isMusicPlaying: PropTypes.bool.isRequired,
   isPageScrolled: PropTypes.bool.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.shape({}).isRequired,
   setMusicPlaying: PropTypes.func.isRequired,
   setPageScrolled: PropTypes.func.isRequired,
 };

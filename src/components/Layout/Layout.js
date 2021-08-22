@@ -89,7 +89,7 @@ const Layout = ({
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.shape({}).isRequired,
   pageContext: PropTypes.shape({
     company: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
