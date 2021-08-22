@@ -8,7 +8,7 @@ import {
   StyledContainer as Container, PlayButton, StyledHeader,
 } from './FixedHeader.styled';
 import {
-  Logo, MainMenu,
+  Logo, LogoExtra, LogoNight, MainMenu,
 } from '.';
 
 import { mainMenu } from './FixedHeader.static';
@@ -48,13 +48,19 @@ export const FixedHeader = ({
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
+  const isProducts = location.pathname.includes('/produkty/');
+  const isExtra = isProducts && location.pathname.includes('/neospasmina-extra');
+  const isNight = isProducts && location.pathname.includes('/neospasmina-noc');
+
   return (
     <StyledHeader
       isPageScrolled={isPageScrolled}
       ref={headerRef}
     >
       <Container>
-        <Logo title="logo neospasmina" />
+        {isExtra && <LogoExtra />}
+        {isNight && <LogoNight />}
+        {!isExtra && !isNight && <Logo title="logo neospasmina" />}
         <MainMenu items={mainMenu}>
           <PlayButton
             isTranslucent={!isMusicPlaying}
@@ -71,7 +77,9 @@ export const FixedHeader = ({
 FixedHeader.propTypes = {
   isMusicPlaying: PropTypes.bool.isRequired,
   isPageScrolled: PropTypes.bool.isRequired,
-  location: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
   setMusicPlaying: PropTypes.func.isRequired,
   setPageScrolled: PropTypes.func.isRequired,
 };

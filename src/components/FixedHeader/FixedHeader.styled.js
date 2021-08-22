@@ -130,6 +130,6 @@ export const StyledContainer = styled(Container)`
   align-items: center;
 
   > svg {
-    width: 12.916667vw;
+    height: 1.458333vw;
   }
 `;
