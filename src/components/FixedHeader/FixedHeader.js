@@ -1,5 +1,5 @@
 import React, {
-  createRef, useEffect,
+  createRef, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,42 +14,38 @@ import {
 import { mainMenu } from './FixedHeader.static';
 
 export const FixedHeader = ({
-  contentRef,
   isMusicPlaying,
   isPageScrolled,
+  location,
   setMusicPlaying,
   setPageScrolled,
 }) => {
   const headerRef = createRef();
+  const locationRef = useRef({ location: null });
 
   useEffect(() => {
-    if (contentRef?.current) {
-      const scrollObserver = new IntersectionObserver(([
-        {
-          intersectionRatio,
-        },
-      ]) => {
-        if (intersectionRatio < 0.8) {
-          setPageScrolled(true);
-        } else {
-          setPageScrolled(false);
-        }
-      }, {
-        threshold: [
-          0.1,
-          0.2,
-          0.3,
-          0.4,
-          0.5,
-          0.6,
-          0.7,
-          0.8,
-          0.9,
-        ],
-      });
+    if (!locationRef.current.location) {
+      locationRef.current.location = location;
+    } else if (locationRef.current.location !== location) {
+      locationRef.current.location = location;
+      const { scrollY } = window;
 
-      scrollObserver.observe(contentRef.current);
+      setPageScrolled(scrollY === 0);
     }
+  }, [location]);
+
+  useEffect(() => {
+    const { height: headerHeight } = headerRef?.current?.getBoundingClientRect();
+
+    const scrollHandler = () => {
+      const { scrollY } = window;
+
+      setPageScrolled(scrollY > headerHeight);
+    };
+
+    document.addEventListener('scroll', scrollHandler);
+
+    return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
   return (
@@ -73,11 +69,9 @@ export const FixedHeader = ({
 };
 
 FixedHeader.propTypes = {
-  contentRef: PropTypes.shape({
-    current: PropTypes.node,
-  }).isRequired,
   isMusicPlaying: PropTypes.bool.isRequired,
   isPageScrolled: PropTypes.bool.isRequired,
+  location: PropTypes.string.isRequired,
   setMusicPlaying: PropTypes.func.isRequired,
   setPageScrolled: PropTypes.func.isRequired,
 };

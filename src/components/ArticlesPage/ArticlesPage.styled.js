@@ -3,9 +3,14 @@ import {
   ButtonLink, Image as GenericImage,
 } from '@components';
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  display: flex;
+  justify-content: space-between;
+`;
 
-export const Item = styled.li``;
+export const Item = styled.li`
+  width: calc(33% - 1.145833vw);
+`;
 
 export const Image = styled(GenericImage)``;
 

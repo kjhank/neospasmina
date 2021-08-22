@@ -4,9 +4,6 @@ import { mediaQueries } from '@utils/rwd';
 
 import {
   ArticleImage,
-  Footnotes,
-  Lead,
-  SectionHeading,
   Section,
 } from '@components/ArticlePage/ArticlePage.styled';
 
@@ -44,13 +41,14 @@ export const renderMetadata = data => data?.map(({
 
 export const renderArticle = sections => sections.map(({ section }) => {
   const {
-    image,
+    // image,
     text,
     'text-image': textImage,
+    'two-cols': twoCols,
     type,
   } = section;
 
-  const [variant] = type.split(':')
+  const [variant] = type.split(':');
   const key = JSON.stringify(section).slice(0, 92);
 
   if (type.includes('textLeft') || type.includes('textRight')) {
@@ -60,7 +58,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
         variant={variant}
       >
         <Typography
-          dangerouslySetInnerHTML={{__html: textImage.text}}
+          dangerouslySetInnerHTML={{ __html: textImage.text }}
         />
         <ArticleImage image={textImage.image} />
       </Section>
@@ -77,9 +75,22 @@ export const renderArticle = sections => sections.map(({ section }) => {
     );
   }
 
+  if (variant === 'twoCols') {
+    return (
+      <Section
+        key={key}
+        variant={variant}
+      >
+        {JSON.stringify(twoCols)}
+        foo
+      </Section>
+    );
+  }
+
   if (variant === 'footnotes') {
     return (
       <Section
+        as="footer"
         dangerouslySetInnerHTML={{ __html: text }}
         key={key}
         variant={variant}
@@ -88,4 +99,4 @@ export const renderArticle = sections => sections.map(({ section }) => {
   }
 
   return null;
-})
+});

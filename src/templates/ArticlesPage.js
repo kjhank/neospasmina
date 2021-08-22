@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@components';
+import {
+  Container, Typography,
+} from '@components';
 
 import {
   Content, Cover, Header, Lead, Title,
@@ -17,11 +19,9 @@ const slugs = {
   sleep: 'Zdrowy sen',
 };
 
-const ArticlesPage = ({
-  contentRef, pageContext,
-}) => (
+const ArticlesPage = ({ pageContext }) => (
   <main>
-    <Header ref={contentRef}>
+    <Header>
       <Cover image={pageContext.cover} />
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
@@ -30,15 +30,22 @@ const ArticlesPage = ({
     </Header>
     <Content>
       <Container>
-        {/* eslint-disable-next-line max-len */}
         {Object.keys(pageContext.articles).map(groupName => (
-          <>
+          <section key={groupName}>
             {slugs[groupName]}
             <List>
               {pageContext.articles[groupName].map(article => (
-                <Item>
+                <Item key={JSON.stringify(article).slice(0, 92)}>
                   {/* <Image image={article.} /> */}
-                  {JSON.stringify(article.post)}
+                  <Typography
+                    weight="semibold"
+                  >
+                    {article.post.post_title}
+                  </Typography>
+                  <Typography>
+                    {article.post.post_excerpt}
+                    {' [...]'}
+                  </Typography>
                   <Link
                     hasArrow
                     to={article.post.post_name}
@@ -53,7 +60,7 @@ const ArticlesPage = ({
               {' '}
               {slugs[groupName]}
             </CategoryLink>
-          </>
+          </section>
         ))}
       </Container>
     </Content>
@@ -63,7 +70,6 @@ const ArticlesPage = ({
 export default ArticlesPage;
 
 ArticlesPage.propTypes = {
-  contentRef: PropTypes.shape({}).isRequired,
   pageContext: PropTypes.shape({
     articles: PropTypes.shape({}),
     content: PropTypes.string,

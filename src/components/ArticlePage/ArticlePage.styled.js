@@ -73,11 +73,7 @@ export const Section = styled.section`
   > div {
       width: calc(50% - 1.484375vw);
     }
-
-  /* > pict */
   `)}
 `;
 
 export const ArticleImage = styled(Image)``;
-
-export const Footnotes = styled.section``;

@@ -55,7 +55,9 @@ exports.createPages = async ({
   const getCategorySlug = postType => slugs[postType];
 
   const getContext = data => {
-    const { acf, slug, type } = data;
+    const {
+      acf, slug, type,
+    } = data;
 
     const global = {
       content: data.content.rendered,
@@ -104,7 +106,7 @@ exports.createPages = async ({
         ...global,
         availability: acf.availability,
         pharmacies: acf.pharmacies,
-      }
+      };
     }
 
     if (slug === 'psycholog-radzi') {
@@ -121,7 +123,6 @@ exports.createPages = async ({
       };
     }
 
-
     return global;
   };
 
@@ -137,7 +138,7 @@ exports.createPages = async ({
     }
 
     if (Object.keys(slugs).includes(type)) {
-      return `/${getCategorySlug(type)}/${slug}`
+      return `/${getCategorySlug(type)}/${slug}`;
     }
 
     return `/${slug}`;

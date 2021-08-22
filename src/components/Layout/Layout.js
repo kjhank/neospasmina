@@ -1,6 +1,4 @@
-import React, {
-  cloneElement, createRef, useState,
-} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 import { Helmet } from 'react-helmet';
@@ -19,7 +17,7 @@ import {
 } from '@components';
 
 const Layout = ({
-  children, pageContext,
+  children, location, pageContext,
 }) => {
   const [
     isPageScrolled,
@@ -30,8 +28,6 @@ const Layout = ({
     isMusicPlaying,
     setMusicPlaying,
   ] = useState(false);
-
-  const contentRef = createRef();
 
   const noProductsSlugs = [
     'produkty',
@@ -62,9 +58,9 @@ const Layout = ({
       </Helmet>
       <GlobalStyle />
       <FixedHeader
-        contentRef={contentRef}
         isMusicPlaying={isMusicPlaying}
         isPageScrolled={isPageScrolled}
+        location={location}
         setMusicPlaying={setMusicPlaying}
         setPageScrolled={setPageScrolled}
       />
@@ -73,7 +69,8 @@ const Layout = ({
         style={playerStyle}
         url={playerSources}
       />
-      {cloneElement(children, { contentRef })}
+      {/* {cloneElement(children, { contentRef })} */}
+      {children}
       {!noProductsSlugs.includes(pageContext.slug) && (
         <ProductsTeaser
           products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext.slug)}
@@ -92,6 +89,7 @@ const Layout = ({
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.string.isRequired,
   pageContext: PropTypes.shape({
     company: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
