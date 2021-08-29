@@ -6,7 +6,7 @@ export const StyledLink = styled(Link)`
   display: inline-flex;
   justify-content: ${({ $isCentered }) => ($isCentered ? 'center' : 'space-between')};
   align-items: center;
-  margin-top: 2.604167vw;
+  /* margin-top: 2.604167vw; */
   border: 2px solid ${({ theme }) => theme.colors.text};
   border-radius: 50px;
   padding: 13px 24px;

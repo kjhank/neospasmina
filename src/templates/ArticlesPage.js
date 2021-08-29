@@ -10,7 +10,7 @@ import {
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  CategoryLink, Item, Link, List,
+  CategoryLink, Image, Item, Link, List, Section,
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const slugs = {
@@ -31,18 +31,22 @@ const ArticlesPage = ({ pageContext }) => (
     <Content>
       <Container>
         {Object.keys(pageContext.articles).map(groupName => (
-          <section key={groupName}>
-            {slugs[groupName]}
+          <Section key={groupName}>
             <List>
               {pageContext.articles[groupName].map(article => (
                 <Item key={JSON.stringify(article).slice(0, 92)}>
-                  {/* <Image image={article.} /> */}
+                  <Image image={article.image} />
                   <Typography
+                    hasBottomMargin
+                    size="large"
                     weight="semibold"
                   >
                     {article.post.post_title}
                   </Typography>
-                  <Typography>
+                  <Typography
+                    hasBottomMargin
+                    size="small"
+                  >
                     {article.post.post_excerpt}
                     {' [...]'}
                   </Typography>
@@ -55,12 +59,19 @@ const ArticlesPage = ({ pageContext }) => (
                 </Item>
               ))}
             </List>
-            <CategoryLink to="#">
-              Zobacz więcej artkułów z sekcji
-              {' '}
-              {slugs[groupName]}
+            <CategoryLink
+              hasArrow
+              to="#"
+            >
+              <span>
+                Zobacz więcej artkułów z sekcji
+                {' '}
+                <span>
+                  {slugs[groupName]}
+                </span>
+              </span>
             </CategoryLink>
-          </section>
+          </Section>
         ))}
       </Container>
     </Content>

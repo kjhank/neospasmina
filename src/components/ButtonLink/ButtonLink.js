@@ -5,11 +5,12 @@ import { Arrow } from '@icons';
 import { StyledLink as Link } from './ButtonLink.styled';
 
 export const ButtonLink = ({
-  children, hasArrow, isCentered, to,
+  children, hasArrow, isCentered, to, ...props
 }) => (
   <Link
     $isCentered={isCentered}
     to={to}
+    {...props}
   >
     {children}
     {hasArrow && <Arrow />}
