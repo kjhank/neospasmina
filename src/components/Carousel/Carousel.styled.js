@@ -54,6 +54,7 @@ export const CarouselButton = styled.button`
 
 export const Heading = styled.h2`
   width: 33%;
+  margin-bottom: 3.125vw;
   padding-top: 8.333333vw;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};

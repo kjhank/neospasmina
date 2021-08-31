@@ -12,11 +12,9 @@ import {
 } from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 
-const ArticlePage = ({
-  contentRef, pageContext,
-}) => (
+const ArticlePage = ({ pageContext }) => (
   <main>
-    <Header ref={contentRef}>
+    <Header>
       <Cover image={pageContext.cover} />
       <Container>
         <Title
@@ -28,7 +26,7 @@ const ArticlePage = ({
     </Header>
     <Content>
       <Container>
-        {renderArticle(pageContext.sections)}
+        {pageContext.sections && renderArticle(pageContext.sections)}
       </Container>
     </Content>
   </main>
@@ -37,7 +35,6 @@ const ArticlePage = ({
 export default ArticlePage;
 
 ArticlePage.propTypes = {
-  contentRef: PropTypes.shape({}),
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),
@@ -45,8 +42,4 @@ ArticlePage.propTypes = {
     lead: PropTypes.string,
     sections: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
-};
-
-ArticlePage.defaultProps = {
-  contentRef: null,
 };

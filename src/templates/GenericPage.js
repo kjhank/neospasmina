@@ -7,11 +7,9 @@ import {
   Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
-const GenericPage = ({
-  contentRef, pageContext,
-}) => (
+const GenericPage = ({ pageContext }) => (
   <main>
-    <Header ref={contentRef}>
+    <Header>
       <Cover image={pageContext.cover} />
       <Container>
         <Title>{pageContext.renderedTitle}</Title>
@@ -27,7 +25,6 @@ const GenericPage = ({
 export default GenericPage;
 
 GenericPage.propTypes = {
-  contentRef: PropTypes.shape({}).isRequired,
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),

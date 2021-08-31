@@ -8,7 +8,7 @@ import {
   ButtonsWrapper, CarouselButton, Heading, HeroImage, SingleItem, Wrapper,
 } from './Carousel.styled';
 
-export const Carousel = ({ contentRef, items }) => {
+export const Carousel = ({ items }) => {
   const [
     currentItem,
     setCurrentItem,

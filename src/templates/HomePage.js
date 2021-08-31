@@ -10,23 +10,19 @@ import {
 import { ArticlesSection } from '@components/HomePage/ArticlesSection';
 import { HeroLinksSection } from '@components/HomePage/HeroLinksSection';
 
-const HomePage = ({
-  contentRef, pageContext,
-}) => (
+const HomePage = ({ pageContext }) => (
   <>
     <Helmet>
       {renderMetadata(pageContext.metadata)}
     </Helmet>
     <main>
-      <Container ref={contentRef}>
+      <Container>
         <Carousel
           items={pageContext.carousel}
         />
       </Container>
       <ProductsSection data={pageContext.products} />
-      <ArticlesSection
-        data={pageContext.articles}
-      />
+      <ArticlesSection data={pageContext.articles} />
       <HeroLinksSection data={pageContext.links} />
     </main>
   </>
@@ -35,7 +31,6 @@ const HomePage = ({
 export default HomePage;
 
 HomePage.propTypes = {
-  contentRef: PropTypes.shape({}).isRequired,
   pageContext: PropTypes.shape({
     articles: PropTypes.shape({}),
     carousel: PropTypes.arrayOf(PropTypes.shape({})),

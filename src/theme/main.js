@@ -14,6 +14,7 @@ const theme = {
   colors: {
     border: '#bfbfbf',
     brand: '#234669',
+    categoryLink: '#dce9a8',
     light: '#969696',
     link: '#236e37',
     manufacturer: {
@@ -58,7 +59,7 @@ const theme = {
     },
   },
   getGradient: (from, to) => css`
-    background-image: radial-gradient(${from || theme.colors.sectionGradient.from}, ${to || theme.colors.sectionGradient.to});
+    background-image: radial-gradient(circle, ${from || theme.colors.sectionGradient.from}, ${to || theme.colors.sectionGradient.to});
   `,
   getTransitions: properties => properties.map(property => `${property} ${theme.transitions.duration}`).join(', '),
   transitions: {

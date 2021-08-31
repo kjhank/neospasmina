@@ -39,7 +39,7 @@ export const Section = styled.section`
   text-align: justify;
 
   & + & {
-    margin-top: 21em;
+    margin-top: 2em;
   }
 
   h2 {
@@ -73,11 +73,7 @@ export const Section = styled.section`
   > div {
       width: calc(50% - 1.484375vw);
     }
-
-  /* > pict */
   `)}
 `;
 
 export const ArticleImage = styled(Image)``;
-
-export const Footnotes = styled.section``;

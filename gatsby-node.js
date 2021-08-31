@@ -16,6 +16,7 @@ const {
 } = require('./src/utils/static/endpoints.json');
 
 const articleTemplate = path.resolve('./src/templates/ArticlePage.js');
+const articlesTemplate = path.resolve('./src/templates/ArticlesPage.js');
 const availabilityTemplate = path.resolve('./src/templates/AvailabilityPage.js');
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
@@ -47,14 +48,16 @@ exports.createPages = async ({
 
   const slugs = {
     equilibrium: 'spokoj-i-rownowaga',
-    relax: 'strefa-relaksu',
-    sleep: 'zdrowy-sen',
+    relaxx: 'strefa-relaksu',
+    sleeep: 'zdrowy-sen',
   };
 
   const getCategorySlug = postType => slugs[postType];
 
   const getContext = data => {
-    const { acf, slug, type } = data;
+    const {
+      acf, slug, type,
+    } = data;
 
     const global = {
       content: data.content.rendered,
@@ -103,7 +106,14 @@ exports.createPages = async ({
         ...global,
         availability: acf.availability,
         pharmacies: acf.pharmacies,
-      }
+      };
+    }
+
+    if (slug === 'psycholog-radzi') {
+      return {
+        ...global,
+        articles: acf.articles,
+      };
     }
 
     if (Object.keys(slugs).includes(type)) {
@@ -112,7 +122,6 @@ exports.createPages = async ({
         sections: acf['article-body'],
       };
     }
-
 
     return global;
   };
@@ -129,7 +138,7 @@ exports.createPages = async ({
     }
 
     if (Object.keys(slugs).includes(type)) {
-      return `/${getCategorySlug(type)}/${slug}`
+      return `/${getCategorySlug(type)}/${slug}`;
     }
 
     return `/${slug}`;
@@ -152,6 +161,10 @@ exports.createPages = async ({
 
     if (slug === 'gdzie-kupic') {
       return availabilityTemplate;
+    }
+
+    if (slug === 'psycholog-radzi') {
+      return articlesTemplate;
     }
 
     return pageTemplate;
@@ -207,8 +220,6 @@ exports.createPages = async ({
     ...relaxData,
     ...sleepData,
   ];
-
-  console.log(pages.sleepData);
 
   pages.forEach(page => {
     const { acf } = page;

@@ -19,11 +19,9 @@ import {
 
 import { Cart } from '@icons';
 
-const AvailabilityPage = ({
-  contentRef, pageContext,
-}) => (
+const AvailabilityPage = ({ pageContext }) => (
   <main>
-    <Header ref={contentRef}>
+    <Header>
       <Cover image={pageContext.cover} />
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
@@ -86,7 +84,6 @@ const AvailabilityPage = ({
 export default AvailabilityPage;
 
 AvailabilityPage.propTypes = {
-  contentRef: PropTypes.shape({}).isRequired,
   pageContext: PropTypes.shape({
     availability: PropTypes.arrayOf(PropTypes.shape({})),
     cover: PropTypes.shape({}),
