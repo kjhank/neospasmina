@@ -112,7 +112,7 @@ export const MosaicLinkTitle = styled.h4`
 
         > svg {
           height: 1em;
-          margin-left: 5px;
+          margin-left: 0.5em;
           fill: currentColor;
           transition: ${({ theme }) => theme.getTransitions(['transform'])};
       }
@@ -129,7 +129,7 @@ export const MosaicLink = styled(Link)`
     filter: brightness(1.1);
 
     > h4 > span > span > svg {
-      transform: translateX(50%);
+      transform: translateX(25%);
     }
   }
 `;

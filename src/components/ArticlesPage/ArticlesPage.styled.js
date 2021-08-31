@@ -14,6 +14,10 @@ export const Item = styled.li`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  > div {
+    padding-right: 2.34375vw;
+  }
 `;
 
 export const Image = styled(GenericImage)`

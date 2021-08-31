@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from '@components';
-import { Arrow } from '@icons';
+import { LongArrow } from '@icons';
 import {
   LinksMosaic, MosaicImage, MosaicLink, MosaicLinkTitle, Section,
 } from './HomePage.styled';
@@ -14,7 +14,7 @@ const renderLinkTitle = title => {
     <span>
       {lastWord}
       {' '}
-      <Arrow />
+      <LongArrow />
     </span>
   );
 

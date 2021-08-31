@@ -22,9 +22,7 @@ const HomePage = ({ pageContext }) => (
         />
       </Container>
       <ProductsSection data={pageContext.products} />
-      <ArticlesSection
-        data={pageContext.articles}
-      />
+      <ArticlesSection data={pageContext.articles} />
       <HeroLinksSection data={pageContext.links} />
     </main>
   </>
