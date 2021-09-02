@@ -52,7 +52,7 @@ const ProductsPage = ({
   ]);
 
   useEffect(() => {
-    navigate(productFilter ? `./?type=${productFilter}` : './', { replace: true });
+    navigate(productFilter ? `/produkty?type=${productFilter}` : '/produkty', { replace: true });
 
     setProducts(productFilter ?
       featuredProducts.filter(product => product.acf.product.type === productFilter) :
