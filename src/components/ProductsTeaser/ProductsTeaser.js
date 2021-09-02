@@ -11,10 +11,11 @@ import {
 } from './ProductsTeaser.styled';
 
 export const ProductsTeaser = ({
-  products,
+  isPulledUp, noHeading, products,
 }) => (
-  <Wrapper>
+  <Wrapper noHeight={noHeading}>
     <Container>
+      {!noHeading && (
       <Typography
         as="h2"
         hasBottomMargin
@@ -22,30 +23,34 @@ export const ProductsTeaser = ({
         variant="uppercase"
         weight="semibold"
       >
-        Poznaj nasze produkty
+        Poznaj nasze produkty:
       </Typography>
-      <ProductsList>
+      )}
+      <ProductsList isPulledUp={isPulledUp}>
         {products?.map(product => (
           <SingleProduct key={product.slug}>
-            <Image image={product.acf.summary.image} />
+            <Image
+              image={product?.acf?.summary?.image}
+              isLazy={false}
+            />
             <Typography
               as="h3"
               size="larger"
               variant="uppercase"
               weight="semibold"
             >
-              {product.title.rendered}
+              {product?.title?.rendered}
             </Typography>
             <Typography
               align="center"
               as="p"
               size="large"
             >
-              {product.acf.summary.description}
+              {product?.acf?.summary?.description}
             </Typography>
             <Link
-              color={product.acf.summary.color}
-              to={`/produkty/${product.slug}`}
+              color={product?.acf?.summary?.color}
+              to={`/produkty/${product?.slug}`}
             >
               Sprawdź
               <Arrow />
@@ -58,6 +63,12 @@ export const ProductsTeaser = ({
 );
 
 ProductsTeaser.propTypes = {
+  isPulledUp: PropTypes.bool,
+  noHeading: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
+ProductsTeaser.defaultProps = {
+  isPulledUp: false,
+  noHeading: false,
+};

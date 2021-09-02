@@ -11,6 +11,7 @@ export const Title = styled.h1`
 `;
 
 export const Header = styled.header`
+  position: relative;
   height: 35.104167vw;
   margin-bottom: 3.90625vw;
   padding-top: 8.333333vw;
@@ -58,4 +59,5 @@ export const Cover = styled(Image)`
   left: 0;
   z-index: -1;
   width: 100%;
+  height: 100%;
 `;

@@ -6,7 +6,8 @@ import { Link as GatsbyLink } from 'gatsby';
 export const Wrapper = styled.section`
   position: relative;
   z-index: 2;
-  margin: 5vw 0 -15vw;
+  height: ${({ noHeight }) => (noHeight ? 0 : 'auto')};
+  margin: ${({ noHeight }) => (noHeight ? 'auto' : '5vw 0 -15vw')};
   padding-bottom: 1.5vw;
 
   > div {
@@ -16,9 +17,12 @@ export const Wrapper = styled.section`
 `;
 
 export const ProductsList = styled.ul`
-  display: inline-flex;
+  position: relative;
+  top: ${({ isPulledUp }) => isPulledUp && '-5vw'};
+  display: flex;
   justify-content: center;
-  gap: 0.416667vw;
+  gap: 2%;
+  width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.text};
   padding-bottom: 2.5vw;
 `;
@@ -29,9 +33,9 @@ export const SingleProduct = styled.li`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  width: 18.75vw;
+  width: 32%;
   border-radius: ${({ theme }) => theme.borderRadii.double};
-  padding: 1vw 2vw;
+  padding: 1vw 2vw 2vw;
   background-color: #fff;
   transition: ${({ theme }) => theme.getTransitions([
     'filter',
@@ -56,6 +60,7 @@ export const Link = styled(GatsbyLink)`
   background-color: ${({ color }) => color};
   color: #fff;
   font-weight: 500;
+  font-size: ${({ theme }) => theme.fonts.sizes.small};
   text-align: center;
   text-transform: uppercase;
   transition: ${({ theme }) => theme.getTransitions([
