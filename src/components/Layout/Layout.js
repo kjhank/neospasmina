@@ -87,7 +87,7 @@ const Layout = ({
       <GlobalFooter
         company={pageContext?.company}
         hasExtraPadding={!noProductsSlugs.includes(pageContext.slug)}
-        hasHugePadding={location.pathname === '/produkty/'}
+        hasHugePadding={location.pathname === '/produkty'}
         legal={pageContext?.legal?.legal}
         links={pageContext?.footerLinks}
         sil={pageContext?.legal?.sil}
