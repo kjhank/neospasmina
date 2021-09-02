@@ -17,9 +17,7 @@ const HomePage = ({ pageContext }) => (
     </Helmet>
     <main>
       <Container>
-        <Carousel
-          items={pageContext.carousel}
-        />
+        <Carousel items={pageContext.carousel} />
       </Container>
       <ProductsSection data={pageContext.products} />
       <ArticlesSection data={pageContext.articles} />

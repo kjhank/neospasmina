@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, {
+  useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 import { Helmet } from 'react-helmet';
@@ -47,9 +49,11 @@ const Layout = ({
     },
   ];
 
-  if (isBrowser) {
-    smoothscroll.polyfill();
-  }
+  useEffect(() => {
+    if (isBrowser) {
+      smoothscroll.polyfill();
+    }
+  }, []);
 
   return (
     <Theme>
@@ -69,16 +73,21 @@ const Layout = ({
         style={playerStyle}
         url={playerSources}
       />
-      {/* {cloneElement(children, { contentRef })} */}
+      {/* {cloneElement(children, {
+        productFilter,
+        setProductFilter,
+      })} */}
       {children}
       {!noProductsSlugs.includes(pageContext.slug) && (
         <ProductsTeaser
+          noHeading={location.pathname === '/produkty/'}
           products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext.slug)}
         />
       )}
       <GlobalFooter
         company={pageContext?.company}
         hasExtraPadding={!noProductsSlugs.includes(pageContext.slug)}
+        hasHugePadding={location.pathname === '/produkty/'}
         legal={pageContext?.legal?.legal}
         links={pageContext?.footerLinks}
         sil={pageContext?.legal?.sil}
@@ -89,7 +98,9 @@ const Layout = ({
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
   pageContext: PropTypes.shape({
     company: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),

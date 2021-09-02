@@ -21,6 +21,7 @@ const availabilityTemplate = path.resolve('./src/templates/AvailabilityPage.js')
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
 const productTemplate = path.resolve('./src/templates/ProductPage.js');
+const productsTemplate = path.resolve('./src/templates/ProductsPage.js');
 
 exports.createPages = async ({
   actions: { createPage },
@@ -116,6 +117,13 @@ exports.createPages = async ({
       };
     }
 
+    if (slug === 'produkty') {
+      return {
+        ...global,
+        products: acf.products,
+      };
+    }
+
     if (Object.keys(slugs).includes(type)) {
       return {
         ...global,
@@ -165,6 +173,10 @@ exports.createPages = async ({
 
     if (slug === 'psycholog-radzi') {
       return articlesTemplate;
+    }
+
+    if (slug === 'produkty') {
+      return productsTemplate;
     }
 
     return pageTemplate;
@@ -264,14 +276,12 @@ exports.createPages = async ({
       legal,
       metadata,
       renderedTitle,
+      ...getContext(page),
     };
 
     const pageData = {
       component: getTemplate(page),
-      context: {
-        ...context,
-        ...getContext(page),
-      },
+      context,
       path: getPath(page),
     };
 

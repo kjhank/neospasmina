@@ -37,7 +37,19 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Wrapper = styled.div`
-  padding: ${({ hasExtraPadding }) => (hasExtraPadding ? '15vw 0 1.875vw' : '1.875vw 0')};
+  padding: ${({
+    hasExtraPadding, hasHugePadding,
+  }) => {
+    if (hasExtraPadding || hasHugePadding) {
+      if (hasHugePadding) {
+        return '30vw 0 1.875vw';
+      }
+
+      return '15vw 0 1.875vw';
+    }
+
+    return '1.875vw 0';
+  }};
   ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};

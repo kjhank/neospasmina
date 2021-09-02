@@ -1,12 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
-export const StyledLink = styled(Link)`
+const styles = css`
   position: ${({ $isCentered }) => ($isCentered ? 'relative' : 'static')};
   display: inline-flex;
   justify-content: ${({ $isCentered }) => ($isCentered ? 'center' : 'space-between')};
   align-items: center;
-  /* margin-top: 2.604167vw; */
   border: 2px solid ${({ theme }) => theme.colors.text};
   border-radius: 50px;
   padding: 13px 24px;
@@ -33,4 +32,13 @@ export const StyledLink = styled(Link)`
       transform: ${({ $isCentered }) => ($isCentered ? 'translate(33%, -50%)' : 'translateX(33%)')};
     }
   }
+`;
+
+export const StyledLink = styled(Link)`
+  ${styles}
+`;
+
+export const StyledButton = styled.button`
+  ${styles}
+  cursor: pointer;
 `;
