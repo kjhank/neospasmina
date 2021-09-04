@@ -6,6 +6,7 @@
   "author": "Krzysztof Hankiewicz @kjhank <kjhank@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.13.1",
+    "dompurify": "^2.3.1",
     "dotenv": "^10.0.0",
     "gatsby": "^3.8.1",
     "gatsby-plugin-alias-imports": "^1.0.5",

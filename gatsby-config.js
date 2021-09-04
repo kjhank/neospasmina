@@ -44,8 +44,8 @@ module.exports = {
         background_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-        name: 'Untitled Gatsby project',
-        short_name: 'foo',
+        name: 'Neospasmina',
+        short_name: 'neospasmina',
         start_url: '/',
         theme_color: '#663399', // TODO: set these up
       },

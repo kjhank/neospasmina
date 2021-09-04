@@ -18,6 +18,7 @@ const {
 const articleTemplate = path.resolve('./src/templates/ArticlePage.js');
 const articlesTemplate = path.resolve('./src/templates/ArticlesPage.js');
 const availabilityTemplate = path.resolve('./src/templates/AvailabilityPage.js');
+const contactTemplate = path.resolve('./src/templates/ContactPage.js');
 const homeTemplate = path.resolve('./src/templates/HomePage.js');
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
 const productTemplate = path.resolve('./src/templates/ProductPage.js');
@@ -124,6 +125,18 @@ exports.createPages = async ({
       };
     }
 
+    if (slug === 'kontakt') {
+      return {
+        ...global,
+        contact: {
+          form: acf.form,
+          header: acf.header,
+          submit: acf.submit,
+        },
+        cover: acf.header.cover,
+      };
+    }
+
     if (Object.keys(slugs).includes(type)) {
       return {
         ...global,
@@ -177,6 +190,10 @@ exports.createPages = async ({
 
     if (slug === 'produkty') {
       return productsTemplate;
+    }
+
+    if (slug === 'kontakt') {
+      return contactTemplate;
     }
 
     return pageTemplate;

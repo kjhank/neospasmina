@@ -47,6 +47,7 @@ export const Typography = ({
   size,
   variant,
   weight,
+  ...props
 }) => (
   <Text
     align={align}
@@ -59,6 +60,7 @@ export const Typography = ({
     size={size}
     variant={variant}
     weight={weight}
+    {...props}
   >
     {children}
   </Text>

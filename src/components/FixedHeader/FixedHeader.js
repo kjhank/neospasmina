@@ -1,5 +1,5 @@
 import React, {
-  createRef, useEffect, useRef,
+  createRef, useEffect, // useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -21,18 +21,18 @@ export const FixedHeader = ({
   setPageScrolled,
 }) => {
   const headerRef = createRef();
-  const locationRef = useRef({ location: null });
+  // const locationRef = useRef({ location: null });
 
-  useEffect(() => {
-    if (!locationRef.current.location) {
-      locationRef.current.location = location;
-    } else if (locationRef.current.location !== location) {
-      locationRef.current.location = location;
-      const { scrollY } = window;
+  // useEffect(() => {
+  //   if (!locationRef.current.location) {
+  //     locationRef.current.location = location;
+  //   } else if (locationRef.current.location !== location) {
+  //     locationRef.current.location = location;
+  //     const { scrollY } = window;
 
-      setPageScrolled(scrollY === 0);
-    }
-  }, [location]);
+  //     setPageScrolled(scrollY === 0);
+  //   }
+  // }, [location]);
 
   useEffect(() => {
     const { height: headerHeight } = headerRef?.current?.getBoundingClientRect();

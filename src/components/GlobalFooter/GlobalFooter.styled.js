@@ -37,6 +37,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Wrapper = styled.div`
+  position: relative;
   padding: ${({
     hasExtraPadding, hasHugePadding,
   }) => {
@@ -50,9 +51,13 @@ export const Wrapper = styled.div`
 
     return '1.875vw 0';
   }};
+
+  &::after {
   ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};
+
+  }
 `;
 
 export const CompanyData = styled.section`

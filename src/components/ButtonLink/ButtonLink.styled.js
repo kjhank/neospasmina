@@ -40,5 +40,15 @@ export const StyledLink = styled(Link)`
 
 export const StyledButton = styled.button`
   ${styles}
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+
+  &:hover {
+    ${({
+    disabled, $isCentered,
+  }) => disabled && css`
+      > svg {
+        transform: ${$isCentered ? 'translate(0, -50%)' : 'none'};
+      }
+    `};
+  }
 `;
