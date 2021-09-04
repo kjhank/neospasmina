@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Image } from '@components';
 
 export const Title = styled.h1`
-  padding-right: 55%;
+  /* padding-right: 55%; */
+  width: 100%;
   color: ${({ color }) => color};
   font-weight: 600;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
@@ -60,4 +61,5 @@ export const Cover = styled(Image)`
   z-index: -1;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 `;

@@ -15,6 +15,7 @@ const theme = {
     border: '#bfbfbf',
     brand: '#234669',
     categoryLink: '#dce9a8',
+    danger: '#dc073c',
     light: '#969696',
     link: '#236e37',
     manufacturer: {
@@ -59,7 +60,15 @@ const theme = {
     },
   },
   getGradient: (from, to) => css`
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: 100vw;
+    height: 100%;
     background-image: radial-gradient(circle, ${from || theme.colors.sectionGradient.from}, ${to || theme.colors.sectionGradient.to});
+    transform: translateX(-50%);
   `,
   getTransitions: properties => properties.map(property => `${property} ${theme.transitions.duration}`).join(', '),
   transitions: {
