@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
-import { sanitize } from 'dompurify';
 
 import {
   Container, ProductsTeaser,
@@ -82,7 +81,7 @@ const ProductsPage = ({
       <Header>
         <Cover image={pageContext.cover} />
         <Container>
-          <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }} />
+          <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
           <Lead>{pageContext.lead}</Lead>
           <FiltersWrapper>
             {filterButtons.map(button => (

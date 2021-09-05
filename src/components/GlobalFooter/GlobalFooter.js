@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sanitize } from 'dompurify';
 
 import {
   Container, ExternalLink,
@@ -43,7 +42,7 @@ export const GlobalFooter = ({
                     key={link.title}
                   >
                     <Link
-                      dangerouslySetInnerHTML={{ __html: sanitize(link.title) }}
+                      dangerouslySetInnerHTML={{ __html: link.title }}
                       to={link.slug}
                     />
                   </SingleItem>
@@ -76,8 +75,8 @@ export const GlobalFooter = ({
     </Wrapper>
     <Wrapper>
       <Container>
-        <Disclaimer dangerouslySetInnerHTML={{ __html: sanitize(sil) }} />
-        <Legal dangerouslySetInnerHTML={{ __html: sanitize(legal) }} />
+        <Disclaimer dangerouslySetInnerHTML={{ __html: sil }} />
+        <Legal dangerouslySetInnerHTML={{ __html: legal }} />
       </Container>
     </Wrapper>
   </Footer>

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { lighten } from 'polished';
-import { sanitize } from 'dompurify';
 
 import {
   Container, Typography,
@@ -43,7 +42,7 @@ const ProductPage = ({ pageContext }) => (
         <HeaderTextWrapper>
           <Title
             color={pageContext.color}
-            dangerouslySetInnerHTML={{ __html: sanitize(pageContext.acf.heading) }}
+            dangerouslySetInnerHTML={{ __html: pageContext.acf.heading }}
           />
           <Lead color={pageContext.color}>{pageContext.lead}</Lead>
         </HeaderTextWrapper>
@@ -78,7 +77,7 @@ const ProductPage = ({ pageContext }) => (
           as="p"
           align="center"
           color="medGray"
-          dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.intro) }}
+          dangerouslySetInnerHTML={{ __html: pageContext.product.intro }}
           hasBottomMargin
           size="xlarge"
           weight="semibold"
@@ -89,7 +88,7 @@ const ProductPage = ({ pageContext }) => (
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.indications.text) }}
+            dangerouslySetInnerHTML={{ __html: pageContext.product.indications.text }}
             size="larger"
           />
         </Section>
@@ -99,7 +98,7 @@ const ProductPage = ({ pageContext }) => (
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.ingredients.text) }}
+            dangerouslySetInnerHTML={{ __html: pageContext.product.ingredients.text }}
             size="larger"
           />
           <LinksMosaic gradient={pageContext.slug === 'neospasmina-noc' ? 'purple' : 'default'}>
@@ -134,7 +133,7 @@ const ProductPage = ({ pageContext }) => (
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.form.text) }}
+            dangerouslySetInnerHTML={{ __html: pageContext.product.form.text }}
             size="larger"
           />
         </Section>
@@ -151,7 +150,7 @@ const ProductPage = ({ pageContext }) => (
             </Subheading>
             <Typography
               align="center"
-              dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.doses.adults) }}
+              dangerouslySetInnerHTML={{ __html: pageContext.product.doses.adults }}
               hasHighlights
               highlightColor={pageContext.product.doses.['highlight-color']}
               size="larger"
@@ -167,7 +166,7 @@ const ProductPage = ({ pageContext }) => (
             </Subheading>
             <Typography
               align="center"
-              dangerouslySetInnerHTML={{ __html: sanitize(pageContext.product.doses.kids) }}
+              dangerouslySetInnerHTML={{ __html: pageContext.product.doses.kids }}
               hasHighlights
               highlightColor={lighten(0.4, pageContext.color)}
               size="larger"
@@ -182,7 +181,7 @@ const ProductPage = ({ pageContext }) => (
           <Typography
             align="center"
             dangerouslySetInnerHTML={{
-              __html: sanitize(pageContext.product.contraindications.text),
+              __html: pageContext.product.contraindications.text,
             }}
             size="larger"
           />

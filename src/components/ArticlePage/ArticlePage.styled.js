@@ -50,12 +50,14 @@ export const Section = styled.section`
   }) => (variant === 'footnotes' ? 'inherit' : theme.fonts.sizes.xxlarge)};
   }
 
+  p + h2,
   p + p {
     margin-top: 1em;
   }
 
   ol,
   ul {
+    margin: 1em 0;
     list-style-position: inside;
   }
 

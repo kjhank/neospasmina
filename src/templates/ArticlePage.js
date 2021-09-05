@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sanitize } from 'dompurify';
 
 import { Container } from '@components';
 
@@ -20,7 +19,7 @@ const ArticlePage = ({ pageContext }) => (
       <Container>
         <Title
           isLowercase
-          dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }}
+          dangerouslySetInnerHTML={{ __html: pageContext.heading }}
         />
         <Lead>{pageContext.lead}</Lead>
       </Container>

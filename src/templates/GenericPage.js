@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { sanitize } from 'dompurify';
 
 import { Container } from '@components';
 
@@ -18,7 +17,7 @@ const GenericPage = ({ pageContext }) => (
       </Container>
     </Header>
     <Content>
-      <Container dangerouslySetInnerHTML={{ __html: sanitize(pageContext.content) }} />
+      <Container dangerouslySetInnerHTML={{ __html: pageContext.content }} />
     </Content>
   </main>
 );

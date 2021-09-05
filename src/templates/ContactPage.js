@@ -2,7 +2,6 @@ import React, {
   createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { sanitize } from 'dompurify';
 
 import {
   Content, Cover, Title,
@@ -84,17 +83,17 @@ const ContactPage = ({
         <Container>
           <Title
             dangerouslySetInnerHTML={{
-              __html: sanitize(contact.header.title),
+              __html: contact.header.title,
             }}
           />
           <ContactData
             dangerouslySetInnerHTML={{
-              __html: sanitize(contact.header.data),
+              __html: contact.header.data,
             }}
           />
           <Legal
             dangerouslySetInnerHTML={{
-              __html: sanitize(contact.header.legal),
+              __html: contact.header.legal,
             }}
           />
         </Container>
