@@ -41,6 +41,8 @@ export const renderMetadata = data => data?.map(({
 
 export const renderArticle = sections => sections.map(({ section }) => {
   const {
+    gradient_properties: gradientProperties,
+    has_gradient: hasGradient,
     // image,
     text,
     'text-image': textImage,
@@ -50,10 +52,12 @@ export const renderArticle = sections => sections.map(({ section }) => {
 
   const [variant] = type.split(':');
   const key = JSON.stringify(section).slice(0, 92);
+  const gradient = hasGradient ? gradientProperties : false;
 
   if (type.includes('textLeft') || type.includes('textRight')) {
     return (
       <Section
+        gradient={gradient}
         key={key}
         variant={variant}
       >
@@ -68,6 +72,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
   if (variant === 'fullText') {
     return (
       <Section
+        gradient={gradient}
         dangerouslySetInnerHTML={{ __html: text }}
         key={key}
         variant={variant}
@@ -75,14 +80,19 @@ export const renderArticle = sections => sections.map(({ section }) => {
     );
   }
 
-  if (variant === 'twoCols') {
+  if (variant === 'twoColText') {
     return (
       <Section
+        gradient={gradient}
         key={key}
         variant={variant}
       >
-        {JSON.stringify(twoCols)}
-        foo
+        <Typography
+          dangerouslySetInnerHTML={{ __html: twoCols.left }}
+        />
+        <Typography
+          dangerouslySetInnerHTML={{ __html: twoCols.right }}
+        />
       </Section>
     );
   }

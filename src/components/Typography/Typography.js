@@ -33,6 +33,10 @@ const Text = styled.div`
       font-weight: bold;
     }
   `};
+
+  > h2 {
+    text-align: left;
+  }
 `;
 
 export const Typography = ({

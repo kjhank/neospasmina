@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { Image } from '@components';
 
 export const Title = styled.h1`
-  /* padding-right: 55%; */
   width: 100%;
-  color: ${({ color }) => color};
-  font-weight: 600;
+  color: ${({
+    color, isLight,
+  }) => (isLight ? '#fff' : color)};
+  font-weight: 500;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
   text-transform: ${({ isLowercase }) => (isLowercase ? 'none' : 'uppercase')};
 `;

@@ -18,6 +18,7 @@ const ArticlePage = ({ pageContext }) => (
       <Cover image={pageContext.cover} />
       <Container>
         <Title
+          isLight={pageContext.isLight}
           isLowercase
           dangerouslySetInnerHTML={{ __html: pageContext.heading }}
         />
@@ -39,6 +40,7 @@ ArticlePage.propTypes = {
     content: PropTypes.string,
     cover: PropTypes.shape({}),
     heading: PropTypes.string,
+    isLight: PropTypes.bool,
     lead: PropTypes.string,
     sections: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,

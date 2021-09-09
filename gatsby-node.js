@@ -65,6 +65,7 @@ exports.createPages = async ({
       content: data.content.rendered,
       cover: acf?.cover,
       heading: acf?.heading,
+      isLight: acf?.is_light,
       lead: acf?.lead,
       title: acf?.title,
     };
