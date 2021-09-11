@@ -13,10 +13,16 @@ import {
   CategoryLink, Image, Item, Link, List, Section,
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
-const slugs = {
+const categories = {
   equilibrium: 'Spokój i równowaga',
   relax: 'Strefa relaksu',
   sleep: 'Zdrowy sen',
+};
+
+const slugs = {
+  equilibrium: 'spokoj-i-rownowaga',
+  relax: 'strefa-relaksu',
+  sleep: 'zdrowy-sen',
 };
 
 const ArticlesPage = ({ pageContext }) => (
@@ -61,13 +67,13 @@ const ArticlesPage = ({ pageContext }) => (
             </List>
             <CategoryLink
               hasArrow
-              to="#"
+              to={slugs[groupName]}
             >
               <span>
                 Zobacz więcej artkułów z sekcji
                 {' '}
                 <span>
-                  {slugs[groupName]}
+                  {categories[groupName]}
                 </span>
               </span>
             </CategoryLink>

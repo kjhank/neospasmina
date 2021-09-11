@@ -152,7 +152,7 @@ const ProductPage = ({ pageContext }) => (
               align="center"
               dangerouslySetInnerHTML={{ __html: pageContext.product.doses.adults }}
               hasHighlights
-              highlightColor={pageContext.product.doses.['highlight-color']}
+              highlightColor={pageContext.product.doses['highlight-color']}
               size="larger"
             />
           </>

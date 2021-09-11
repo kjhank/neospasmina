@@ -23,29 +23,30 @@ const homeTemplate = path.resolve('./src/templates/HomePage.js');
 const pageTemplate = path.resolve('./src/templates/GenericPage.js');
 const productTemplate = path.resolve('./src/templates/ProductPage.js');
 const productsTemplate = path.resolve('./src/templates/ProductsPage.js');
+const articleCategoriesTemplate = path.resolve('./src/templates/ArticlesCategoryPage.js');
 
 exports.createPages = async ({
   actions: { createPage },
 }) => {
-  const pagesResponse = await fetch(`${process.env.REST_URL}/${PAGES}`);
+  const pagesResponse = await fetch(`${process.env.REST_URL}/${PAGES}?per_page=50`);
   let pages = await pagesResponse.json();
 
-  const legalResponse = await fetch(`${process.env.REST_URL}/${ACF_LEGAL}`);
+  const legalResponse = await fetch(`${process.env.REST_URL}/${ACF_LEGAL}?per_page=50`);
   const legalData = await legalResponse.json();
 
-  const companyResponse = await fetch(`${process.env.REST_URL}/${ACF_COMPANY}`);
+  const companyResponse = await fetch(`${process.env.REST_URL}/${ACF_COMPANY}?per_page=50`);
   const companyData = await companyResponse.json();
 
-  const productsResponse = await fetch(`${process.env.REST_URL}/${PRODUCTS}`);
+  const productsResponse = await fetch(`${process.env.REST_URL}/${PRODUCTS}?per_page=50`);
   const productsData = await productsResponse.json();
 
-  const equilibriumResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}`);
+  const equilibriumResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_EQUILIBRIUM}?per_page=50`);
   const equilibriumData = await equilibriumResponse.json();
 
-  const relaxResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_RELAX}`);
+  const relaxResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_RELAX}?per_page=50`);
   const relaxData = await relaxResponse.json();
 
-  const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}`);
+  const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}?per_page=50`);
   const sleepData = await sleepResponse.json();
 
   const slugs = {
@@ -67,6 +68,7 @@ exports.createPages = async ({
       heading: acf?.heading,
       isLight: acf?.is_light,
       lead: acf?.lead,
+      subtitle: acf?.subtitle,
       title: acf?.title,
     };
 
@@ -138,6 +140,27 @@ exports.createPages = async ({
       };
     }
 
+    if (slug === 'spokoj-i-rownowaga') {
+      return {
+        ...global,
+        articles: acf.articles,
+      };
+    }
+
+    if (slug === 'zdrowy-sen') {
+      return {
+        ...global,
+        articles: acf.articles,
+      };
+    }
+
+    if (slug === 'strefa-relaksu') {
+      return {
+        ...global,
+        articles: acf.articles,
+      };
+    }
+
     if (Object.keys(slugs).includes(type)) {
       return {
         ...global,
@@ -157,6 +180,10 @@ exports.createPages = async ({
 
     if (type === 'products') {
       return `/produkty/${slug}`;
+    }
+
+    if (slug === 'spokoj-i-rownowaga' || slug === 'strefa-relaksu' || slug === 'zdrowy-sen') {
+      return `/psycholog-radzi/${slug}`;
     }
 
     if (Object.keys(slugs).includes(type)) {
@@ -191,6 +218,10 @@ exports.createPages = async ({
 
     if (slug === 'produkty') {
       return productsTemplate;
+    }
+
+    if (slug === 'spokoj-i-rownowaga' || slug === 'strefa-relaksu' || slug === 'zdrowy-sen') {
+      return articleCategoriesTemplate;
     }
 
     if (slug === 'kontakt') {

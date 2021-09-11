@@ -15,19 +15,19 @@ import { renderArticle } from '@utils';
 const ArticlePage = ({ pageContext }) => (
   <main>
     <Header>
-      <Cover image={pageContext.cover} />
+      <Cover image={pageContext?.cover} />
       <Container>
         <Title
-          isLight={pageContext.isLight}
+          isLight={pageContext?.isLight}
           isLowercase
-          dangerouslySetInnerHTML={{ __html: pageContext.heading }}
+          dangerouslySetInnerHTML={{ __html: pageContext?.heading }}
         />
-        <Lead>{pageContext.lead}</Lead>
+        <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
       <Container>
-        {pageContext.sections && renderArticle(pageContext.sections)}
+        {pageContext?.sections && renderArticle(pageContext?.sections)}
       </Container>
     </Content>
   </main>
