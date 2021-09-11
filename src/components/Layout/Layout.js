@@ -58,7 +58,7 @@ const Layout = ({
   return (
     <Theme>
       <Helmet htmlAttributes={htmlAttributes}>
-        {renderMetadata(pageContext.metadata)}
+        {renderMetadata(pageContext?.metadata)}
       </Helmet>
       <GlobalStyle />
       <FixedHeader

@@ -40,7 +40,7 @@ const AvailabilityPage = ({ pageContext }) => (
           </Typography>
           <List>
             {pageContext.pharmacies.map(({ pharmacy }) => (
-              <ListItem>
+              <ListItem key={pharmacy.name}>
                 <Typography
                   as="p"
                   size="larger"
@@ -66,7 +66,7 @@ const AvailabilityPage = ({ pageContext }) => (
           </Typography>
           <List>
             {pageContext.availability.map(store => (
-              <ListItem>
+              <ListItem key={store.url}>
                 <Image image={store.image} />
                 <Link url={store.url}>
                   <Cart />

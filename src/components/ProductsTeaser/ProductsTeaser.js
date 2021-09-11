@@ -28,7 +28,7 @@ export const ProductsTeaser = ({
       )}
       <ProductsList isPulledUp={isPulledUp}>
         {products?.map(product => (
-          <SingleProduct key={product.slug}>
+          <SingleProduct key={product?.slug}>
             <Image
               image={product?.acf?.summary?.image}
               isLazy={false}

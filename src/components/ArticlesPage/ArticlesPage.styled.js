@@ -53,14 +53,9 @@ export const Section = styled.section`
 
   &:first-of-type {
     &:after {
-      content: '';
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      z-index: -1;
-      width: 100vw;
-      height: 80%;
       ${({ theme }) => theme.getGradient()};
+      top: 20%;
+      height: 80%;
       background-position: center;
       background-size: 200%;
       transform: translateX(-50%);
