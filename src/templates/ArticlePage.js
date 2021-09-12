@@ -37,7 +37,7 @@ const ArticlePage = ({
               to: '/psycholog-radzi',
             },
             {
-              text: slugs[pageContext.type],
+              text: slugs[pageContext?.type],
               to: `/psycholog-radzi/${path.split('/')[2]}`,
             },
             {
