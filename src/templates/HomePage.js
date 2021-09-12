@@ -13,15 +13,15 @@ import { HeroLinksSection } from '@components/HomePage/HeroLinksSection';
 const HomePage = ({ pageContext }) => (
   <>
     <Helmet>
-      {renderMetadata(pageContext.metadata)}
+      {renderMetadata(pageContext?.metadata)}
     </Helmet>
     <main>
       <Container>
-        <Carousel items={pageContext.carousel} />
+        <Carousel items={pageContext?.carousel} />
       </Container>
-      <ProductsSection data={pageContext.products} />
-      <ArticlesSection data={pageContext.articles} />
-      <HeroLinksSection data={pageContext.links} />
+      <ProductsSection data={pageContext?.products} />
+      <ArticlesSection data={pageContext?.articles} />
+      <HeroLinksSection data={pageContext?.links} />
     </main>
   </>
 );

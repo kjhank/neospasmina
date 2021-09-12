@@ -61,15 +61,9 @@ export const Section = styled.section`
     list-style-position: inside;
 
     > li {
-
-      + li {
-        margin-top: 1em;
-      }
-
       > ul,
       > ol {
         margin-left: 1em;
-        /* list-style:  */
       }
     }
 
@@ -114,6 +108,7 @@ export const ArticleImage = styled(Image)`
   > img {
     width: 100%;
     height: 100%;
+    margin: ${({ hasMargin }) => hasMargin && '2em 0'};
     object-fit: cover;
   }
 `;

@@ -41,31 +41,31 @@ const ProductPage = ({ pageContext }) => (
       <Container>
         <HeaderTextWrapper>
           <Title
-            color={pageContext.color}
-            dangerouslySetInnerHTML={{ __html: pageContext.acf.heading }}
+            color={pageContext?.color}
+            dangerouslySetInnerHTML={{ __html: pageContext?.acf.heading }}
           />
-          <Lead color={pageContext.color}>{pageContext.lead}</Lead>
+          <Lead color={pageContext?.color}>{pageContext?.lead}</Lead>
         </HeaderTextWrapper>
         <CTA>
           <CTAImage
-            image={pageContext.cta?.image}
+            image={pageContext?.cta?.image}
             isLazy={false}
           />
           <CTAButtonsWrapper>
             <CTAButtonLink
-              color={pageContext.cta.color}
-              url={pageContext.cta['buy-now'].url}
-              variant={pageContext.cta['buy-now'].variant}
+              color={pageContext?.cta.color}
+              url={pageContext?.cta['buy-now'].url}
+              variant={pageContext?.cta['buy-now'].variant}
             >
-              {pageContext.cta['buy-now'].label}
+              {pageContext?.cta['buy-now'].label}
             </CTAButtonLink>
             <CTAButtonLink
-              color={pageContext.cta.color}
+              color={pageContext?.cta.color}
               download
-              url={pageContext.cta.file.file}
-              variant={pageContext.cta.file.variant}
+              url={pageContext?.cta.file.file}
+              variant={pageContext?.cta.file.variant}
             >
-              {pageContext.cta.file.label}
+              {pageContext?.cta.file.label}
             </CTAButtonLink>
           </CTAButtonsWrapper>
         </CTA>
@@ -77,32 +77,32 @@ const ProductPage = ({ pageContext }) => (
           as="p"
           align="center"
           color="medGray"
-          dangerouslySetInnerHTML={{ __html: pageContext.product.intro }}
+          dangerouslySetInnerHTML={{ __html: pageContext?.product.intro }}
           hasBottomMargin
           size="xlarge"
           weight="semibold"
         />
         <Section>
           <LinedHeading as="h2">
-            {pageContext.product.indications.heading}
+            {pageContext?.product.indications.heading}
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: pageContext.product.indications.text }}
+            dangerouslySetInnerHTML={{ __html: pageContext?.product.indications.text }}
             size="larger"
           />
         </Section>
         <Section>
           <LinedHeading as="h2">
-            {pageContext.product.ingredients.heading}
+            {pageContext?.product.ingredients.heading}
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: pageContext.product.ingredients.text }}
+            dangerouslySetInnerHTML={{ __html: pageContext?.product.ingredients.text }}
             size="larger"
           />
-          <LinksMosaic gradient={pageContext.slug === 'neospasmina-noc' ? 'purple' : 'default'}>
-            {pageContext.product.links.map(link => (
+          <LinksMosaic gradient={pageContext?.slug === 'neospasmina-noc' ? 'purple' : 'default'}>
+            {pageContext?.product.links.map(link => (
               <SingleTile key={link.name}>
                 <TileImage image={link?.image} />
                 <Typography
@@ -118,7 +118,7 @@ const ProductPage = ({ pageContext }) => (
                 </Typography>
                 <TileLink
                   to={link.url}
-                  color={pageContext.color}
+                  color={pageContext?.color}
                 >
                   Dowiedz się więcej
                   <Arrow />
@@ -129,11 +129,11 @@ const ProductPage = ({ pageContext }) => (
         </Section>
         <Section>
           <LinedHeading as="h2">
-            {pageContext.product.form.heading}
+            {pageContext?.product.form.heading}
           </LinedHeading>
           <Typography
             align="center"
-            dangerouslySetInnerHTML={{ __html: pageContext.product.form.text }}
+            dangerouslySetInnerHTML={{ __html: pageContext?.product.form.text }}
             size="larger"
           />
         </Section>
@@ -141,34 +141,34 @@ const ProductPage = ({ pageContext }) => (
           <LinedHeading as="h2">
             Dawkowanie
           </LinedHeading>
-          {pageContext.product.doses.adults && (
+          {pageContext?.product.doses.adults && (
           <>
-            <Subheading color={pageContext.color}>
+            <Subheading color={pageContext?.color}>
               <div>
                 Dorośli
               </div>
             </Subheading>
             <Typography
               align="center"
-              dangerouslySetInnerHTML={{ __html: pageContext.product.doses.adults }}
+              dangerouslySetInnerHTML={{ __html: pageContext?.product.doses.adults }}
               hasHighlights
-              highlightColor={pageContext.product.doses['highlight-color']}
+              highlightColor={pageContext?.product.doses['highlight-color']}
               size="larger"
             />
           </>
           )}
-          {pageContext.product.doses.kids && (
+          {pageContext?.product.doses.kids && (
           <>
-            <Subheading color={pageContext.color}>
+            <Subheading color={pageContext?.color}>
               <div>
                 Dzieci i młodzież
               </div>
             </Subheading>
             <Typography
               align="center"
-              dangerouslySetInnerHTML={{ __html: pageContext.product.doses.kids }}
+              dangerouslySetInnerHTML={{ __html: pageContext?.product.doses.kids }}
               hasHighlights
-              highlightColor={lighten(0.4, pageContext.color)}
+              highlightColor={lighten(0.4, pageContext?.color)}
               size="larger"
             />
           </>
@@ -176,12 +176,12 @@ const ProductPage = ({ pageContext }) => (
         </Section>
         <Section>
           <LinedHeading as="h2">
-            {pageContext.product.contraindications.heading}
+            {pageContext?.product.contraindications.heading}
           </LinedHeading>
           <Typography
             align="center"
             dangerouslySetInnerHTML={{
-              __html: pageContext.product.contraindications.text,
+              __html: pageContext?.product.contraindications.text,
             }}
             size="larger"
           />

@@ -10,14 +10,14 @@ import {
 const GenericPage = ({ pageContext }) => (
   <main>
     <Header>
-      <Cover image={pageContext.cover} />
+      <Cover image={pageContext?.cover} />
       <Container>
-        <Title>{pageContext.renderedTitle}</Title>
-        <Lead>{pageContext.lead}</Lead>
+        <Title>{pageContext?.renderedTitle}</Title>
+        <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
-      <Container dangerouslySetInnerHTML={{ __html: pageContext.content }} />
+      <Container dangerouslySetInnerHTML={{ __html: pageContext?.content }} />
     </Content>
   </main>
 );

@@ -43,7 +43,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
   const {
     gradient_properties: gradientProperties,
     has_gradient: hasGradient,
-    // image,
+    image,
     text,
     'text-image': textImage,
     'two-cols': twoCols,
@@ -104,6 +104,15 @@ export const renderArticle = sections => sections.map(({ section }) => {
         dangerouslySetInnerHTML={{ __html: text }}
         key={key}
         variant={variant}
+      />
+    );
+  }
+
+  if (variant === 'fullImage') {
+    return (
+      <ArticleImage
+        hasMargin
+        image={image}
       />
     );
   }

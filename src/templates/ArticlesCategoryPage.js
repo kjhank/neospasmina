@@ -21,10 +21,10 @@ import {
 const ArticlesCategoryPage = ({ pageContext }) => (
   <main>
     <Header>
-      <Cover image={pageContext.cover} />
+      <Cover image={pageContext?.cover} />
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
-        <Lead>{pageContext.lead}</Lead>
+        <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
@@ -32,7 +32,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
         <Section>
           <LinedHeading>{pageContext?.subtitle}</LinedHeading>
           <List>
-            {pageContext.articles.map(({
+            {pageContext?.articles.map(({
               article, image,
             }) => (
               <Item key={JSON.stringify(article).slice(0, 92)}>

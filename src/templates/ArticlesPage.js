@@ -28,18 +28,18 @@ const slugs = {
 const ArticlesPage = ({ pageContext }) => (
   <main>
     <Header>
-      <Cover image={pageContext.cover} />
+      <Cover image={pageContext?.cover} />
       <Container>
-        <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
-        <Lead>{pageContext.lead}</Lead>
+        <Title dangerouslySetInnerHTML={{ __html: pageContext?.heading }} />
+        <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
       <Container>
-        {Object.keys(pageContext.articles).map(groupName => (
+        {Object.keys(pageContext?.articles).map(groupName => (
           <Section key={groupName}>
             <List>
-              {pageContext.articles[groupName].map(article => (
+              {pageContext?.articles[groupName].map(article => (
                 <Item key={JSON.stringify(article).slice(0, 92)}>
                   <Image image={article.image} />
                   <Typography

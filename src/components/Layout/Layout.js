@@ -78,15 +78,15 @@ const Layout = ({
         setProductFilter,
       })} */}
       {children}
-      {!noProductsSlugs.includes(pageContext.slug) && (
+      {!noProductsSlugs.includes(pageContext?.slug) && (
         <ProductsTeaser
           noHeading={location.pathname === '/produkty/'}
-          products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext.slug)}
+          products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext?.slug)}
         />
       )}
       <GlobalFooter
         company={pageContext?.company}
-        hasExtraPadding={!noProductsSlugs.includes(pageContext.slug)}
+        hasExtraPadding={!noProductsSlugs.includes(pageContext?.slug)}
         hasHugePadding={location.pathname === '/produkty'}
         legal={pageContext?.legal?.legal}
         links={pageContext?.footerLinks}

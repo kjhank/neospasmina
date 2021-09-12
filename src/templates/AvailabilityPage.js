@@ -22,10 +22,10 @@ import { Cart } from '@icons';
 const AvailabilityPage = ({ pageContext }) => (
   <main>
     <Header>
-      <Cover image={pageContext.cover} />
+      <Cover image={pageContext?.cover} />
       <Container>
-        <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
-        <Lead>{pageContext.lead}</Lead>
+        <Title dangerouslySetInnerHTML={{ __html: pageContext?.heading }} />
+        <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
@@ -39,7 +39,7 @@ const AvailabilityPage = ({ pageContext }) => (
             Apteki:
           </Typography>
           <List>
-            {pageContext.pharmacies.map(({ pharmacy }) => (
+            {pageContext?.pharmacies.map(({ pharmacy }) => (
               <ListItem key={pharmacy.name}>
                 <Typography
                   as="p"
@@ -65,7 +65,7 @@ const AvailabilityPage = ({ pageContext }) => (
             Dostępność sprawdzisz również na:
           </Typography>
           <List>
-            {pageContext.availability.map(store => (
+            {pageContext?.availability.map(store => (
               <ListItem key={store.url}>
                 <Image image={store.image} />
                 <Link url={store.url}>
