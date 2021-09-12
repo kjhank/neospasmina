@@ -55,7 +55,7 @@ exports.createPages = async ({
     sleeep: 'zdrowy-sen',
   };
 
-  const getCategorySlug = postType => slugs[postType];
+  const getCategorySlug = postType => `psycholog-radzi/${slugs[postType]}`;
 
   const getContext = data => {
     const {
@@ -242,21 +242,21 @@ exports.createPages = async ({
     {
       heading: 'Spokój i równowaga',
       items: equilibriumData.map(article => ({
-        slug: `/spokoj-i-rownowaga/${article.slug}`,
+        slug: `/psycholog-radzi/spokoj-i-rownowaga/${article.slug}`,
         title: article.title.rendered,
       })),
     },
     {
       heading: 'Zdrowy sen',
       items: sleepData.map(article => ({
-        slug: `/zdrowy-sen/${article.slug}`,
+        slug: `/psycholog-radzi/zdrowy-sen/${article.slug}`,
         title: article.title.rendered,
       })),
     },
     {
       heading: 'Strefa relaksu',
       items: relaxData.map(article => ({
-        slug: `/strefa-relaksu/${article.slug}`,
+        slug: `/psycholog-radzi/strefa-relaksu/${article.slug}`,
         title: article.title.rendered,
       })),
     },

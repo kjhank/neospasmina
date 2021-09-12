@@ -7,16 +7,16 @@ export const Section = styled.section`
   z-index: 1;
 
   &::after {
-    content: '';
+    /* content: '';
     position: absolute;
-    top: 13.020833vw;
     left: 50%;
     z-index: -1;
     width: 100vw;
-    height: 100%;
+    height: 100%; */
     ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};
+  top: 13.020833vw;
   transform: translateX(-50%);
   pointer-events: none;
   }

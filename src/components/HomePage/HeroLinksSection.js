@@ -35,8 +35,8 @@ export const HeroLinksSection = ({ data }) => (
           image, post,
         }) => (
           <MosaicLink
-            key={post.post_name}
-            to={post.post_name}
+            key={post.url}
+            to={post.url}
           >
             <MosaicImage>
               <source
@@ -53,8 +53,8 @@ export const HeroLinksSection = ({ data }) => (
                 src={image.url}
               />
             </MosaicImage>
-            <MosaicLinkTitle isWider={post.post_name === 'wazne-telefony'}>
-              {renderLinkTitle(post.post_title)}
+            <MosaicLinkTitle isWider={post.isWider}>
+              {renderLinkTitle(post.label)}
             </MosaicLinkTitle>
           </MosaicLink>
         ))}

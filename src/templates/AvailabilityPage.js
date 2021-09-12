@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Container, Typography,
+  Typography,
 } from '@components';
 
 import {
@@ -10,6 +10,7 @@ import {
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
+  Container,
   Image,
   Link,
   List,

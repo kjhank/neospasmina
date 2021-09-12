@@ -79,10 +79,10 @@ const ProductsPage = ({
   return (
     <main>
       <Header>
-        <Cover image={pageContext?.cover} />
+        <Cover image={pageContext.cover} />
         <Container>
-          <Title dangerouslySetInnerHTML={{ __html: pageContext?.heading }} />
-          <Lead>{pageContext?.lead}</Lead>
+          <Title dangerouslySetInnerHTML={{ __html: pageContext.heading }} />
+          <Lead>{pageContext.lead}</Lead>
           <FiltersWrapper>
             {filterButtons.map(button => (
               <FilterButton

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import {
-  ExternalLink as GenericExternalLink, Image as GenericImage,
+  Container as GenericContainer, ExternalLink as GenericExternalLink, Image as GenericImage,
 } from '@components';
 
 export const Section = styled.section`
@@ -47,3 +47,9 @@ export const Link = styled(GenericExternalLink)`
 `;
 
 export const Image = styled(GenericImage)``;
+
+export const Container = styled(GenericContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;

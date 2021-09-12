@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@components';
+import { Breadcrumbs } from '@components';
 
 import {
   Cover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Content, Header, Lead,
+  Container, Content, Header, Lead,
 } from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 
-const ArticlePage = ({ pageContext }) => (
+const slugs = {
+  equilibrium: 'Spokój i równowaga',
+};
+
+const ArticlePage = ({
+  pageContext, path,
+}) => (
   <main>
     <Header>
       <Cover image={pageContext?.cover} />
@@ -21,6 +27,23 @@ const ArticlePage = ({ pageContext }) => (
           isLight={pageContext?.isLight}
           isLowercase
           dangerouslySetInnerHTML={{ __html: pageContext?.heading }}
+        />
+        <Breadcrumbs
+          isLight={pageContext?.isLight}
+          steps={[
+            {
+              text: 'Psycholog radzi',
+              to: '/psycholog-radzi',
+            },
+            {
+              text: slugs[pageContext.type],
+              to: `/psycholog-radzi/${path.split('/')[2]}`,
+            },
+            {
+              text: pageContext?.renderedTitle,
+              to: null,
+            },
+          ]}
         />
         <Lead>{pageContext?.lead}</Lead>
       </Container>
@@ -42,6 +65,9 @@ ArticlePage.propTypes = {
     heading: PropTypes.string,
     isLight: PropTypes.bool,
     lead: PropTypes.string,
+    renderedTitle: PropTypes.string,
     sections: PropTypes.arrayOf(PropTypes.shape({})),
+    type: PropTypes.string,
   }).isRequired,
+  path: PropTypes.string.isRequired,
 };
