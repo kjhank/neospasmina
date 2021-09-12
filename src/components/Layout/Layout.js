@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 import { Helmet } from 'react-helmet';
 import ReactPlayer from 'react-player';
+import {
+  graphql, useStaticQuery,
+} from 'gatsby';
 
 import '../../../static/fonts/fonts.css';
 import {
@@ -19,8 +22,28 @@ import {
 } from '@components';
 
 const Layout = ({
-  children, location, pageContext,
+  children, location, pageContext, path,
 }) => {
+  const { site: { siteMetadata: { siteUrl } } } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl,
+        }
+      }
+    }
+  `);
+
+  const canonicalUrl = `${siteUrl}${path}`;
+
+  const metadata = [
+    ...pageContext?.metadata,
+    {
+      content: canonicalUrl,
+      type: 'canonicalUrl',
+    },
+  ];
+
   const [
     isPageScrolled,
     setPageScrolled,
@@ -58,7 +81,7 @@ const Layout = ({
   return (
     <Theme>
       <Helmet htmlAttributes={htmlAttributes}>
-        {renderMetadata(pageContext?.metadata)}
+        {renderMetadata(metadata)}
       </Helmet>
       <GlobalStyle />
       <FixedHeader
@@ -112,6 +135,7 @@ Layout.propTypes = {
     metadata: PropTypes.arrayOf(PropTypes.shape({})),
     slug: PropTypes.string,
   }).isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default Layout;

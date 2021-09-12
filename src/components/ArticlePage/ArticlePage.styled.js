@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-import { Image } from '@components';
+import {
+  Container as GenericContainer, Image,
+} from '@components';
+
 import {
   Header as GenericHeader, Lead as GenericLead,
 } from '@components/GenericPage/GenericPage.styled';
@@ -111,4 +114,10 @@ export const ArticleImage = styled(Image)`
     margin: ${({ hasMargin }) => hasMargin && '2em 0'};
     object-fit: cover;
   }
+`;
+
+export const Container = styled(GenericContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

@@ -58,7 +58,8 @@ module.exports = {
   ],
   siteMetadata: {
     author: '@kjhank',
-    description: 'Gatsby starter using Styled Components',
-    title: 'Gatsby Starter with Styled Components',
+    description: 'Neospasmina',
+    siteUrl: 'https://neospasmina.pl',
+    title: 'Neospasmina',
   },
 };

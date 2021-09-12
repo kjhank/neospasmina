@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@components';
-
 import {
-  Content, Cover, Header, Lead, Title,
+  Container, Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 const GenericPage = ({ pageContext }) => (

@@ -20,7 +20,7 @@ export const renderMetadata = data => data?.map(({
     return <title key={content}>{content ? `${content} - Neospasmina` : 'Neospasmina'}</title>;
   }
 
-  if (type === 'canonical-url') {
+  if (type === 'canonicalUrl') {
     return (
       <link
         href={content}
@@ -28,6 +28,10 @@ export const renderMetadata = data => data?.map(({
         rel="canonical"
       />
     );
+  }
+
+  if (type === 'canonical-url') {
+    return null;
   }
 
   return (

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-import { Image } from '@components';
+import {
+  Container as GenericContainer, Image,
+} from '@components';
 
 export const Title = styled.h1`
   width: 100%;
@@ -20,10 +22,6 @@ export const Header = styled.header`
 `;
 
 export const Lead = styled.p`
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   width: 100%;
   color: ${({ theme }) => theme.colors.medGray};
   font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
@@ -63,4 +61,10 @@ export const Cover = styled(Image)`
   width: 100%;
   height: 100%;
   pointer-events: none;
+`;
+
+export const Container = styled(GenericContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

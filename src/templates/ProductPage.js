@@ -103,21 +103,21 @@ const ProductPage = ({ pageContext }) => (
           />
           <LinksMosaic gradient={pageContext?.slug === 'neospasmina-noc' ? 'purple' : 'default'}>
             {pageContext?.product.links.map(link => (
-              <SingleTile key={link.name}>
+              <SingleTile key={link?.name}>
                 <TileImage image={link?.image} />
                 <Typography
                   size="large"
                   weight="bold"
                 >
-                  {link.name}
+                  {link?.name}
                 </Typography>
                 <Typography
                   size="xsmall"
                 >
-                  {link.description}
+                  {link?.description}
                 </Typography>
                 <TileLink
-                  to={link.url}
+                  to={link?.url}
                   color={pageContext?.color}
                 >
                   Dowiedz się więcej
