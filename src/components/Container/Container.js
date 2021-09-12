@@ -14,6 +14,10 @@ export const Container = styled.div`
     max-width: 59.375vw;
   }
 
+  @media ${mediaQueries.xl} {
+    max-width: 75vw;
+  }
+
   @media ${mediaQueries.xs} {
     max-width: 90vw;
   }

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+
 import {
   ButtonLink, Image,
 } from '@components';
+
+import { mediaQueries } from '@utils/rwd';
 
 export const Section = styled.section`
   position: relative;
@@ -30,6 +33,10 @@ export const LinksWrapper = styled.nav`
   text-transform: uppercase;
 
   > a {
-    width: 11.666667vw;
+    min-width: 11.666667vw;
+  }
+
+  @media ${mediaQueries.xxlarge} {
+    bottom: 1vw;
   }
 `;

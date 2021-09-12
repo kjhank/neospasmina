@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Footer = styled.footer`
   position: relative;
   z-index: 1;
@@ -110,6 +112,10 @@ export const Disclaimer = styled.div`
   font-stretch: condensed;
   text-align: justify;
 
+  @media ${mediaQueries.huge} {
+    font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  }
+
   p + p {
     margin-top: 1em;
   }
@@ -129,5 +135,9 @@ export const Legal = styled(Disclaimer)`
   margin-top: 1em;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
   text-align: center;
+
+  @media ${mediaQueries.huge} {
+    font-size: ${({ theme }) => theme.fonts.sizes.xxlarge};
+  }
 `;
 

@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys */
 
 export const breakpoints = {
+  huge: 1650,
   xxl: 1440,
   xl: 1280,
   l: 1024,

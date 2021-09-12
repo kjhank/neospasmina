@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { Image } from '@components';
+import { mediaQueries } from '@utils/rwd';
 
 export const Section = styled.section`
   position: relative;
   z-index: 1;
 
   &::after {
-    /* content: '';
-    position: absolute;
-    left: 50%;
-    z-index: -1;
-    width: 100vw;
-    height: 100%; */
     ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};
@@ -100,6 +95,10 @@ export const MosaicLinkTitle = styled.h4`
   color: #fff;
   font-weight: 500;
   font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+
+  @media ${mediaQueries.huge} {
+    font-size: ${({ theme }) => theme.fonts.sizes.larger};
+  }
 
   > span {
     padding: 0.338542vw 0.677083vw;
