@@ -1,4 +1,5 @@
 import React from 'react';
+import sanitize from 'sanitize-html';
 
 import { mediaQueries } from '@utils/rwd';
 
@@ -66,7 +67,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
         variant={variant}
       >
         <Typography
-          dangerouslySetInnerHTML={{ __html: textImage.text }}
+          dangerouslySetInnerHTML={{ __html: sanitize(textImage.text) }}
         />
         <ArticleImage image={textImage.image} />
       </Section>
@@ -77,7 +78,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
     return (
       <Section
         gradient={gradient}
-        dangerouslySetInnerHTML={{ __html: text }}
+        dangerouslySetInnerHTML={{ __html: sanitize(text) }}
         key={key}
         variant={variant}
       />
@@ -92,10 +93,10 @@ export const renderArticle = sections => sections.map(({ section }) => {
         variant={variant}
       >
         <Typography
-          dangerouslySetInnerHTML={{ __html: twoCols.left }}
+          dangerouslySetInnerHTML={{ __html: sanitize(twoCols.left) }}
         />
         <Typography
-          dangerouslySetInnerHTML={{ __html: twoCols.right }}
+          dangerouslySetInnerHTML={{ __html: sanitize(twoCols.right) }}
         />
       </Section>
     );
@@ -105,7 +106,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
     return (
       <Section
         as="footer"
-        dangerouslySetInnerHTML={{ __html: text }}
+        dangerouslySetInnerHTML={{ __html: sanitize(text) }}
         key={key}
         variant={variant}
       />

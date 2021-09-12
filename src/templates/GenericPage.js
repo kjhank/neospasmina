@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import {
   Container, Content, Cover, Header, Lead, Title,
@@ -10,12 +11,16 @@ const GenericPage = ({ pageContext }) => (
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
-        <Title>{pageContext?.renderedTitle}</Title>
+        <Title
+          dangerouslySetInnerHTML={{
+            __html: pageContext?.heading || pageContext?.renderedTitle,
+          }}
+        />
         <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
     <Content>
-      <Container dangerouslySetInnerHTML={{ __html: pageContext?.content }} />
+      <Container dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.content) }} />
     </Content>
   </main>
 );
@@ -26,6 +31,7 @@ GenericPage.propTypes = {
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),
+    heading: PropTypes.string,
     lead: PropTypes.string,
     renderedTitle: PropTypes.string,
   }).isRequired,

@@ -25,6 +25,7 @@ export const Lead = styled.p`
   width: 100%;
   color: ${({ theme }) => theme.colors.medGray};
   font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+  line-height: 1.5;
   text-align: center;
 `;
 
