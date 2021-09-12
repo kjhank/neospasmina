@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import { Breadcrumbs } from '@components';
 
@@ -26,7 +27,7 @@ const ArticlePage = ({
         <Title
           isLight={pageContext?.isLight}
           isLowercase
-          dangerouslySetInnerHTML={{ __html: pageContext?.heading }}
+          dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }}
         />
         <Breadcrumbs
           isLight={pageContext?.isLight}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import {
   Typography,
@@ -25,7 +26,7 @@ const AvailabilityPage = ({ pageContext }) => (
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
-        <Title dangerouslySetInnerHTML={{ __html: pageContext?.heading }} />
+        <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>
       </Container>
     </Header>
