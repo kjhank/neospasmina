@@ -34,15 +34,15 @@ const Layout = ({
     }
   `);
 
-  const canonicalUrl = `${siteUrl}${path}`;
+  const canonicalUrl = {
+    content: `${siteUrl}${path}`,
+    type: 'canonicalUrl',
+  },
 
-  const metadata = [
-    ...pageContext?.metadata || ...[],
-    {
-      content: canonicalUrl,
-      type: 'canonicalUrl',
-    },
-  ];
+  const metadata = pageContext?.metadata ? [
+    ...pageContext?.metadata,
+    canonicalUrl,
+  ] : [canonicalUrl];
 
   const [
     isPageScrolled,
