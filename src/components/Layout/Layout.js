@@ -37,7 +37,7 @@ const Layout = ({
   const canonicalUrl = `${siteUrl}${path}`;
 
   const metadata = [
-    ...pageContext?.metadata,
+    ...pageContext?.metadata || ...[],
     {
       content: canonicalUrl,
       type: 'canonicalUrl',
