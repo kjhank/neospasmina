@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 import { Image } from '@components';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Wrapper = styled.ul`
   position: relative;
   height: 35.104167vw;
+
+  @media ${mediaQueries.s} {
+    height: 45vw;
+  }
 `;
 
 export const SingleItem = styled.li`
@@ -17,6 +23,13 @@ export const SingleItem = styled.li`
   width: 100%;
   height: 100%;
   transition: ${({ theme }) => theme.getTransitions(['opacity'])};
+
+  > a {
+    @media ${mediaQueries.s} {
+      padding: 4px 10px;
+      font-size: ${({ theme }) => theme.fonts.sizes.xxsmall}
+    }
+  }
 `;
 
 export const HeroImage = styled(Image)`
@@ -58,4 +71,9 @@ export const Heading = styled.h2`
   padding-top: 8.333333vw;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
+
+  @media ${mediaQueries.s} {
+    width: 50%;
+    font-size: ${({ theme }) => theme.fonts.sizes.large};
+  }
 `;

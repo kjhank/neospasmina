@@ -12,6 +12,7 @@ import {
   ContactData, Container, FormWrapper, Header, Legal,
 } from '@components/ContactPage/ContactPage.styled';
 
+import { Main } from '@components/styled';
 import { ContactForm } from '@components/ContactPage/ContactForm';
 
 import ENDPOINTS from '@utils/static/endpoints';
@@ -78,7 +79,7 @@ const ContactPage = ({
   ]);
 
   return (
-    <main>
+    <Main>
       <Header>
         <Cover image={cover} />
         <Container>
@@ -115,7 +116,7 @@ const ContactPage = ({
           </FormWrapper>
         </Container>
       </Content>
-    </main>
+    </Main>
   );
 };
 

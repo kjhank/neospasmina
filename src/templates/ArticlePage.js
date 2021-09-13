@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
+import { Main } from '@components/styled';
 import { Breadcrumbs } from '@components';
 
 import {
@@ -20,7 +21,7 @@ const slugs = {
 const ArticlePage = ({
   pageContext, path,
 }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -54,7 +55,7 @@ const ArticlePage = ({
         {pageContext?.sections && renderArticle(pageContext?.sections)}
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlePage;

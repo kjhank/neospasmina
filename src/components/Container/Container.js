@@ -11,11 +11,11 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media ${mediaQueries.xxl} {
-    max-width: 59.375vw;
+    max-width: 65vw;
   }
 
   @media ${mediaQueries.xl} {
-    max-width: 75vw;
+    max-width: 80vw;
   }
 
   @media ${mediaQueries.xs} {

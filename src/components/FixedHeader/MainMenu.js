@@ -6,9 +6,9 @@ import {
 } from './FixedHeader.styled';
 
 export const MainMenu = ({
-  children, items,
+  children, isOpen, items,
 }) => (
-  <Navigation>
+  <Navigation isOpen={isOpen}>
     {items.map(({
       content, to,
     }) => (
@@ -25,6 +25,7 @@ export const MainMenu = ({
 
 MainMenu.propTypes = {
   children: PropTypes.node,
+  isOpen: PropTypes.bool.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 

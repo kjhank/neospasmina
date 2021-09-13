@@ -6,6 +6,8 @@ import {
   Container, Typography,
 } from '@components';
 
+import { Main } from '@components/styled';
+
 import {
   Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
@@ -27,7 +29,7 @@ const slugs = {
 };
 
 const ArticlesPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -82,7 +84,7 @@ const ArticlesPage = ({ pageContext }) => (
         ))}
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlesPage;

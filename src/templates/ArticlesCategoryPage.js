@@ -6,6 +6,8 @@ import {
   Container, Typography,
 } from '@components';
 
+import { Main } from '@components/styled';
+
 import {
   Header, LinedHeading, Section,
 } from '@components/ArticlesCategoryPage/ArticlesCategoryPage.styled';
@@ -19,7 +21,7 @@ import {
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const ArticlesCategoryPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -63,7 +65,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
         </Section>
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlesCategoryPage;

@@ -6,8 +6,10 @@ import {
   Container, Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
+import { Main } from '@components/styled';
+
 const GenericPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -22,7 +24,7 @@ const GenericPage = ({ pageContext }) => (
     <Content>
       <Container dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.content) }} />
     </Content>
-  </main>
+  </Main>
 );
 
 export default GenericPage;

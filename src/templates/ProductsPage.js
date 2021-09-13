@@ -9,6 +9,8 @@ import {
   Container, ProductsTeaser,
 } from '@components';
 
+import { Main } from '@components/styled';
+
 import {
   Cover, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
@@ -27,18 +29,6 @@ const ProductsPage = ({
     productFilter,
     setProductFilter,
   ] = useState(params.get('type') || '');
-
-  // const products = featuredProducts.reduce((acc, product) => {
-  //   const { type } = product;
-
-  //   return {
-  //     ...acc,
-  //     [type]: [
-  //       ...(acc[type] || []),
-  //       product,
-  //     ],
-  //   };
-  // }, {});
 
   const [
     products,
@@ -78,7 +68,7 @@ const ProductsPage = ({
   const handleFilter = slug => setProductFilter(slug === 'all' ? '' : slug);
 
   return (
-    <main>
+    <Main>
       <Header>
         <Cover image={pageContext.cover} />
         <Container>
@@ -103,7 +93,7 @@ const ProductsPage = ({
           products={products}
         />
       </Content>
-    </main>
+    </Main>
   );
 };
 

@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
+import { mediaQueries } from '@utils/rwd';
+
 const styles = css`
   position: ${({ $isCentered }) => ($isCentered ? 'relative' : 'static')};
   display: inline-flex;
@@ -23,6 +25,10 @@ const styles = css`
     fill: currentColor;
     transition: ${({ theme }) => theme.getTransitions(['transform'])};
     transform: ${({ $isCentered }) => ($isCentered ? 'translate(0, -50%)' : 'none')};
+
+    @media ${mediaQueries.s} {
+      width: 1.5em;
+    }
   }
 
   &:hover {

@@ -11,6 +11,15 @@ export const Section = styled.section`
   z-index: 1;
   height: 33.28125vw;
   margin-top: 3vw;
+
+  @media ${mediaQueries.l} {
+    height: 37vw;
+  }
+
+  @media ${mediaQueries.s} {
+    height: 45vw;
+    margin-bottom: 5vw;
+  }
 `;
 
 export const ProductsImage = styled(Image)`
@@ -19,9 +28,18 @@ export const ProductsImage = styled(Image)`
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
+
+  @media ${mediaQueries.s} {
+    top: 5vw;
+  }
 `;
 
-export const StyledLink = styled(ButtonLink)``;
+export const StyledLink = styled(ButtonLink)`
+  @media ${mediaQueries.s} {
+    padding: 4px 10px;
+    font-size: ${({ theme }) => theme.fonts.sizes.xxsmall}
+  }
+`;
 
 export const LinksWrapper = styled.nav`
   position: absolute;
@@ -38,5 +56,11 @@ export const LinksWrapper = styled.nav`
 
   @media ${mediaQueries.xxlarge} {
     bottom: 1vw;
+  }
+
+  @media ${mediaQueries.s} {
+    bottom: 0;
+    width: 80%;
+    margin-left: 10%;
   }
 `;

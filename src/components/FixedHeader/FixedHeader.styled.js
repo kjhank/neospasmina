@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components';
 import { Link } from 'gatsby';
 import { Container } from '@components';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
@@ -11,6 +13,11 @@ export const StyledHeader = styled.header`
   height: 5.208333vw;
   background-color: ${({ isPageScrolled }) => (isPageScrolled ? '#fff' : 'transparent')};
   transition: ${({ theme }) => theme.getTransitions(['background-color'])};
+
+  @media ${mediaQueries.s} {
+    height: 15vw;
+    background-color: #ffffff;
+  }
 `;
 
 const bar1 = keyframes`
@@ -104,6 +111,11 @@ export const PlayButton = styled.button.attrs({
       animation: ${bar4} 1.2s infinite linear;
     }
   }
+
+  @media ${mediaQueries.s} {
+    margin: 0.5em 0;
+    padding: 0.5em;
+  }
 `;
 
 export const Navigation = styled.nav`
@@ -111,6 +123,18 @@ export const Navigation = styled.nav`
   align-items: center;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fonts.sizes.small};
+
+  @media ${mediaQueries.s} {
+    position: fixed;
+    top: 15vw;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    flex-direction: column;
+    background-color: #fff;
+    transition: ${({ theme }) => theme.getTransitions(['transform'])};
+    transform: ${({ isOpen }) => (isOpen ? 'none' : 'translateX(100vw)')};
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -122,6 +146,11 @@ export const StyledLink = styled(Link)`
     width: auto;
     height: ${({ theme }) => theme.fonts.sizes.small};
   }
+
+  @media ${mediaQueries.s} {
+    margin: 0.5em auto;
+    padding: 0.5em;
+  }
 `;
 
 export const StyledContainer = styled(Container)`
@@ -131,5 +160,39 @@ export const StyledContainer = styled(Container)`
 
   > svg {
     height: 1.458333vw;
+
+    @media ${mediaQueries.s} {
+      width: 50%;
+      height: auto;
+      margin: auto;
+    }
+  }
+`;
+
+export const MenuToggle = styled.button.attrs({ type: 'button' })`
+  position: relative;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transition: ${({ theme }) => theme.getTransitions(['transform'])};
+  transform: ${({ isToggled }) => (isToggled ? 'rotateY(180deg)' : 'none')};
+  transform-style: preserve-3d;
+
+  > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  > svg:last-child {
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    transform: rotateY(180deg);
   }
 `;
