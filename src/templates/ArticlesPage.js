@@ -46,6 +46,7 @@ const ArticlesPage = ({ pageContext }) => (
                 <Item key={JSON.stringify(article).slice(0, 92)}>
                   <Image image={article.image} />
                   <Typography
+                    as="h3"
                     hasBottomMargin
                     size="large"
                     weight="semibold"
@@ -53,6 +54,7 @@ const ArticlesPage = ({ pageContext }) => (
                     {article.post.post_title}
                   </Typography>
                   <Typography
+                    as="p"
                     hasBottomMargin
                     size="small"
                   >
@@ -61,7 +63,7 @@ const ArticlesPage = ({ pageContext }) => (
                   </Typography>
                   <Link
                     hasArrow
-                    to={article.post.post_name}
+                    to={`${slugs[groupName]}/${article.post.post_name}`}
                   >
                     Dowiedz się więcej
                   </Link>

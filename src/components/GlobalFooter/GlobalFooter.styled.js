@@ -68,10 +68,41 @@ export const Wrapper = styled.div`
   }};
 
   &::after {
-  ${({
+    ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};
+  }
 
+  @media ${mediaQueries.huge} {
+    padding: ${({
+    hasExtraPadding, hasHugePadding,
+  }) => {
+    if (hasExtraPadding || hasHugePadding) {
+      if (hasHugePadding) {
+        return '33vw 0 1.875vw';
+      }
+
+      return '15vw 0 1.875vw';
+    }
+
+    return '1.875vw 0';
+  }};
+  }
+
+  @media ${mediaQueries.s} {
+    padding: ${({
+    hasExtraPadding, hasHugePadding,
+  }) => {
+    if (hasExtraPadding || hasHugePadding) {
+      if (hasHugePadding) {
+        return '340vw 0 1.875vw';
+      }
+
+      return '15vw 0 1.875vw';
+    }
+
+    return '1.875vw 0';
+  }};
   }
 `;
 

@@ -24,13 +24,14 @@ export const Section = styled.section`
 
 export const ProductsImage = styled(Image)`
   position: absolute;
-  top: -3vw;
+  top: 5vw;
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
+  pointer-events: none;
 
   @media ${mediaQueries.s} {
-    top: 5vw;
+    top: 10vw;
   }
 `;
 

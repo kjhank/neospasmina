@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Container, Image, Typography,
+  Container, Typography,
 } from '@components';
 import { Arrow } from '@icons';
 
 import {
-  Link, ProductsList, SingleProduct, Wrapper,
+  Link, ProductImage, ProductsList, SingleProduct, Wrapper,
 } from './ProductsTeaser.styled';
 
 export const ProductsTeaser = ({
@@ -29,7 +29,7 @@ export const ProductsTeaser = ({
       <ProductsList isPulledUp={isPulledUp}>
         {products?.map(product => (
           <SingleProduct key={product?.slug}>
-            <Image
+            <ProductImage
               image={product?.acf?.summary?.image}
               isLazy={false}
             />

@@ -40,6 +40,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
               <Item key={JSON.stringify(article).slice(0, 92)}>
                 <Image image={image} />
                 <Typography
+                  as="h3"
                   hasBottomMargin
                   size="large"
                   weight="semibold"
@@ -47,6 +48,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
                   {article?.post_title}
                 </Typography>
                 <Typography
+                  as="p"
                   hasBottomMargin
                   size="small"
                 >

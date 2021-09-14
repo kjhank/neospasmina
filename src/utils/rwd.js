@@ -2,12 +2,12 @@
 
 export const breakpoints = {
   huge: 1650,
-  xxl: 1440,
-  xl: 1280,
-  l: 1024,
+  xxl: 1450,
+  xl: 1300,
+  l: 1100,
   m: 920,
-  s: 768,
-  xs: 480,
+  s: 800,
+  xs: 680,
   xxs: 360,
 };
 

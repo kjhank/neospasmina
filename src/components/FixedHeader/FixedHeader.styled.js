@@ -172,12 +172,17 @@ export const StyledContainer = styled(Container)`
 export const MenuToggle = styled.button.attrs({ type: 'button' })`
   position: relative;
   z-index: 2;
+  display: none;
   width: 20px;
   height: 20px;
   padding: 0;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
   transform: ${({ isToggled }) => (isToggled ? 'rotateY(180deg)' : 'none')};
   transform-style: preserve-3d;
+
+  @media ${mediaQueries.s} {
+    display: block;
+  }
 
   > svg {
     position: absolute;
