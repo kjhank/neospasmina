@@ -20,7 +20,8 @@ export const Section = styled.section`
     }
 
     @media ${mediaQueries.s} {
-      top: 40vw;
+      top: 2em;
+      height: 120%;
     }
   }
 `;

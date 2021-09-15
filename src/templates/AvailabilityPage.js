@@ -6,12 +6,15 @@ import { Typography } from '@components';
 import { Main } from '@components/styled';
 
 import {
-  Content, Cover, Header, Lead, Title,
+  Content, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
   Container,
+  Cover,
+  Header,
   Image,
+  Lead,
   Link,
   List,
   ListItem,

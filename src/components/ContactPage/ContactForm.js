@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ButtonLink } from '@components';
 import {
-  Form, Input, Label, Legend, Required,
+  Form, Input, Label, Legend, Potter, Required,
 } from './ContactPage.styled';
 
 export const ContactForm = ({
@@ -41,6 +41,14 @@ export const ContactForm = ({
         />
       </Label>
     ))}
+    <Potter
+      aria-hidden
+      onChange={event => setData(previous => ({
+        ...previous,
+        pot: event.targert.value,
+      }))}
+      value={data.pot}
+    />
     <Legend>
       * pole obowiązkowe
     </Legend>
@@ -57,7 +65,9 @@ export const ContactForm = ({
 );
 
 ContactForm.propTypes = {
-  data: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({
+    pot: PropTypes.string,
+  }).isRequired,
   fields: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   formRef: PropTypes.shape({}).isRequired,
   isDisabled: PropTypes.bool.isRequired,

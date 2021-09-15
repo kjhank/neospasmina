@@ -6,6 +6,8 @@ import {
 
 import { Header as GenericHeader } from '@components/GenericPage/GenericPage.styled';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Container = styled(GenericContainer)`
   display: flex;
   flex-wrap: wrap;
@@ -29,6 +31,20 @@ export const ContactData = styled.address`
 
     &:first-of-type {
       white-space: nowrap;
+    }
+  }
+
+  @media ${mediaQueries.xl} {
+    font-size: ${({ theme }) => theme.fonts.sizes.large};
+  }
+
+  @media ${mediaQueries.s} {
+    width: 100%;
+
+    > p {
+      &:first-of-type {
+        white-space: normal;
+      }
     }
   }
 `;
@@ -60,6 +76,15 @@ export const Legal = styled(Typography)`
   > p + p { /* stylelint-disable-line no-descending-specificity */
     margin-top: 1em;
   }
+
+  @media ${mediaQueries.l} {
+    height: 15vw;
+  }
+
+  @media ${mediaQueries.s} {
+    width: 100%;
+    height: 25vw;
+  }
 `;
 
 export const FormWrapper = styled.div`
@@ -80,12 +105,25 @@ export const Form = styled.form`
   justify-content: space-between;
   align-items: flex-start;
   width: 70%;
+
+  @media ${mediaQueries.s} {
+    width: 100%;
+
+    > button {
+      margin-left: auto;
+    }
+  }
 `;
 
 export const Label = styled.label`
   width: ${({ variant }) => (variant === 'small_input' ? '48%' : '100%')};
   margin-top: 1.71875vw;
   font-size: ${({ theme }) => theme.fonts.sizes.xsmall};
+
+  @media ${mediaQueries.xs} {
+    width: 100%;
+    font-size: ${({ theme }) => theme.fonts.sizes.xxsmall};
+  }
 `;
 
 export const Input = styled.input`
@@ -96,6 +134,26 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.border};
   padding: 12px;
   font-size: 24px;
+
+  @media ${mediaQueries.xl} {
+    font-size: ${({ theme }) => theme.fonts.sizes.large};
+  }
+
+  @media ${mediaQueries.l} {
+    font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  }
+
+  @media ${mediaQueries.xs} {
+    height: ${({ variant }) => (variant === 'textarea' ? '33vw' : 'auto')};
+    font-size: ${({ theme }) => theme.fonts.sizes.xsmall};
+  }
+`;
+
+export const Potter = styled.input`
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 `;
 
 export const Legend = styled.p`

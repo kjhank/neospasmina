@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 import { Link as GenericLink } from 'gatsby';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Wrapper = styled.nav`
   margin: auto 0 1em;
   color: ${({ isLight }) => (isLight ? '#fff' : 'inherit')};
+
+  @media ${mediaQueries.s} {
+    margin: 1em 0;
+    font-size: ${({ theme }) => theme.fonts.sizes.xxsmall};
+  }
 `;
 
 export const Link = styled(GenericLink)`
@@ -27,6 +34,7 @@ export const Splitter = styled.span`
 
 export const List = styled.ul`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const ListItem = styled.li``;

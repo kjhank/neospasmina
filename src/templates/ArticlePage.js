@@ -5,12 +5,10 @@ import sanitize from 'sanitize-html';
 import { Main } from '@components/styled';
 import { Breadcrumbs } from '@components';
 
-import {
-  Cover, Title,
-} from '@components/GenericPage/GenericPage.styled';
+import { Cover } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Container, Content, Header, Lead,
+  Container, Content, Header, Lead, Title,
 } from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 

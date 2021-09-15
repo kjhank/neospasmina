@@ -25,6 +25,10 @@ export const Header = styled.header`
   height: 35.104167vw;
   margin-bottom: 3.90625vw;
   padding-top: 8.333333vw;
+
+  @media ${mediaQueries.xl} {
+    height: auto;
+  }
 `;
 
 export const Lead = styled.p`
@@ -68,6 +72,16 @@ export const Cover = styled(Image)`
   width: 100%;
   height: 100%;
   pointer-events: none;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media ${mediaQueries.s} {
+    width: 150%;
+  }
 `;
 
 export const Container = styled(GenericContainer)`
