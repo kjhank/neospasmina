@@ -14,6 +14,8 @@ import { renderArticle } from '@utils';
 
 const slugs = {
   equilibrium: 'Spokój i równowaga',
+  relaxx: 'Strefa relaksu',
+  sleeep: 'Zdrowy sen',
 };
 
 const ArticlePage = ({

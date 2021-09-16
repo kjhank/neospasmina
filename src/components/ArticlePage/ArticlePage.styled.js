@@ -38,7 +38,7 @@ export const SectionHeading = styled.h2``;
 
 export const Section = styled.section`
   position: ${({ gradient }) => gradient && 'relative'};
-  overflow: hidden;
+  overflow-wrap: break-word;
   display: flex;
   flex-direction: ${({ variant }) => {
     if (variant === 'textLeft' || variant === 'twoColText') {
