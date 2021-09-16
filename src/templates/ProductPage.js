@@ -109,12 +109,14 @@ const ProductPage = ({ pageContext }) => (
               <SingleTile key={link?.name}>
                 <TileImage image={link?.image} />
                 <Typography
+                  as="h3"
                   size="large"
                   weight="bold"
                 >
                   {link?.name}
                 </Typography>
                 <Typography
+                  as="p"
                   size="xsmall"
                 >
                   {link?.description}

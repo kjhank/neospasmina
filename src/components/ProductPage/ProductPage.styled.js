@@ -10,17 +10,38 @@ import {
   Header as GenericHeader, Lead as GenericLead,
 } from '@components/GenericPage/GenericPage.styled';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Header = styled(GenericHeader)`
   height: 34.6875vw;
 
   > div {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  @media ${mediaQueries.huge} {
+    height: auto;
   }
 `;
 
 export const HeaderTextWrapper = styled.div`
   width: 57%;
+
+  @media ${mediaQueries.xxl} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media ${mediaQueries.l} {
+    width: 70%;
+  }
+
+  @media ${mediaQueries.s} {
+    width: 100%;
+  }
 
   > h1 {
     padding-right: unset;
@@ -37,9 +58,27 @@ export const Lead = styled(GenericLead)`
   font-weight: ${({ theme }) => theme.fonts.semibold};
   font-size: ${({ theme }) => theme.fonts.sizes.larger};
   text-align: left;
+
+  @media ${mediaQueries.huge} {
+    align-self: flex-end;
+    margin-bottom: 2em;
+  }
+
+  @media ${mediaQueries.xxl} {
+    font-size: ${({ theme }) => theme.fonts.sizes.large};
+  }
+
+  @media ${mediaQueries.l} {
+    margin-bottom: 0;
+  }
 `;
 
-export const CTA = styled.aside``;
+export const CTA = styled.aside`
+  @media ${mediaQueries.s} {
+    width: 50%;
+    margin-left: auto;
+  }
+`;
 
 export const CTAButtonsWrapper = styled.nav`
   display: flex;
@@ -83,7 +122,19 @@ export const CTAButtonLink = styled(ExternalLink)`
   }
 `;
 
-export const Content = styled.article``;
+export const Content = styled.article`
+  > div {
+    > p {
+      @media ${mediaQueries.xxl} {
+        font-size: ${({ theme }) => theme.fonts.sizes.larger};
+      }
+
+      @media ${mediaQueries.s} {
+        font-size: ${({ theme }) => theme.fonts.sizes.medium};
+      }
+    }
+  }
+`;
 
 export const Section = styled.section`
   margin-bottom: 4vw;
@@ -91,6 +142,20 @@ export const Section = styled.section`
 
   > h2 {
     margin-bottom: 1.5vw;
+
+    @media ${mediaQueries.xxl} {
+      font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+    }
+  }
+
+  > div {
+    @media ${mediaQueries.xxl} {
+      font-size: ${({ theme }) => theme.fonts.sizes.large};
+    }
+
+    @media ${mediaQueries.s} {
+      font-size: ${({ theme }) => theme.fonts.sizes.small};
+    }
   }
 `;
 
@@ -100,22 +165,20 @@ export const LinksMosaic = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   gap: 0.416667vw;
   margin-top: 3vw;
+  text-align: center;
 
   &::after {
-    content: '';
-    position: absolute;
-    top: 5vw;
-    left: 50%;
-    z-index: -1;
-    width: 100vw;
-    height: 90%;
     ${({
     gradient, theme,
   }) => (gradient === 'purple' ? theme.getGradient('#cdc5eb', '#43358c') : theme.getGradient())};
+    top: 5vw;
+    height: 90%;
     background-position: center;
-    background-size: 150%;
-    transform: translate(-50%, 0);
     pointer-events: none;
+  }
+
+  @media ${mediaQueries.xs} {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -136,6 +199,12 @@ export const SingleTile = styled.li`
 
   &:hover {
     filter: ${({ theme }) => `drop-shadow(37px 50px 50px ${rgba(theme.colors.shadow, 0.5)})`};
+  }
+
+  > h3 {
+    @media ${mediaQueries.m} {
+      font-size: ${({ theme }) => theme.fonts.sizes.medium}
+    }
   }
 `;
 

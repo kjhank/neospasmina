@@ -57,7 +57,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
                 </Typography>
                 <Link
                   hasArrow
-                  to={`/${pageContext?.slug}/${article?.post_name}`}
+                  to={`/psycholog-radzi/${pageContext?.slug}/${article?.post_name}`}
                 >
                   Dowiedz się więcej
                 </Link>

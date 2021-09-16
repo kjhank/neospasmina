@@ -67,10 +67,14 @@ export const SingleProduct = styled.li`
 
   > h3 {
     padding: 0 3vw;
+    text-align: center;
+
+    @media ${mediaQueries.xxl} {
+      font-size: ${({ theme }) => theme.fonts.sizes.large};
+    }
 
     @media ${mediaQueries.l} {
       padding: 0 1em;
-      font-size: ${({ theme }) => theme.fonts.sizes.large};
     }
 
     @media ${mediaQueries.s} {
@@ -85,7 +89,7 @@ export const SingleProduct = styled.li`
   > p {
     padding: 1em calc(2vw + 1em) 0;
 
-    @media ${mediaQueries.l} {
+    @media ${mediaQueries.xxl} {
       padding: 1em 1em  0;
       font-size: ${({ theme }) => theme.fonts.sizes.medium};
     }

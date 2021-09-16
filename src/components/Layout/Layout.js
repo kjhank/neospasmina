@@ -39,10 +39,12 @@ const Layout = ({
     type: 'canonicalUrl',
   };
 
-  const metadata = pageContext?.metadata ? [
-    ...pageContext?.metadata,
-    canonicalUrl,
-  ] : [canonicalUrl];
+  const metadata = pageContext?.metadata ?
+    [
+      ...pageContext?.metadata,
+      canonicalUrl,
+    ] :
+    [canonicalUrl];
 
   const [
     isPageScrolled,
