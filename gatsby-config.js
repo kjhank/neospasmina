@@ -41,13 +41,13 @@ module.exports = {
     },
     {
       options: {
-        background_color: '#663399',
+        background_color: '#236e37',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon-letter.png', // This path is relative to the root of the site.
         name: 'Neospasmina',
         short_name: 'neospasmina',
         start_url: '/',
-        theme_color: '#663399', // TODO: set these up
+        theme_color: '#236e37', // TODO: set these up
       },
       resolve: 'gatsby-plugin-manifest',
     },

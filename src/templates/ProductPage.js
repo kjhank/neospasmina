@@ -7,7 +7,9 @@ import {
   Container, Typography,
 } from '@components';
 
-import { LinedHeading } from '@components/styled';
+import {
+  LinedHeading, Main,
+} from '@components/styled';
 
 import {
   Cover, Title,
@@ -33,7 +35,7 @@ import {
 import { Arrow } from '@icons';
 
 const ProductPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover
         image={pageContext?.cover}
@@ -189,7 +191,7 @@ const ProductPage = ({ pageContext }) => (
         </Section>
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ProductPage;

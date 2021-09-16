@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
-import {
-  Typography,
-} from '@components';
+import { Typography } from '@components';
+import { Main } from '@components/styled';
 
 import {
-  Content, Cover, Header, Lead, Title,
+  Content, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
   Container,
+  Cover,
+  Header,
   Image,
+  Lead,
   Link,
   List,
   ListItem,
@@ -22,7 +24,7 @@ import {
 import { Cart } from '@icons';
 
 const AvailabilityPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -80,7 +82,7 @@ const AvailabilityPage = ({ pageContext }) => (
         </Section>
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default AvailabilityPage;

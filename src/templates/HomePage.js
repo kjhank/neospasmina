@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { renderMetadata } from '@utils';
 
 import {
-  Carousel, Container, ProductsSection,
+  Carousel, ProductsSection,
 } from '@components';
+import { Main } from '@components/styled';
 import { ArticlesSection } from '@components/HomePage/ArticlesSection';
 import { HeroLinksSection } from '@components/HomePage/HeroLinksSection';
 
@@ -15,14 +16,12 @@ const HomePage = ({ pageContext }) => (
     <Helmet>
       {renderMetadata(pageContext?.metadata)}
     </Helmet>
-    <main>
-      <Container>
-        <Carousel items={pageContext?.carousel} />
-      </Container>
+    <Main>
+      <Carousel items={pageContext?.carousel} />
       <ProductsSection data={pageContext?.products} />
       <ArticlesSection data={pageContext?.articles} />
       <HeroLinksSection data={pageContext?.links} />
-    </main>
+    </Main>
   </>
 );
 

@@ -123,6 +123,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    overflow: hidden;
     min-height: 100vh;
     scroll-behavior: smooth;
     color: var(--main-color, #3e3e3e);

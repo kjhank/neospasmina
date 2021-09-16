@@ -12,6 +12,7 @@ import {
   ContactData, Container, FormWrapper, Header, Legal,
 } from '@components/ContactPage/ContactPage.styled';
 
+import { Main } from '@components/styled';
 import { ContactForm } from '@components/ContactPage/ContactForm';
 
 import ENDPOINTS from '@utils/static/endpoints';
@@ -30,6 +31,7 @@ const ContactPage = ({
     return {
       ...acc,
       [name]: '',
+      pot: '',
     };
   }, {}));
 
@@ -42,6 +44,7 @@ const ContactPage = ({
     isFormDisabled,
     setFormDisabled,
   ] = useState(false);
+
   const formRef = createRef();
 
   const FORM_URL = `${process.env.REST_URL}/${ENDPOINTS.CONTACT}/${contact.submit.form_id.ID}/feedback`;
@@ -52,33 +55,32 @@ const ContactPage = ({
     const isValid = formElement.checkValidity();
 
     if (isValid) {
-      fetch(FORM_URL, {
-        body: new FormData(formElement),
-        method: 'post',
-      })
-        .then(response => response.json())
-        .then(({
-          status, message,
-        }) => setFormMessage(status === 'mail_sent' ? message : 'Nastąpił błąd, spróbuj ponownie później'))
-        .catch(error => {
-          console.log(error);
-        });
+      if (formData.pot) {
+        setFormMessage('naughty, naughty bot');
+      } else {
+        fetch(FORM_URL, {
+          body: new FormData(formElement),
+          method: 'post',
+        })
+          .then(response => response.json())
+          .then(({
+            status, message,
+          }) => setFormMessage(status === 'mail_sent' ? message : 'Nastąpił błąd, spróbuj ponownie później'))
+          .catch(error => {
+            console.log(error);
+          });
+      }
     } else {
       formElement.reportValidity();
     }
   };
 
   useEffect(() => {
-    setFormDisabled(Object.keys(formData).length < contact.form.length ||
-    !Object.values(formData).every(value => value.length) || formMessage);
-  }, [
-    contact.form.length,
-    formData,
-    formMessage,
-  ]);
+    setFormDisabled(formMessage);
+  }, [formMessage]);
 
   return (
-    <main>
+    <Main>
       <Header>
         <Cover image={cover} />
         <Container>
@@ -115,7 +117,7 @@ const ContactPage = ({
           </FormWrapper>
         </Container>
       </Content>
-    </main>
+    </Main>
   );
 };
 

@@ -2,25 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
+import { Main } from '@components/styled';
 import { Breadcrumbs } from '@components';
 
-import {
-  Cover, Title,
-} from '@components/GenericPage/GenericPage.styled';
+import { Cover } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Container, Content, Header, Lead,
+  Container, Content, Header, Lead, Title,
 } from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 
 const slugs = {
   equilibrium: 'Spokój i równowaga',
+  relaxx: 'Strefa relaksu',
+  sleeep: 'Zdrowy sen',
 };
 
 const ArticlePage = ({
   pageContext, path,
 }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -54,7 +55,7 @@ const ArticlePage = ({
         {pageContext?.sections && renderArticle(pageContext?.sections)}
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlePage;

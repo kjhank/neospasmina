@@ -5,10 +5,19 @@ import {
 } from '@components';
 
 import {
-  Header as GenericHeader, Lead as GenericLead,
+  Header as GenericHeader, Lead as GenericLead, Title as GenericTitle,
 } from '@components/GenericPage/GenericPage.styled';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Content = styled.article``;
+
+export const Title = styled(GenericTitle)`
+  @media ${mediaQueries.s} {
+    padding-top: 1em;
+    font-size: ${({ theme }) => theme.fonts.sizes.larger};
+  }
+`;
 
 export const Header = styled(GenericHeader)`
   margin-bottom: 2vw;
@@ -18,12 +27,18 @@ export const Lead = styled(GenericLead)`
   color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
   text-align: left;
+
+  @media ${mediaQueries.s} {
+    font-size: ${({ theme }) => theme.fonts.sizes.xsmall};
+    text-align: center;
+  }
 `;
 
 export const SectionHeading = styled.h2``;
 
 export const Section = styled.section`
   position: ${({ gradient }) => gradient && 'relative'};
+  overflow-wrap: break-word;
   display: flex;
   flex-direction: ${({ variant }) => {
     if (variant === 'textLeft' || variant === 'twoColText') {
@@ -52,6 +67,13 @@ export const Section = styled.section`
     font-size: ${({
     theme, variant,
   }) => (variant === 'footnotes' ? 'inherit' : theme.fonts.sizes.xxlarge)};
+
+    @media ${mediaQueries.s} {
+      font-size: ${({
+    theme, variant,
+  }) => (variant === 'footnotes' ? 'inherit' : theme.fonts.sizes.xlarge)};
+      text-align: center;
+    }
   }
 
   p + h2,
@@ -88,11 +110,19 @@ export const Section = styled.section`
   > picture,
   > div {
       width: calc(50% - 1.484375vw);
+
+      @media ${mediaQueries.s} {
+        width: 100%;
+      }
     }
   `)}
   ${({ variant }) => variant === 'twoColText' && css`
   > div {
     width: calc(50% - 1.484375vw);
+
+    @media ${mediaQueries.s} {
+      width: 100%;
+    }
   }
   `};
 
@@ -104,6 +134,11 @@ export const Section = styled.section`
     top: ${gradient.offset}%;
     height: ${(gradient.height)}%;
   `};
+  }
+
+  @media ${mediaQueries.s} {
+    flex-direction: column;
+    text-align: left;
   }
 `;
 

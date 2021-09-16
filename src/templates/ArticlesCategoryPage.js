@@ -6,6 +6,8 @@ import {
   Container, Typography,
 } from '@components';
 
+import { Main } from '@components/styled';
+
 import {
   Header, LinedHeading, Section,
 } from '@components/ArticlesCategoryPage/ArticlesCategoryPage.styled';
@@ -19,7 +21,7 @@ import {
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const ArticlesCategoryPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -38,6 +40,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
               <Item key={JSON.stringify(article).slice(0, 92)}>
                 <Image image={image} />
                 <Typography
+                  as="h3"
                   hasBottomMargin
                   size="large"
                   weight="semibold"
@@ -45,6 +48,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
                   {article?.post_title}
                 </Typography>
                 <Typography
+                  as="p"
                   hasBottomMargin
                   size="small"
                 >
@@ -63,7 +67,7 @@ const ArticlesCategoryPage = ({ pageContext }) => (
         </Section>
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlesCategoryPage;

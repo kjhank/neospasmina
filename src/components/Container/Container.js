@@ -6,12 +6,18 @@ export const Container = styled.div`
   position: relative;
   display: ${({ justify }) => (justify ? 'flex' : 'block')};
   justify-content: ${({ justify }) => justify};
+  width: 60vw;
   max-width: 1140px;
   height: 100%;
   margin: 0 auto;
 
   @media ${mediaQueries.xxl} {
-    max-width: 59.375vw;
+    width: auto;
+    max-width: 65vw;
+  }
+
+  @media ${mediaQueries.xl} {
+    max-width: 80vw;
   }
 
   @media ${mediaQueries.xs} {

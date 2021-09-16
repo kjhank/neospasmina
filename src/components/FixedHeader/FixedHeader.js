@@ -1,11 +1,13 @@
 import React, {
-  createRef, useEffect, // useRef,
+  createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { Equalizer } from '@icons';
 import {
-  StyledContainer as Container, PlayButton, StyledHeader,
+  Burger, Close, Equalizer,
+} from '@icons';
+import {
+  StyledContainer as Container, MenuToggle, PlayButton, StyledHeader,
 } from './FixedHeader.styled';
 import {
   Logo, LogoExtra, LogoNight, MainMenu,
@@ -21,18 +23,11 @@ export const FixedHeader = ({
   setPageScrolled,
 }) => {
   const headerRef = createRef();
-  // const locationRef = useRef({ location: null });
 
-  // useEffect(() => {
-  //   if (!locationRef.current.location) {
-  //     locationRef.current.location = location;
-  //   } else if (locationRef.current.location !== location) {
-  //     locationRef.current.location = location;
-  //     const { scrollY } = window;
-
-  //     setPageScrolled(scrollY === 0);
-  //   }
-  // }, [location]);
+  const [
+    isNavigationOpen,
+    setNavigationOpen,
+  ] = useState(false);
 
   useEffect(() => {
     const { height: headerHeight } = headerRef?.current?.getBoundingClientRect();
@@ -48,6 +43,10 @@ export const FixedHeader = ({
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
+  useEffect(() => {
+    setNavigationOpen(false);
+  }, [location]);
+
   const isProducts = location.pathname.includes('/produkty/');
   const isExtra = isProducts && location.pathname.includes('/neospasmina-extra');
   const isNight = isProducts && location.pathname.includes('/neospasmina-noc');
@@ -61,7 +60,10 @@ export const FixedHeader = ({
         {isExtra && <LogoExtra />}
         {isNight && <LogoNight />}
         {!isExtra && !isNight && <Logo title="logo neospasmina" />}
-        <MainMenu items={mainMenu}>
+        <MainMenu
+          items={mainMenu}
+          isOpen={isNavigationOpen}
+        >
           <PlayButton
             isTranslucent={!isMusicPlaying}
             onClick={() => setMusicPlaying(previous => !previous)}
@@ -69,6 +71,13 @@ export const FixedHeader = ({
             <Equalizer />
           </PlayButton>
         </MainMenu>
+        <MenuToggle
+          isToggled={isNavigationOpen}
+          onClick={() => setNavigationOpen(previous => !previous)}
+        >
+          <Burger />
+          <Close />
+        </MenuToggle>
       </Container>
     </StyledHeader>
   );

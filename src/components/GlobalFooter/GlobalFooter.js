@@ -62,14 +62,23 @@ export const GlobalFooter = ({
             {company?.legal}
           </CompanyWrapper>
           <CompanyLinks>
-            {company?.links.map(link => (
-              <ExternalLink
-                key={link.text}
-                url={link.url}
-              >
-                {link.text}
-              </ExternalLink>
-            ))}
+            {company?.links.map(link => (link.type === 'external' ?
+              (
+                <ExternalLink
+                  key={link.text}
+                  url={link.url}
+                >
+                  {link.text}
+                </ExternalLink>
+              ) :
+              (
+                <Link
+                  key={link.text}
+                  to={link.link}
+                >
+                  {link.text}
+                </Link>
+              )))}
           </CompanyLinks>
         </Container>
       </CompanyData>

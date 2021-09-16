@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import {
   Link, List, ListItem, Splitter, Wrapper,
@@ -14,18 +15,18 @@ export const Breadcrumbs = ({
         (
           <ListItem key={step.text}>
             <Link
+              dangerouslySetInnerHTML={{ __html: sanitize(step.text) }}
               isLight={isLight}
               to={step.to}
-            >
-              {step.text}
-            </Link>
+            />
             <Splitter>&gt;</Splitter>
           </ListItem>
         ) :
         (
-          <ListItem key={step.text}>
-            {step.text}
-          </ListItem>
+          <ListItem
+            dangerouslySetInnerHTML={{ __html: sanitize(step.text) }}
+            key={step.text}
+          />
         )
       ))}
     </List>

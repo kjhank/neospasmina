@@ -6,6 +6,8 @@ import {
   Container, Typography,
 } from '@components';
 
+import { Main } from '@components/styled';
+
 import {
   Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
@@ -27,7 +29,7 @@ const slugs = {
 };
 
 const ArticlesPage = ({ pageContext }) => (
-  <main>
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -44,6 +46,7 @@ const ArticlesPage = ({ pageContext }) => (
                 <Item key={JSON.stringify(article).slice(0, 92)}>
                   <Image image={article.image} />
                   <Typography
+                    as="h3"
                     hasBottomMargin
                     size="large"
                     weight="semibold"
@@ -51,6 +54,7 @@ const ArticlesPage = ({ pageContext }) => (
                     {article.post.post_title}
                   </Typography>
                   <Typography
+                    as="p"
                     hasBottomMargin
                     size="small"
                   >
@@ -59,7 +63,7 @@ const ArticlesPage = ({ pageContext }) => (
                   </Typography>
                   <Link
                     hasArrow
-                    to={article.post.post_name}
+                    to={`${slugs[groupName]}/${article.post.post_name}`}
                   >
                     Dowiedz się więcej
                   </Link>
@@ -82,7 +86,7 @@ const ArticlesPage = ({ pageContext }) => (
         ))}
       </Container>
     </Content>
-  </main>
+  </Main>
 );
 
 export default ArticlesPage;

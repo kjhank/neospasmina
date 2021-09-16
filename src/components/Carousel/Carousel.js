@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { ButtonLink } from '@components';
+import {
+  ButtonLink, Container,
+} from '@components';
 import { Arrow } from '@icons';
 
 import {
@@ -23,24 +25,26 @@ export const Carousel = ({ items }) => {
   };
 
   return (
-    <Wrapper>
-      {items.map((item, index) => (
-        <SingleItem
-          isCurrent={index === currentItem}
-          key={item.post.post_name}
-        >
-          <Heading>
-            {item.post.post_title}
-          </Heading>
-          <HeroImage image={item.image} />
-          <ButtonLink
-            to={item.url}
+    <Container>
+      <Wrapper>
+        {items.map((item, index) => (
+          <SingleItem
+            isCurrent={index === currentItem}
+            key={item.post.post_name}
           >
-            Dowiedz się więcej
-            <Arrow />
-          </ButtonLink>
-        </SingleItem>
-      ))}
+            <Heading>
+              {item.post.post_title}
+            </Heading>
+            <HeroImage image={item.image} />
+            <ButtonLink
+              to={item.url}
+            >
+              Dowiedz się więcej
+              <Arrow />
+            </ButtonLink>
+          </SingleItem>
+        ))}
+      </Wrapper>
       <ButtonsWrapper>
         <CarouselButton
           isFlipped
@@ -54,7 +58,7 @@ export const Carousel = ({ items }) => {
           <Arrow />
         </CarouselButton>
       </ButtonsWrapper>
-    </Wrapper>
+    </Container>
   );
 };
 

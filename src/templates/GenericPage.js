@@ -6,8 +6,13 @@ import {
   Container, Content, Cover, Header, Lead, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
-const GenericPage = ({ pageContext }) => (
-  <main>
+import { Main } from '@components/styled';
+import { renderSitemap } from './helpers';
+
+const GenericPage = ({
+  pageContext, path,
+}) => (
+  <Main>
     <Header>
       <Cover image={pageContext?.cover} />
       <Container>
@@ -20,9 +25,16 @@ const GenericPage = ({ pageContext }) => (
       </Container>
     </Header>
     <Content>
-      <Container dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.content) }} />
+      {path === '/mapa-strony' ?
+        (
+          <Container>
+            {renderSitemap(pageContext.footerLinks)}
+          </Container>
+        ) :
+        (
+          <Container dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.content) }} />)}
     </Content>
-  </main>
+  </Main>
 );
 
 export default GenericPage;
@@ -31,8 +43,10 @@ GenericPage.propTypes = {
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),
+    footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
     heading: PropTypes.string,
     lead: PropTypes.string,
     renderedTitle: PropTypes.string,
   }).isRequired,
+  path: PropTypes.string.isRequired,
 };

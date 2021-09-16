@@ -14,7 +14,7 @@ const Text = styled.div`
     size, theme,
   }) => theme.fonts.sizes[size]};
   text-align: ${({ align }) => align};
-  text-transform: ${({ variant }) => variant?.includes('uppercase') && 'uppercase'};
+  text-transform: ${({ variant }) => (variant?.includes('uppercase') ? 'uppercase' : 'none')};
 
   b, strong {
     font-weight: bold;

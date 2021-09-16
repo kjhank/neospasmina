@@ -4,6 +4,8 @@ import {
   Container as GenericContainer, Image,
 } from '@components';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const Title = styled.h1`
   width: 100%;
   color: ${({
@@ -12,6 +14,10 @@ export const Title = styled.h1`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
   text-transform: ${({ isLowercase }) => (isLowercase ? 'none' : 'uppercase')};
+
+  @media ${mediaQueries.xs} {
+    font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+  }
 `;
 
 export const Header = styled.header`
@@ -19,6 +25,10 @@ export const Header = styled.header`
   height: 35.104167vw;
   margin-bottom: 3.90625vw;
   padding-top: 8.333333vw;
+
+  @media ${mediaQueries.xl} {
+    height: auto;
+  }
 `;
 
 export const Lead = styled.p`
@@ -62,6 +72,16 @@ export const Cover = styled(Image)`
   width: 100%;
   height: 100%;
   pointer-events: none;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media ${mediaQueries.s} {
+    width: 150%;
+  }
 `;
 
 export const Container = styled(GenericContainer)`
