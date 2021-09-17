@@ -125,6 +125,12 @@ export const CTAButtonLink = styled(ExternalLink)`
 `;
 
 export const Content = styled.article`
+  margin-bottom: 25em;
+
+  @media ${mediaQueries.m} {
+    margin-bottom: 20em;
+  }
+
   > div {
     > p {
       @media ${mediaQueries.xxl} {

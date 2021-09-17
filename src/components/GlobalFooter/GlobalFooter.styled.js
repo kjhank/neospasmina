@@ -104,8 +104,13 @@ export const CompanyLinks = styled.nav`
   align-items: center;
   font-size: ${({ theme }) => theme.fonts.sizes.tiny};
 
+  @media ${mediaQueries.huge} {
+    font-size: 8px;
+  }
+
   @media ${mediaQueries.xxl} {
     justify-content: center;
+    font-size: ${({ theme }) => theme.fonts.sizes.xxsmall}
   }
 
   @media ${mediaQueries.l} {

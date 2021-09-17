@@ -150,10 +150,16 @@ export const MosaicLinkTitle = styled.h4`
   @media ${mediaQueries.huge} {
     bottom: 0.5em;
     left: 0.5em;
+    width: ${({ isWider }) => (isWider ? '75%' : '50%')};
     font-size: ${({ theme }) => theme.fonts.sizes.larger};
   }
 
+  @media ${mediaQueries.xxl} {
+    width: ${({ isWider }) => (isWider ? '75%' : '45%')};
+  }
+
   @media ${mediaQueries.xl} {
+    width: ${({ isWider }) => (isWider ? '75%' : '30%')};
     font-size: ${({ theme }) => theme.fonts.sizes.large};
   }
 
@@ -165,6 +171,14 @@ export const MosaicLinkTitle = styled.h4`
     > span {
       display: inline-flex;
       align-items: center;
+
+      :first-of-type {
+        padding-right: 0.677083vw;
+      }
+
+      :not(:first-of-type) {
+        padding-left: 0.677083vw;
+      }
 
         > svg {
           height: 1em;
@@ -190,7 +204,13 @@ export const MosaicLink = styled(Link)`
   }
 `;
 
-export const MosaicImage = styled.picture``;
+export const MosaicImage = styled.picture`
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
 export const Subheading = styled.p`
   margin-bottom: 3.125vw;

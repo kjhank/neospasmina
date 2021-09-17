@@ -1,8 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-
-import { renderMetadata } from '@utils';
 
 import {
   Carousel, ProductsSection,
@@ -12,17 +9,12 @@ import { ArticlesSection } from '@components/HomePage/ArticlesSection';
 import { HeroLinksSection } from '@components/HomePage/HeroLinksSection';
 
 const HomePage = ({ pageContext }) => (
-  <>
-    <Helmet>
-      {renderMetadata(pageContext?.metadata)}
-    </Helmet>
-    <Main>
-      <Carousel items={pageContext?.carousel} />
-      <ProductsSection data={pageContext?.products} />
-      <ArticlesSection data={pageContext?.articles} />
-      <HeroLinksSection data={pageContext?.links} />
-    </Main>
-  </>
+  <Main>
+    <Carousel items={pageContext?.carousel} />
+    <ProductsSection data={pageContext?.products} />
+    <ArticlesSection data={pageContext?.articles} />
+    <HeroLinksSection data={pageContext?.links} />
+  </Main>
 );
 
 export default HomePage;

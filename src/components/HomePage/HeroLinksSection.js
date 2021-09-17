@@ -20,7 +20,9 @@ const renderLinkTitle = title => {
 
   return (
     <span>
-      {titleArray.join(' ')}
+      <span>
+        {titleArray.join(' ')}
+      </span>
       {' '}
       {lastSpan}
     </span>
