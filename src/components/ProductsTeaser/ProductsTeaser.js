@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Container, Typography,
-} from '@components';
+import { Typography } from '@components';
 import { Arrow } from '@icons';
 
 import {
@@ -11,11 +9,10 @@ import {
 } from './ProductsTeaser.styled';
 
 export const ProductsTeaser = ({
-  isPulledUp, noHeading, products,
+  noHeading, products, smallerMargin,
 }) => (
-  <Wrapper noHeight={noHeading}>
-    <Container>
-      {!noHeading && (
+  <Wrapper smallerMargin={smallerMargin}>
+    {!noHeading && (
       <Typography
         as="h2"
         hasBottomMargin
@@ -25,50 +22,49 @@ export const ProductsTeaser = ({
       >
         Poznaj nasze produkty:
       </Typography>
-      )}
-      <ProductsList isPulledUp={isPulledUp}>
-        {products?.map(product => (
-          <SingleProduct key={product?.slug}>
-            <ProductImage
-              image={product?.acf?.summary?.image}
-              isLazy={false}
-            />
-            <Typography
-              as="h3"
-              size="larger"
-              variant="uppercase"
-              weight="semibold"
-            >
-              {product?.title?.rendered}
-            </Typography>
-            <Typography
-              align="center"
-              as="p"
-              size="large"
-            >
-              {product?.acf?.summary?.description}
-            </Typography>
-            <Link
-              color={product?.acf?.summary?.color}
-              to={`/produkty/${product?.slug}`}
-            >
-              Sprawdź
-              <Arrow />
-            </Link>
-          </SingleProduct>
-        ))}
-      </ProductsList>
-    </Container>
+    )}
+    <ProductsList>
+      {products?.map(product => (
+        <SingleProduct key={product?.slug}>
+          <ProductImage
+            image={product?.acf?.summary?.image}
+            isLazy={false}
+          />
+          <Typography
+            as="h3"
+            size="larger"
+            variant="uppercase"
+            weight="semibold"
+          >
+            {product?.title?.rendered}
+          </Typography>
+          <Typography
+            align="center"
+            as="p"
+            size="large"
+          >
+            {product?.acf?.summary?.description}
+          </Typography>
+          <Link
+            color={product?.acf?.summary?.color}
+            to={`/produkty/${product?.slug}`}
+          >
+            Sprawdź
+            <Arrow />
+          </Link>
+        </SingleProduct>
+      ))}
+    </ProductsList>
   </Wrapper>
 );
 
 ProductsTeaser.propTypes = {
-  isPulledUp: PropTypes.bool,
   noHeading: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  smallerMargin: PropTypes.bool,
 };
 
 ProductsTeaser.defaultProps = {
-  isPulledUp: false,
   noHeading: false,
+  smallerMargin: false,
 };

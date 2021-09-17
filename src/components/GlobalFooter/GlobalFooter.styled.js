@@ -53,56 +53,12 @@ export const StyledLink = styled(Link)`
 
 export const Wrapper = styled.div`
   position: relative;
-  padding: ${({
-    hasExtraPadding, hasHugePadding,
-  }) => {
-    if (hasExtraPadding || hasHugePadding) {
-      if (hasHugePadding) {
-        return '30vw 0 1.875vw';
-      }
-
-      return '15vw 0 1.875vw';
-    }
-
-    return '1.875vw 0';
-  }};
+  padding: 1.875vw 0;
 
   &::after {
     ${({
     hasGradient, theme,
   }) => hasGradient && theme.getGradient()};
-  }
-
-  @media ${mediaQueries.huge} {
-    padding: ${({
-    hasExtraPadding, hasHugePadding,
-  }) => {
-    if (hasExtraPadding || hasHugePadding) {
-      if (hasHugePadding) {
-        return '33vw 0 1.875vw';
-      }
-
-      return '15vw 0 1.875vw';
-    }
-
-    return '1.875vw 0';
-  }};
-  }
-
-  @media ${mediaQueries.s} {
-    padding: ${({
-    hasExtraPadding, hasHugePadding,
-  }) => {
-    if (hasExtraPadding || hasHugePadding) {
-      if (hasHugePadding) {
-        return '340vw 0 1.875vw';
-      }
-
-      return '15vw 0 1.875vw';
-    }
-
-    return '1.875vw 0';
-  }};
   }
 `;
 
@@ -226,6 +182,8 @@ export const Disclaimer = styled.div`
 
 export const Legal = styled(Disclaimer)`
   margin-top: 1em;
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding-top: 1em;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
   text-align: center;
 

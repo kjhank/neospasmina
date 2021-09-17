@@ -6,7 +6,7 @@ import { navigate } from '@reach/router';
 import sanitize from 'sanitize-html';
 
 import {
-  Container, ProductsTeaser,
+  Container, GlobalFooter,
 } from '@components';
 
 import { Main } from '@components/styled';
@@ -16,11 +16,11 @@ import {
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Content, FilterButton, FiltersWrapper, Header,
+  FilterButton, FiltersWrapper, Header,
 } from '@components/ProductsPage/ProductsPage.styled';
 
 const ProductsPage = ({
-  location, pageContext,
+  location, pageContext, path,
 }) => {
   const params = useMemo(() => new URLSearchParams(location.search), [location]);
   const { featuredProducts } = pageContext;
@@ -68,32 +68,37 @@ const ProductsPage = ({
   const handleFilter = slug => setProductFilter(slug === 'all' ? '' : slug);
 
   return (
-    <Main>
-      <Header>
-        <Cover image={pageContext.cover} />
-        <Container>
-          <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }} />
-          <Lead>{pageContext.lead}</Lead>
-          <FiltersWrapper>
-            {filterButtons.map(button => (
-              <FilterButton
-                key={button.slug}
-                onClick={() => handleFilter(button.slug)}
-              >
-                {button.text}
-              </FilterButton>
-            ))}
-          </FiltersWrapper>
-        </Container>
-      </Header>
-      <Content>
-        <ProductsTeaser
-          isPulledUp
-          noHeading
-          products={products}
-        />
-      </Content>
-    </Main>
+    <>
+      <Main>
+        <Header>
+          <Cover image={pageContext.cover} />
+          <Container>
+            <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }} />
+            <Lead>{pageContext.lead}</Lead>
+            <FiltersWrapper>
+              {filterButtons.map(button => (
+                <FilterButton
+                  key={button.slug}
+                  onClick={() => handleFilter(button.slug)}
+                >
+                  {button.text}
+                </FilterButton>
+              ))}
+            </FiltersWrapper>
+          </Container>
+        </Header>
+      </Main>
+      <GlobalFooter
+        company={pageContext?.company}
+        featuredProducts={products}
+        legal={pageContext?.legal?.legal}
+        links={pageContext?.footerLinks}
+        path={path}
+        products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext?.slug)}
+        sil={pageContext?.legal?.sil}
+        slug={pageContext?.slug}
+      />
+    </>
   );
 };
 
@@ -105,9 +110,17 @@ ProductsPage.propTypes = {
     search: PropTypes.string,
   }).isRequired,
   pageContext: PropTypes.shape({
-    cover: PropTypes.shape({}).isRequired,
-    featuredProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    heading: PropTypes.string.isRequired,
-    lead: PropTypes.string.isRequired,
+    company: PropTypes.string,
+    cover: PropTypes.shape({}),
+    featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
+    footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
+    heading: PropTypes.string,
+    lead: PropTypes.string,
+    legal: PropTypes.shape({
+      legal: PropTypes.string,
+      sil: PropTypes.string,
+    }),
+    slug: PropTypes.string,
   }).isRequired,
+  path: PropTypes.string.isRequired,
 };

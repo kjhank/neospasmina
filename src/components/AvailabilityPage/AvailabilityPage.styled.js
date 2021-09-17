@@ -108,7 +108,7 @@ export const Container = styled(GenericContainer)`
 
 export const Lead = styled(GenericLead)`
   @media ${mediaQueries.huge} {
-    padding-top: 2em;
+    padding-top: 4em;
   }
 
   @media ${mediaQueries.m} {
@@ -127,6 +127,10 @@ export const Header = styled(GenericHeader)`
 `;
 
 export const Cover = styled(GenericCover)`
+  > img {
+    height: auto;
+  }
+
   @media ${mediaQueries.s} {
     width: 120%;
   }

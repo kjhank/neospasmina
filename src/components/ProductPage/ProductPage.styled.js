@@ -74,6 +74,8 @@ export const Lead = styled(GenericLead)`
 `;
 
 export const CTA = styled.aside`
+  width: 43%;
+
   @media ${mediaQueries.s} {
     width: 50%;
     margin-left: auto;

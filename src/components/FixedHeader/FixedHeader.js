@@ -2,6 +2,7 @@ import React, {
   createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
 import {
   Burger, Close, Equalizer,
@@ -57,9 +58,11 @@ export const FixedHeader = ({
       ref={headerRef}
     >
       <Container>
-        {isExtra && <LogoExtra />}
-        {isNight && <LogoNight />}
-        {!isExtra && !isNight && <Logo title="logo neospasmina" />}
+        <Link to="/">
+          {isExtra && <LogoExtra />}
+          {isNight && <LogoNight />}
+          {!isExtra && !isNight && <Logo title="logo neospasmina" />}
+        </Link>
         <MainMenu
           items={mainMenu}
           isOpen={isNavigationOpen}

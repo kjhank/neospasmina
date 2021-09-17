@@ -148,6 +148,8 @@ export const MosaicLinkTitle = styled.h4`
   font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
 
   @media ${mediaQueries.huge} {
+    bottom: 0.5em;
+    left: 0.5em;
     font-size: ${({ theme }) => theme.fonts.sizes.larger};
   }
 

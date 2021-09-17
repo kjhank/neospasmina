@@ -5,6 +5,8 @@ import {
   Content as GenericContent, Header as GenericHeader,
 } from '@components/GenericPage/GenericPage.styled';
 
+import { mediaQueries } from '@utils/rwd';
+
 export const FilterButton = styled(ButtonLink).attrs({
   customAs: 'button',
   hasArrow: true,
@@ -15,13 +17,24 @@ export const FilterButton = styled(ButtonLink).attrs({
 
 export const FiltersWrapper = styled.nav`
   margin-bottom: 7.8125vw;
-  ${FilterButton} + ${FilterButton} {
+
+  > button + button {
     margin-left: 16px;
+  }
+
+  @media ${mediaQueries.s} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    > button + button {
+      margin-top: 16px;
+      margin-left: unset;
+    }
   }
 `;
 
 export const Content = styled(GenericContent)`
-  height: 0;
   margin-bottom: 0;
 `;
 
@@ -33,5 +46,10 @@ export const Header = styled(GenericHeader)`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  @media ${mediaQueries.s} {
+    height: auto;
+    padding-bottom: 3em;
   }
 `;

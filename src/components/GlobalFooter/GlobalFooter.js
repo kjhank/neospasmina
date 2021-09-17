@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
 import {
-  Container, ExternalLink,
+  Container, ExternalLink, ProductsTeaser,
 } from '@components';
 import {
   CompanyData,
@@ -22,16 +22,24 @@ import {
 } from './GlobalFooter.styled';
 import { Logo } from './Logo';
 
+const noProductsSlugs = [
+  // 'produkty',
+  'strona-glowna',
+];
+
 export const GlobalFooter = ({
-  company, hasExtraPadding, hasHugePadding, legal, links, sil,
+  company, featuredProducts, legal, links, path, sil, slug,
 }) => (
   <Footer>
-    <Wrapper
-      hasExtraPadding={hasExtraPadding}
-      hasHugePadding={hasHugePadding}
-      hasGradient
-    >
+    <Wrapper hasGradient>
       <Container>
+        {!noProductsSlugs.includes(slug) && (
+        <ProductsTeaser
+          noHeading={path === '/produkty'}
+          products={featuredProducts?.filter(product => product.slug !== slug)}
+          smallerMargin={path === '/produkty'}
+        />
+        )}
         <LinksSection columns={links?.length}>
           {links?.map(linksGroup => (
             <LinksGroup key={JSON.stringify(linksGroup.heading)}>
@@ -97,14 +105,10 @@ GlobalFooter.propTypes = {
     legal: PropTypes.string,
     links: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
-  hasExtraPadding: PropTypes.bool,
-  hasHugePadding: PropTypes.bool,
+  featuredProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   legal: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  path: PropTypes.string.isRequired,
   sil: PropTypes.string.isRequired,
-};
-
-GlobalFooter.defaultProps = {
-  hasExtraPadding: false,
-  hasHugePadding: false,
+  slug: PropTypes.string.isRequired,
 };

@@ -40,7 +40,7 @@ export const Lead = styled.p`
 `;
 
 export const Content = styled.article`
-  margin-bottom: 5vw;
+  margin-bottom: 20vw;
   font-size: ${({ theme }) => theme.fonts.sizes.larger};
 
   h2 {

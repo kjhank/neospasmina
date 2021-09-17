@@ -9,26 +9,21 @@ import { mediaQueries } from '@utils/rwd';
 export const Wrapper = styled.section`
   position: relative;
   z-index: 2;
-  height: ${({ noHeight }) => (noHeight ? 0 : 'auto')};
-  margin: ${({ noHeight }) => (noHeight ? 'auto' : '5vw 0 -15vw')};
+  display: grid;
+  place-items: center;
+  margin-top: ${({ smallerMargin }) => (smallerMargin ? '-10%' : '-30%')};
   padding-bottom: 1.5vw;
 
-  > div {
-    display: grid;
-    place-items: center;
-
-    > h2 {
-      @media ${mediaQueries.xs} {
-        font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
-        text-align: center;
-      }
+  > h2 {
+    @media ${mediaQueries.xs} {
+      font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
+      text-align: center;
     }
   }
 `;
 
 export const ProductsList = styled.ul`
   position: relative;
-  top: ${({ isPulledUp }) => isPulledUp && '-5vw'};
   display: flex;
   justify-content: center;
   gap: 2%;

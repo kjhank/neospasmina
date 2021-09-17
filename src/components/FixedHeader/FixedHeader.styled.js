@@ -158,8 +158,13 @@ export const StyledContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
 
-  > svg {
+  > a {
     height: 1.458333vw;
+
+    > svg {
+      width: auto;
+      height: 100%;
+    }
 
     @media ${mediaQueries.s} {
       width: 50%;
@@ -184,7 +189,7 @@ export const MenuToggle = styled.button.attrs({ type: 'button' })`
     display: block;
   }
 
-  > svg {
+  > svg { /* stylelint-disable-line no-descending-specificity */
     position: absolute;
     top: 0;
     left: 0;

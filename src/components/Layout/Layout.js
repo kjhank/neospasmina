@@ -18,7 +18,7 @@ import {
 import { Theme } from '@theme/main';
 
 import {
-  FixedHeader, GlobalFooter, ProductsTeaser,
+  FixedHeader, GlobalFooter,
 } from '@components';
 
 const Layout = ({
@@ -58,7 +58,7 @@ const Layout = ({
 
   const noProductsSlugs = [
     'produkty',
-    'strona-glowna',
+    // 'strona-glowna',
   ];
 
   const htmlAttributes = { lang: 'pl' };
@@ -94,7 +94,9 @@ const Layout = ({
         setPageScrolled={setPageScrolled}
       />
       <ReactPlayer
+        config={{ file: { forceAudio: true } }}
         playing={isMusicPlaying}
+        playsinline
         style={playerStyle}
         url={playerSources}
       />
@@ -104,19 +106,19 @@ const Layout = ({
       })} */}
       {children}
       {!noProductsSlugs.includes(pageContext?.slug) && (
-        <ProductsTeaser
-          noHeading={location.pathname === '/produkty/'}
-          products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext?.slug)}
-        />
-      )}
       <GlobalFooter
         company={pageContext?.company}
+        featuredProducts={pageContext?.featuredProducts}
         hasExtraPadding={!noProductsSlugs.includes(pageContext?.slug)}
-        hasHugePadding={location.pathname === '/produkty'}
+        hasHugePadding={path === '/produkty'}
         legal={pageContext?.legal?.legal}
         links={pageContext?.footerLinks}
+        path={path}
+        products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext?.slug)}
         sil={pageContext?.legal?.sil}
+        slug={pageContext?.slug}
       />
+      )}
     </Theme>
   );
 };
