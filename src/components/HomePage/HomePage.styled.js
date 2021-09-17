@@ -142,7 +142,7 @@ export const MosaicLinkTitle = styled.h4`
   position: absolute;
   bottom: 0.677083vw;
   left: 0.677083vw;
-  width: ${({ isWider }) => (isWider ? '60%' : '48%')};
+  width: ${({ isWider }) => (isWider ? '67%' : '46%')};
   color: #fff;
   font-weight: 500;
   font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
