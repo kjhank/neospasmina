@@ -53,15 +53,76 @@ export const LinksWrapper = styled.nav`
 
   > a {
     min-width: 11.666667vw;
+
+    :first-of-type {
+      @media ${mediaQueries.huge} {
+        margin-left: 6em;
+      }
+
+      @media ${mediaQueries.xxl} {
+        margin-left: 8em;
+      }
+
+      @media ${mediaQueries.xl} {
+        margin-left: 16em;
+      }
+    }
+
+    :last-of-type {
+      @media ${mediaQueries.huge} {
+        margin-right: 4em;
+      }
+
+      @media ${mediaQueries.xxl} {
+        margin-right: 6em;
+      }
+
+      @media ${mediaQueries.xl} {
+        margin-right: 14em;
+      }
+
+      @media ${mediaQueries.l} {
+        margin-right: 12em;
+      }
+    }
   }
 
   @media ${mediaQueries.xxlarge} {
     bottom: 1vw;
   }
 
+  @media ${mediaQueries.m} {
+    justify-content: center;
+
+    > a {
+      :first-of-type {
+        margin-left: auto;
+      }
+
+      :last-of-type {
+        margin-right: auto;
+        margin-left: 2em;
+      }
+    }
+  }
+
   @media ${mediaQueries.s} {
     bottom: 0;
     width: 80%;
     margin-left: 10%;
+
+    > a {
+      :last-of-type {
+        margin-left: 4em;
+      }
+    }
+  }
+
+  @media ${mediaQueries.xs} {
+    > a {
+      :last-of-type {
+        margin-left: 2em;
+      }
+    }
   }
 `;
