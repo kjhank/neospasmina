@@ -53,6 +53,10 @@ export const CarouselButton = styled.button`
   height: 2.34375vw;
   cursor: pointer;
 
+  @media ${mediaQueries.m} {
+    width: 2em;
+  }
+
   & + & {
     margin-left: 1.40625vw;
   }
