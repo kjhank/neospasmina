@@ -5,12 +5,11 @@ import sanitize from 'sanitize-html';
 import { Typography } from '@components';
 import { Main } from '@components/styled';
 
-import {
-  Content, Title,
-} from '@components/GenericPage/GenericPage.styled';
+import { Title } from '@components/GenericPage/GenericPage.styled';
 
 import {
   Container,
+  Content,
   Cover,
   Header,
   Image,

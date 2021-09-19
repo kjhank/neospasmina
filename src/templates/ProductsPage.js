@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useMemo, useState,
+  createRef, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
@@ -18,11 +18,14 @@ import {
 import {
   FilterButton, FiltersWrapper, Header,
 } from '@components/ProductsPage/ProductsPage.styled';
+import { isMobile } from '@utils/helpers';
 
 const ProductsPage = ({
   location, pageContext, path,
 }) => {
   const params = useMemo(() => new URLSearchParams(location.search), [location]);
+  const productsRef = createRef();
+
   const { featuredProducts } = pageContext;
 
   const [
@@ -48,6 +51,19 @@ const ProductsPage = ({
     setProducts(productFilter ?
       featuredProducts.filter(product => product.acf.product.type === productFilter) :
       featuredProducts);
+
+    if (isMobile) {
+      const { current: listNode } = productsRef;
+
+      const { top: elementOffset } = listNode.getBoundingClientRect();
+
+      const scrollConfig = {
+        behavior: 'smooth',
+        top: elementOffset - 60,
+      };
+
+      window.scrollTo(scrollConfig);
+    }
   }, [productFilter]);
 
   const filterButtons = [
@@ -95,6 +111,7 @@ const ProductsPage = ({
         links={pageContext?.footerLinks}
         path={path}
         products={pageContext?.featuredProducts?.filter(({ slug }) => slug !== pageContext?.slug)}
+        productsRef={productsRef}
         sil={pageContext?.legal?.sil}
         slug={pageContext?.slug}
       />
@@ -110,7 +127,7 @@ ProductsPage.propTypes = {
     search: PropTypes.string,
   }).isRequired,
   pageContext: PropTypes.shape({
-    company: PropTypes.string,
+    company: PropTypes.shape({}),
     cover: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
     footerLinks: PropTypes.arrayOf(PropTypes.shape({})),

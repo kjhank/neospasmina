@@ -26,9 +26,9 @@ const ArticlePage = ({
       <Cover image={pageContext?.cover} />
       <Container>
         <Title
+          dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }}
           isLight={pageContext?.isLight}
           isLowercase
-          dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }}
         />
         <Breadcrumbs
           isLight={pageContext?.isLight}

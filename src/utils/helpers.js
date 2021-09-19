@@ -12,7 +12,7 @@ import { Typography } from '@components';
 
 export const isBrowser = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-export const isMobile = () => isBrowser && window.matchMedia(mediaQueries.xs).matches;
+export const isMobile = !!(isBrowser && window.matchMedia(mediaQueries.xs).matches);
 
 export const renderMetadata = data => data?.map(({
   type, content,
@@ -77,8 +77,8 @@ export const renderArticle = sections => sections.map(({ section }) => {
   if (variant === 'fullText') {
     return (
       <Section
-        gradient={gradient}
         dangerouslySetInnerHTML={{ __html: sanitize(text) }}
+        gradient={gradient}
         key={key}
         variant={variant}
       />

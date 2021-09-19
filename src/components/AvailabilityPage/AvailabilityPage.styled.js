@@ -7,7 +7,7 @@ import {
 } from '@components';
 
 import {
-  Cover as GenericCover, Header as GenericHeader, Lead as GenericLead,
+  Content as GenericContent, Cover as GenericCover, Header as GenericHeader, Lead as GenericLead,
 } from '@components/GenericPage/GenericPage.styled';
 
 import { mediaQueries } from '@utils/rwd';
@@ -140,5 +140,19 @@ export const Cover = styled(GenericCover)`
       height: auto;
       object-fit: unset;
     }
+  }
+`;
+
+export const Content = styled(GenericContent)`
+  @media ${mediaQueries.xxl} {
+    margin-bottom: 25vw;
+  }
+
+  @media ${mediaQueries.xs} {
+    margin-bottom: 8em;
+  }
+
+  @media ${mediaQueries.xxs} {
+    margin-bottom: 6em;
   }
 `;

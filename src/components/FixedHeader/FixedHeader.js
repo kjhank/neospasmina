@@ -64,8 +64,8 @@ export const FixedHeader = ({
           {!isExtra && !isNight && <Logo title="logo neospasmina" />}
         </Link>
         <MainMenu
-          items={mainMenu}
           isOpen={isNavigationOpen}
+          items={mainMenu}
         >
           <PlayButton
             isTranslucent={!isMusicPlaying}

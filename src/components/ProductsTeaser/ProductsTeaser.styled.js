@@ -19,6 +19,10 @@ export const Wrapper = styled.section`
       font-size: ${({ theme }) => theme.fonts.sizes.xlarge};
       text-align: center;
     }
+
+    @media ${mediaQueries.xxs} {
+      font-size: ${({ theme }) => theme.fonts.sizes.larger};
+    }
   }
 `;
 
@@ -33,6 +37,8 @@ export const ProductsList = styled.ul`
 
   @media ${mediaQueries.xs} {
     flex-direction: column;
+    margin-bottom: 2em;
+    padding-bottom: 3em;
   }
 `;
 

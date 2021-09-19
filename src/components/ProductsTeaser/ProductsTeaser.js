@@ -9,7 +9,7 @@ import {
 } from './ProductsTeaser.styled';
 
 export const ProductsTeaser = ({
-  noHeading, products, smallerMargin,
+  innerRef, noHeading, products, smallerMargin,
 }) => (
   <Wrapper smallerMargin={smallerMargin}>
     {!noHeading && (
@@ -23,7 +23,7 @@ export const ProductsTeaser = ({
         Poznaj nasze produkty:
       </Typography>
     )}
-    <ProductsList>
+    <ProductsList ref={innerRef}>
       {products?.map(product => (
         <SingleProduct key={product?.slug}>
           <ProductImage
@@ -59,6 +59,7 @@ export const ProductsTeaser = ({
 );
 
 ProductsTeaser.propTypes = {
+  innerRef: PropTypes.shape({}).isRequired,
   noHeading: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   smallerMargin: PropTypes.bool,

@@ -20,8 +20,8 @@ const List = styled.ul`
 
 export const renderSitemap = links => links.map(group => (
   <Typography
-    key={group.heading}
     hasBottomMargin
+    key={group.heading}
   >
     <Typography
       as="h3"

@@ -77,8 +77,8 @@ const ProductPage = ({ pageContext }) => (
     <Content>
       <Container>
         <Typography
-          as="p"
           align="center"
+          as="p"
           color="medGray"
           dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.product.intro) }}
           hasBottomMargin
@@ -122,8 +122,8 @@ const ProductPage = ({ pageContext }) => (
                   {link?.description}
                 </Typography>
                 <TileLink
-                  to={link?.url}
                   color={pageContext?.color}
+                  to={link?.url}
                 >
                   Dowiedz się więcej
                   <Arrow />

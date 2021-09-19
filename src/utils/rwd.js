@@ -8,7 +8,8 @@ export const breakpoints = {
   m: 920,
   s: 800,
   xs: 680,
-  xxs: 360,
+  xxs: 400,
+  tiny: 360,
 };
 
 const mediaQueries = {

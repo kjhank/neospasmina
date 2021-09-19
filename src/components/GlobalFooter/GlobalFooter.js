@@ -22,19 +22,17 @@ import {
 } from './GlobalFooter.styled';
 import { Logo } from './Logo';
 
-const noProductsSlugs = [
-  // 'produkty',
-  'strona-glowna',
-];
+const noProductsSlugs = ['strona-glowna'];
 
 export const GlobalFooter = ({
-  company, featuredProducts, legal, links, path, sil, slug,
+  company, featuredProducts, legal, links, productsRef, path, sil, slug,
 }) => (
   <Footer>
     <Wrapper hasGradient>
       <Container>
         {!noProductsSlugs.includes(slug) && (
         <ProductsTeaser
+          innerRef={productsRef}
           noHeading={path === '/produkty'}
           products={featuredProducts?.filter(product => product.slug !== slug)}
           smallerMargin={path === '/produkty'}
@@ -109,6 +107,7 @@ GlobalFooter.propTypes = {
   legal: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   path: PropTypes.string.isRequired,
+  productsRef: PropTypes.shape({}).isRequired,
   sil: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 };
