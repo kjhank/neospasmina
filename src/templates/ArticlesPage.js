@@ -9,7 +9,7 @@ import {
 import { Main } from '@components/styled';
 
 import {
-  Content, Cover, Header, Lead, Title,
+  Content, Cover, Header, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
@@ -31,7 +31,11 @@ const slugs = {
 const ArticlesPage = ({ pageContext }) => (
   <Main>
     <Header>
-      <Cover image={pageContext?.cover} />
+      <Cover
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
+      />
+      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>
@@ -96,6 +100,8 @@ ArticlesPage.propTypes = {
     articles: PropTypes.shape({}),
     content: PropTypes.string,
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     lead: PropTypes.string,
     renderedTitle: PropTypes.string,

@@ -59,13 +59,14 @@ export const ProductsTeaser = ({
 );
 
 ProductsTeaser.propTypes = {
-  innerRef: PropTypes.shape({}).isRequired,
+  innerRef: PropTypes.shape({}),
   noHeading: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   smallerMargin: PropTypes.bool,
 };
 
 ProductsTeaser.defaultProps = {
+  innerRef: null,
   noHeading: false,
   smallerMargin: false,
 };

@@ -65,6 +65,8 @@ exports.createPages = async ({
     const global = {
       content: data.content.rendered,
       cover: acf?.cover,
+      coverPortrait: acf?.cover_portrait,
+      hasPortraitCover: acf?.has_portrait_cover,
       heading: acf?.heading,
       isLight: acf?.is_light,
       lead: acf?.lead,
@@ -190,7 +192,12 @@ exports.createPages = async ({
       return `/${getCategorySlug(type)}/${slug}`;
     }
 
-    return `/${slug}`;
+    if (slug === 'blad-404') {
+      return '/404';
+    }
+
+    return `/${slug.split('/').slice(-2)
+      .join('')}`;
   };
 
   const getTemplate = ({

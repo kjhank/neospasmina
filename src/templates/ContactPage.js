@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
 import {
-  Content, Cover, Title,
+  Content, Cover, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
@@ -19,7 +19,7 @@ import ENDPOINTS from '@utils/static/endpoints';
 
 const ContactPage = ({
   pageContext: {
-    contact, cover,
+    contact, cover, coverPortrait, hasPortraitCover,
   },
 }) => {
   const [
@@ -82,7 +82,11 @@ const ContactPage = ({
   return (
     <Main>
       <Header>
-        <Cover image={cover} />
+        <Cover
+          $hideOnPortrait={hasPortraitCover}
+          image={cover}
+        />
+        {hasPortraitCover && <PortraitCover image={coverPortrait} />}
         <Container>
           <Title
             dangerouslySetInnerHTML={{
@@ -139,7 +143,9 @@ ContactPage.propTypes = {
       }),
     }),
     cover: PropTypes.shape({}).isRequired,
+    coverPortrait: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string.isRequired,
     lead: PropTypes.string.isRequired,
   }).isRequired,

@@ -13,7 +13,7 @@ import {
 } from '@components/ArticlesCategoryPage/ArticlesCategoryPage.styled';
 
 import {
-  Content, Cover, Lead, Title,
+  Content, Cover, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
@@ -23,7 +23,11 @@ import {
 const ArticlesCategoryPage = ({ pageContext }) => (
   <Main>
     <Header>
-      <Cover image={pageContext?.cover} />
+      <Cover
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
+      />
+      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>
@@ -76,6 +80,8 @@ ArticlesCategoryPage.propTypes = {
   pageContext: PropTypes.shape({
     articles: PropTypes.arrayOf(PropTypes.shape({})),
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     lead: PropTypes.string,
     slug: PropTypes.string,

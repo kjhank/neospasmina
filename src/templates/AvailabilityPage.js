@@ -5,7 +5,9 @@ import sanitize from 'sanitize-html';
 import { Typography } from '@components';
 import { Main } from '@components/styled';
 
-import { Title } from '@components/GenericPage/GenericPage.styled';
+import {
+  PortraitCover, Title,
+} from '@components/GenericPage/GenericPage.styled';
 
 import {
   Container,
@@ -25,7 +27,11 @@ import { Cart } from '@icons';
 const AvailabilityPage = ({ pageContext }) => (
   <Main>
     <Header>
-      <Cover image={pageContext?.cover} />
+      <Cover
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
+      />
+      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>
@@ -90,6 +96,8 @@ AvailabilityPage.propTypes = {
   pageContext: PropTypes.shape({
     availability: PropTypes.arrayOf(PropTypes.shape({})),
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     lead: PropTypes.string,
     pharmacies: PropTypes.arrayOf(PropTypes.shape({})),

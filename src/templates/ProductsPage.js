@@ -12,7 +12,7 @@ import {
 import { Main } from '@components/styled';
 
 import {
-  Cover, Lead, Title,
+  Cover, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
@@ -87,7 +87,11 @@ const ProductsPage = ({
     <>
       <Main>
         <Header>
-          <Cover image={pageContext.cover} />
+          <Cover
+            $hideOnPortrait={pageContext.hasPortraitCover}
+            image={pageContext.cover}
+          />
+          {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
           <Container>
             <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }} />
             <Lead>{pageContext.lead}</Lead>
@@ -129,8 +133,10 @@ ProductsPage.propTypes = {
   pageContext: PropTypes.shape({
     company: PropTypes.shape({}),
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
     footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     lead: PropTypes.string,
     legal: PropTypes.shape({

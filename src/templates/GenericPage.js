@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
 import {
-  Container, Content, Cover, Header, Lead, Title,
+  Container, Content, Cover, Header, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import { Main } from '@components/styled';
@@ -14,7 +14,11 @@ const GenericPage = ({
 }) => (
   <Main>
     <Header>
-      <Cover image={pageContext?.cover} />
+      <Cover
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
+      />
+      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title
           dangerouslySetInnerHTML={{
@@ -43,7 +47,9 @@ GenericPage.propTypes = {
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
     footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     lead: PropTypes.string,
     renderedTitle: PropTypes.string,

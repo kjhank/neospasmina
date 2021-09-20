@@ -5,7 +5,9 @@ import sanitize from 'sanitize-html';
 import { Main } from '@components/styled';
 import { Breadcrumbs } from '@components';
 
-import { Cover } from '@components/GenericPage/GenericPage.styled';
+import {
+  Cover, PortraitCover,
+} from '@components/GenericPage/GenericPage.styled';
 
 import {
   Container, Content, Header, Lead, Title,
@@ -23,7 +25,11 @@ const ArticlePage = ({
 }) => (
   <Main>
     <Header>
-      <Cover image={pageContext?.cover} />
+      <Cover
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
+      />
+      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title
           dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }}
@@ -64,6 +70,8 @@ ArticlePage.propTypes = {
   pageContext: PropTypes.shape({
     content: PropTypes.string,
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
+    hasPortraitCover: PropTypes.bool,
     heading: PropTypes.string,
     isLight: PropTypes.bool,
     lead: PropTypes.string,

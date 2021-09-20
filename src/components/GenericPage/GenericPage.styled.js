@@ -61,6 +61,25 @@ export const Content = styled.article`
   i {
     font-style: italic;
   }
+
+  a {
+    text-decoration-line: underline;
+    text-decoration-color: ${({ theme }) => theme.colors.link};
+    transition: ${({ theme }) => theme.getTransitions(['text-decoration-color'])};
+
+    :hover {
+      text-decoration-color: ${({ theme }) => theme.colors.light};
+    }
+  }
+
+  ol,
+  ul {
+    list-style-position: inside;
+  }
+
+  @media ${mediaQueries.s} {
+    margin: 5em 0;
+  }
 `;
 
 export const Cover = styled(Image)`
@@ -75,12 +94,13 @@ export const Cover = styled(Image)`
 
   > img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
   }
 
   @media ${mediaQueries.s} {
-    width: 150%;
+    display: ${({ $hideOnPortrait }) => ($hideOnPortrait ? 'none' : 'block')};
+    /* width: 150%; */
   }
 `;
 
@@ -88,4 +108,13 @@ export const Container = styled(GenericContainer)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+export const PortraitCover = styled(Cover)`
+  display: none;
+
+  @media ${mediaQueries.s} {
+    display: block;
+    width: 100%;
+  }
 `;

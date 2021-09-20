@@ -107,7 +107,11 @@ GlobalFooter.propTypes = {
   legal: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   path: PropTypes.string.isRequired,
-  productsRef: PropTypes.shape({}).isRequired,
+  productsRef: PropTypes.shape({}),
   sil: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+};
+
+GlobalFooter.defaultProps = {
+  productsRef: null,
 };

@@ -12,7 +12,7 @@ import {
 } from '@components/styled';
 
 import {
-  Cover, Title,
+  Cover, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
@@ -38,9 +38,16 @@ const ProductPage = ({ pageContext }) => (
   <Main>
     <Header>
       <Cover
-        image={pageContext?.cover}
+        $hideOnPortrait={pageContext.hasPortraitCover}
+        image={pageContext.cover}
         isLazy={false}
       />
+      {pageContext.hasPortraitCover && (
+      <PortraitCover
+        image={pageContext.coverPortrait}
+        isLazy={false}
+      />
+      )}
       <Container>
         <HeaderTextWrapper>
           <Title
@@ -205,6 +212,7 @@ ProductPage.propTypes = {
     }),
     color: PropTypes.string,
     cover: PropTypes.shape({}),
+    coverPortrait: PropTypes.shape({}),
     cta: PropTypes.shape({
       'buy-now': PropTypes.shape({
         label: PropTypes.string,
@@ -219,6 +227,7 @@ ProductPage.propTypes = {
       }),
       image: PropTypes.shape({}),
     }),
+    hasPortraitCover: PropTypes.bool,
     lead: PropTypes.string,
     product: PropTypes.shape({
       contraindications: PropTypes.shape({
