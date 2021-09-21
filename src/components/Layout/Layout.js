@@ -18,8 +18,10 @@ import {
 import { Theme } from '@theme/main';
 
 import {
-  FixedHeader, GlobalFooter,
+  CookiesModal, FixedHeader, GlobalFooter,
 } from '@components';
+
+const COOKIES_LS_KEY = 'cookies-agreed';
 
 const Layout = ({
   children, location, pageContext, path,
@@ -56,6 +58,11 @@ const Layout = ({
     setMusicPlaying,
   ] = useState(false);
 
+  const [
+    isCookiesModalOpen,
+    setCookiesModalOpen,
+  ] = useState(false);
+
   const noProductsSlugs = [
     'produkty',
     // 'strona-glowna',
@@ -80,12 +87,18 @@ const Layout = ({
     }
   }, []);
 
+  useEffect(() => {
+    const hasUserAgreed = localStorage.getItem(COOKIES_LS_KEY);
+
+    setCookiesModalOpen(!hasUserAgreed);
+  }, []);
+
   return (
     <Theme>
       <Helmet htmlAttributes={htmlAttributes}>
         {renderMetadata(metadata)}
       </Helmet>
-      <GlobalStyle />
+      <GlobalStyle shouldScroll={!isCookiesModalOpen} />
       <FixedHeader
         isMusicPlaying={isMusicPlaying}
         isPageScrolled={isPageScrolled}
@@ -119,6 +132,12 @@ const Layout = ({
         slug={pageContext?.slug}
       />
       )}
+      <CookiesModal
+        content={pageContext.globals.cookies}
+        isOpen={isCookiesModalOpen}
+        localStorageKey={COOKIES_LS_KEY}
+        setOpen={setCookiesModalOpen}
+      />
     </Theme>
   );
 };
@@ -132,6 +151,9 @@ Layout.propTypes = {
     company: PropTypes.shape({}),
     featuredProducts: PropTypes.arrayOf(PropTypes.shape({})),
     footerLinks: PropTypes.arrayOf(PropTypes.shape({})),
+    globals: PropTypes.shape({
+      cookies: PropTypes.shape({}),
+    }),
     legal: PropTypes.shape({
       legal: PropTypes.string,
       sil: PropTypes.string,

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import { rgba } from 'polished';
 
@@ -92,7 +92,7 @@ export const CTAImage = styled(Image)`
   margin-bottom: -4vw;
 `;
 
-export const CTAButtonLink = styled(ExternalLink)`
+const linkStyles = css`
   border: ${({ color }) => `2px solid ${color}`};
   border-radius: ${({ theme }) => theme.borderRadii.triple};
   padding: 0.572917vw 1.770833vw;
@@ -110,7 +110,7 @@ export const CTAButtonLink = styled(ExternalLink)`
     'background-color',
   ])};
 
-  & + & {
+  & + a {
     margin-left: 1vw;
   }
 
@@ -122,6 +122,14 @@ export const CTAButtonLink = styled(ExternalLink)`
     color, variant,
   }) => (variant.includes('filled') ? color : '#fff')};
   }
+`;
+
+export const CTAButtonLink = styled(ExternalLink)`
+  ${linkStyles}
+`;
+
+export const CTALink = styled(Link)`
+  ${linkStyles}
 `;
 
 export const Content = styled.article`

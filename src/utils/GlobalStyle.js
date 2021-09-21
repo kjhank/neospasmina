@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html {
-    overflow: auto;
+    overflow: ${({ shouldScroll }) => (shouldScroll ? 'auto' : 'hidden')};
     box-sizing: border-box;
   }
 
