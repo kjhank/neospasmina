@@ -34,6 +34,20 @@ const Text = styled.div`
     }
   `};
 
+  p + p {
+    margin-top: 1em;
+  }
+
+  a {
+    text-decoration-line: underline;
+    text-decoration-color: ${({ theme }) => theme.colors.link};
+    transition: ${({ theme }) => theme.getTransitions(['text-decoration-color'])};
+
+    :hover {
+      text-decoration-color: ${({ theme }) => theme.colors.light};
+    }
+  }
+
   > h2 {
     text-align: left;
   }

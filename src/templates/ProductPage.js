@@ -21,6 +21,7 @@ import {
   CTAButtonLink,
   CTAButtonsWrapper,
   CTAImage,
+  CTALink,
   Header,
   HeaderTextWrapper,
   Lead,
@@ -62,16 +63,18 @@ const ProductPage = ({ pageContext }) => (
             isLazy={false}
           />
           <CTAButtonsWrapper>
-            <CTAButtonLink
+            <CTALink
               color={pageContext?.cta.color}
-              url={pageContext?.cta['buy-now'].url}
+              to={pageContext?.cta['buy-now'].url.url}
               variant={pageContext?.cta['buy-now'].variant}
             >
               {pageContext?.cta['buy-now'].label}
-            </CTAButtonLink>
+            </CTALink>
             <CTAButtonLink
               color={pageContext?.cta.color}
               download
+              rel={null}
+              target={null}
               url={pageContext?.cta.file.file}
               variant={pageContext?.cta.file.variant}
             >
@@ -216,7 +219,9 @@ ProductPage.propTypes = {
     cta: PropTypes.shape({
       'buy-now': PropTypes.shape({
         label: PropTypes.string,
-        url: PropTypes.string,
+        url: PropTypes.shape({
+          url: PropTypes.string,
+        }),
         variant: PropTypes.string,
       }),
       color: PropTypes.string,

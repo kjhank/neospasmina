@@ -12,7 +12,14 @@ require('dotenv').config({
 const fetch = require('node-fetch');
 const path = require('path');
 const {
-  ACF_COMPANY, ACF_LEGAL, ARTICLES_EQUILIBRIUM, ARTICLES_RELAX, ARTICLES_SLEEP, PAGES, PRODUCTS,
+  ACF_COMPANY,
+  ACF_LEGAL,
+  ACF_OPTIONS,
+  ARTICLES_EQUILIBRIUM,
+  ARTICLES_RELAX,
+  ARTICLES_SLEEP,
+  PAGES,
+  PRODUCTS,
 } = require('./src/utils/static/endpoints.json');
 
 const articleTemplate = path.resolve('./src/templates/ArticlePage.js');
@@ -48,6 +55,9 @@ exports.createPages = async ({
 
   const sleepResponse = await fetch(`${process.env.REST_URL}/${ARTICLES_SLEEP}?per_page=50`);
   const sleepData = await sleepResponse.json();
+
+  const globalOptions = await fetch(`${process.env.REST_URL}/${ACF_OPTIONS}?per_page=50`);
+  const globalsData = await globalOptions.json();
 
   const slugs = {
     equilibrium: 'spokoj-i-rownowaga',
@@ -280,6 +290,7 @@ exports.createPages = async ({
 
   const { acf: legal } = legalData;
   const { acf: company } = companyData;
+  const { acf: globals } = globalsData;
 
   pages = [
     ...equilibriumData,
@@ -329,6 +340,7 @@ exports.createPages = async ({
       },
       featuredProducts: productsData,
       footerLinks,
+      globals,
       legal,
       metadata,
       renderedTitle,
