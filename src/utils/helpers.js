@@ -127,8 +127,9 @@ export const renderArticle = sections => sections.map(({ section }) => {
   if (variant === 'fullImage') {
     return (
       <ArticleImage
-        hasMargin
+        $hasMargin
         image={image}
+        key={key}
       />
     );
   }

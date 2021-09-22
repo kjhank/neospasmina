@@ -32,7 +32,7 @@ const GenericPage = ({
       {path === '/mapa-strony' ?
         (
           <Container>
-            {renderSitemap(pageContext?.footerLinks)}
+            {pageContext?.footerLinks && renderSitemap(pageContext?.footerLinks)}
           </Container>
         ) :
         (
