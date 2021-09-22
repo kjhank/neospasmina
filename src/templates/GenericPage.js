@@ -15,10 +15,10 @@ const GenericPage = ({
   <Main>
     <Header>
       <Cover
-        $hideOnPortrait={pageContext.hasPortraitCover}
+        $hideOnPortrait={pageContext?.hasPortraitCover}
         image={pageContext.cover}
       />
-      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
+      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title
           dangerouslySetInnerHTML={{

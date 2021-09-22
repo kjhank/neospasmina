@@ -13,21 +13,21 @@ import {
 } from '@components/ArticlesCategoryPage/ArticlesCategoryPage.styled';
 
 import {
-  Cover, Lead, PortraitCover, Title,
+  Content, Cover, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Content, Image, Item, Link, List,
+  Image, Item, Link, List,
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const ArticlesCategoryPage = ({ pageContext }) => (
   <Main>
     <Header>
       <Cover
-        $hideOnPortrait={pageContext.hasPortraitCover}
+        $hideOnPortrait={pageContext?.hasPortraitCover}
         image={pageContext.cover}
       />
-      {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
+      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>

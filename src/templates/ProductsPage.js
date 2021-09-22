@@ -26,7 +26,7 @@ const ProductsPage = ({
   const params = useMemo(() => new URLSearchParams(location.search), [location]);
   const productsRef = createRef();
 
-  const { featuredProducts } = pageContext;
+  const { featuredProducts } = pageContext || [];
 
   const [
     productFilter,
@@ -88,10 +88,10 @@ const ProductsPage = ({
       <Main>
         <Header>
           <Cover
-            $hideOnPortrait={pageContext.hasPortraitCover}
+            $hideOnPortrait={pageContext?.hasPortraitCover}
             image={pageContext.cover}
           />
-          {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
+          {pageContext?.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
           <Container>
             <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext.heading) }} />
             <Lead>{pageContext.lead}</Lead>

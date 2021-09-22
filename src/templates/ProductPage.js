@@ -39,11 +39,11 @@ const ProductPage = ({ pageContext }) => (
   <Main>
     <Header>
       <Cover
-        $hideOnPortrait={pageContext.hasPortraitCover}
+        $hideOnPortrait={pageContext?.hasPortraitCover}
         image={pageContext.cover}
         isLazy={false}
       />
-      {pageContext.hasPortraitCover && (
+      {pageContext?.hasPortraitCover && (
       <PortraitCover
         image={pageContext.coverPortrait}
         isLazy={false}
