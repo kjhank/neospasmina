@@ -31,7 +31,7 @@ export const FixedHeader = ({
   ] = useState(false);
 
   useEffect(() => {
-    const { height: headerHeight = 100 } = headerRef?.current?.getBoundingClientRect();
+    let headerHeight;
 
     const scrollHandler = () => {
       const { scrollY } = window;
@@ -39,7 +39,11 @@ export const FixedHeader = ({
       setPageScrolled(scrollY > headerHeight);
     };
 
-    document.addEventListener('scroll', scrollHandler);
+    if (headerRef?.current) {
+      headerHeight = headerRef?.current?.getBoundingClientRect().height;
+
+      document.addEventListener('scroll', scrollHandler);
+    }
 
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
