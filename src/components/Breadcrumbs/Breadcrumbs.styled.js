@@ -5,7 +5,7 @@ import { mediaQueries } from '@utils/rwd';
 
 export const Wrapper = styled.nav`
   margin: auto 0 1em;
-  color: ${({ isLight }) => (isLight ? '#fff' : 'inherit')};
+  color: ${({ $isLight }) => ($isLight ? '#fff' : 'inherit')};
 
   @media ${mediaQueries.s} {
     margin: 1em 0;
@@ -22,8 +22,8 @@ export const Link = styled(GenericLink)`
   ])};
 
   :hover {
-    filter: ${({ isLight }) => (isLight ? 'brightness(0.9)' : 'brightness(1.1)')} ;
-    text-decoration-color: ${({ isLight }) => (isLight ? '#fff' : 'inherit')};
+    filter: ${({ $isLight }) => ($isLight ? 'brightness(0.9)' : 'brightness(1.1)')} ;
+    text-decoration-color: ${({ $isLight }) => ($isLight ? '#fff' : 'inherit')};
   }
 `;
 

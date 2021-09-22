@@ -6,11 +6,11 @@ import { Main } from '@components/styled';
 import { Breadcrumbs } from '@components';
 
 import {
-  Cover, PortraitCover,
+  Content, Cover, PortraitCover,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Container, Content, Header, Lead, Title,
+  Container, Header, Lead, Title,
 } from '@components/ArticlePage/ArticlePage.styled';
 import { renderArticle } from '@utils';
 
@@ -32,12 +32,12 @@ const ArticlePage = ({
       {pageContext.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
       <Container>
         <Title
+          $isLight={pageContext?.isLight}
           dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }}
-          isLight={pageContext?.isLight}
           isLowercase
         />
         <Breadcrumbs
-          isLight={pageContext?.isLight}
+          $isLight={pageContext?.isLight}
           steps={[
             {
               text: 'Psycholog radzi',

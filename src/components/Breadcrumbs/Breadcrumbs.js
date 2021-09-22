@@ -7,16 +7,16 @@ import {
 } from './Breadcrumbs.styled';
 
 export const Breadcrumbs = ({
-  isLight, steps,
+  $isLight, steps,
 }) => (
-  <Wrapper isLight={isLight}>
+  <Wrapper $isLight={$isLight}>
     <List>
       {steps.map(step => (step.to ?
         (
           <ListItem key={step.text}>
             <Link
+              $isLight={$isLight}
               dangerouslySetInnerHTML={{ __html: sanitize(step.text) }}
-              isLight={isLight}
               to={step.to}
             />
             <Splitter>&gt;</Splitter>
@@ -34,11 +34,11 @@ export const Breadcrumbs = ({
 );
 
 Breadcrumbs.propTypes = {
-  isLight: PropTypes.bool,
+  $isLight: PropTypes.bool,
   steps: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 Breadcrumbs.defaultProps = {
-  isLight: false,
+  $isLight: false,
 };
 

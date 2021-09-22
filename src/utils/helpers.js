@@ -23,11 +23,18 @@ export const renderMetadata = data => data?.map(({
 
   if (type === 'canonicalUrl') {
     return (
-      <link
-        href={content}
-        key={content}
-        rel="canonical"
-      />
+      [
+        <link
+          href={content}
+          key={content}
+          rel="canonical"
+        />,
+        <meta
+          content={content}
+          key={content}
+          property="og:url"
+        />,
+      ]
     );
   }
 
@@ -35,13 +42,17 @@ export const renderMetadata = data => data?.map(({
     return null;
   }
 
-  return (
-    <meta
-      content={content}
-      key={content}
-      name={type}
-    />
-  );
+  if (content) {
+    return (
+      <meta
+        content={content}
+        key={content}
+        name={type}
+      />
+    );
+  }
+
+  return null;
 });
 
 export const renderArticle = sections => sections.map(({ section }) => {
@@ -56,7 +67,7 @@ export const renderArticle = sections => sections.map(({ section }) => {
   } = section;
 
   const [variant] = type.split(':');
-  const key = JSON.stringify(section).slice(0, 92);
+  const key = JSON.stringify(section).slice(0, 115);
   const gradient = hasGradient ? gradientProperties : false;
 
   if (type.includes('textLeft') || type.includes('textRight')) {

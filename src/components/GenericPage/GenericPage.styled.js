@@ -9,8 +9,8 @@ import { mediaQueries } from '@utils/rwd';
 export const Title = styled.h1`
   width: 100%;
   color: ${({
-    color, isLight,
-  }) => (isLight ? '#fff' : color)};
+    color, $isLight,
+  }) => ($isLight ? '#fff' : color)};
   font-weight: 500;
   font-size: ${({ theme }) => theme.fonts.sizes.huge};
   text-transform: ${({ isLowercase }) => (isLowercase ? 'none' : 'uppercase')};
