@@ -133,7 +133,7 @@ const Layout = ({
       />
       )}
       <CookiesModal
-        content={pageContext.globals.cookies}
+        content={pageContext?.globals.cookies}
         isOpen={isCookiesModalOpen}
         localStorageKey={COOKIES_LS_KEY}
         setOpen={setCookiesModalOpen}

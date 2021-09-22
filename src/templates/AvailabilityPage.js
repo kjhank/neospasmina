@@ -29,9 +29,9 @@ const AvailabilityPage = ({ pageContext }) => (
     <Header>
       <Cover
         $hideOnPortrait={pageContext?.hasPortraitCover}
-        image={pageContext.cover}
+        image={pageContext?.cover}
       />
-      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
+      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext?.coverPortrait} />}
       <Container>
         <Title dangerouslySetInnerHTML={{ __html: sanitize(pageContext?.heading) }} />
         <Lead>{pageContext?.lead}</Lead>

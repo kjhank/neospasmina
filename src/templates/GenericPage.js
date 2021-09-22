@@ -16,9 +16,9 @@ const GenericPage = ({
     <Header>
       <Cover
         $hideOnPortrait={pageContext?.hasPortraitCover}
-        image={pageContext.cover}
+        image={pageContext?.cover}
       />
-      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext.coverPortrait} />}
+      {pageContext?.hasPortraitCover && <PortraitCover image={pageContext?.coverPortrait} />}
       <Container>
         <Title
           dangerouslySetInnerHTML={{
@@ -32,7 +32,7 @@ const GenericPage = ({
       {path === '/mapa-strony' ?
         (
           <Container>
-            {renderSitemap(pageContext.footerLinks)}
+            {renderSitemap(pageContext?.footerLinks)}
           </Container>
         ) :
         (
