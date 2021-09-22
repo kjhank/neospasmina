@@ -18,7 +18,7 @@ const List = styled.ul`
   }
 `;
 
-export const renderSitemap = links => links.map(group => (
+export const renderSitemap = links => links?.map(group => (
   <Typography
     hasBottomMargin
     key={group.heading}
