@@ -4,6 +4,8 @@ import {
   ButtonLink, Image as GenericImage,
 } from '@components';
 
+import { Content as GenericContent } from '@components/GenericPage/GenericPage.styled';
+
 import { mediaQueries } from '@utils/rwd';
 
 export const List = styled.ul`
@@ -120,5 +122,11 @@ export const Section = styled.section`
         height: 90%;
       }
     }
+  }
+`;
+
+export const Content = styled(GenericContent)`
+  a {
+    text-decoration: none;
   }
 `;

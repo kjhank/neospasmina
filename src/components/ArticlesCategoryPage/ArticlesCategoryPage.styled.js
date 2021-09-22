@@ -4,7 +4,9 @@ import {
   LinedHeading as GenericLinedHeading,
 } from '@components/styled';
 
-import { Header as GenericHeader } from '@components/GenericPage/GenericPage.styled';
+import {
+  Content as GenericContent, Header as GenericHeader,
+} from '@components/GenericPage/GenericPage.styled';
 import { Container as GenericContainer } from '@components';
 
 export const LinedHeading = styled(GenericLinedHeading)`
@@ -36,3 +38,10 @@ export const Section = styled.section`
     }
   }
 `;
+
+export const Content = styled(GenericContent)`
+  a {
+    text-decoration: none;
+  }
+`;
+

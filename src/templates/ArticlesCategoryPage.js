@@ -13,11 +13,11 @@ import {
 } from '@components/ArticlesCategoryPage/ArticlesCategoryPage.styled';
 
 import {
-  Content, Cover, Lead, PortraitCover, Title,
+  Cover, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  Image, Item, Link, List,
+  Content, Image, Item, Link, List,
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const ArticlesCategoryPage = ({ pageContext }) => (

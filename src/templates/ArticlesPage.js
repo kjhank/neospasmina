@@ -9,11 +9,11 @@ import {
 import { Main } from '@components/styled';
 
 import {
-  Content, Cover, Header, Lead, PortraitCover, Title,
+  Cover, Header, Lead, PortraitCover, Title,
 } from '@components/GenericPage/GenericPage.styled';
 
 import {
-  CategoryLink, Image, Item, Link, List, Section,
+  CategoryLink, Content, Image, Item, Link, List, Section,
 } from '@components/ArticlesPage/ArticlesPage.styled';
 
 const categories = {
